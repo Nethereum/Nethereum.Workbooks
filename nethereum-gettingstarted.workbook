@@ -15,26 +15,38 @@ packages:
   version: 1.0.4
 ---
 
-First, reference the NuGet package ([docs](https://nethereum.readthedocs.io "docs"))
+# DevChain Getting Started Guide
+
+First, you need to clone/download [https://github.com/Nethereum/Nethereum/](https://github.com/Nethereum/Nethereum/), then run startgeth.sh|bat in the testchain folder.
+
+Documentation for Nethereum can be found at [https://nethereum.readthedocs.io](https://nethereum.readthedocs.io)
+
+To get started, reference the NuGet package
 
 ```csharp
 #r "Nethereum.Portable"
 ```
 
-New web3 for localhost:8545
+First, we need to new up a web3 object for localhost:8545 (this uses RPC)
 
 ```csharp
 var web3 = new Nethereum.Web3.Web3();
 ```
 
-Are we mining? (no, if using devchain via [startgeth.bat](https://github.com/Nethereum/Nethereum/tree/master/testchain "startgeth.bat"))
+Are we mining? (startgeth.sh|bat auto-starts mining)
 
 ```csharp
 var isMining = await web3.Eth.Mining.IsMining.SendRequestAsync()
 ```
 
-Any accounts? (no, if not using starter directories)
+List all pre-defined accounts in the devchain
 
 ```csharp
 var accounts = await web3.Eth.Accounts.SendRequestAsync()
+```
+
+Get the balance for the default account
+
+```csharp
+var balance = await web3.Eth.GetBalance.SendRequestAsync("0x12890d2cce102216644c59dae5baed380d84830c")
 ```
