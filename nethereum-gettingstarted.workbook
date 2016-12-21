@@ -1,0 +1,40 @@
+---
+uti: com.xamarin.workbook
+platforms:
+- Console
+packages:
+- id: EdjCase.JsonRpc.Client
+  version: 1.1.2
+- id: Newtonsoft.Json
+  version: 9.0.1
+- id: Portable.BouncyCastle
+  version: 1.8.1.2
+- id: EdjCase.JsonRpc.Core
+  version: 1.1.2
+- id: Nethereum.Portable
+  version: 1.0.4
+---
+
+First, reference the NuGet package ([docs](https://nethereum.readthedocs.io "docs"))
+
+```csharp
+#r "Nethereum.Portable"
+```
+
+New web3 for localhost:8545
+
+```csharp
+var web3 = new Nethereum.Web3.Web3();
+```
+
+Are we mining? (no, if using devchain via [startgeth.bat](https://github.com/Nethereum/Nethereum/tree/master/testchain "startgeth.bat"))
+
+```csharp
+var isMining = await web3.Eth.Mining.IsMining.SendRequestAsync()
+```
+
+Any accounts? (no, if not using starter directories)
+
+```csharp
+var accounts = await web3.Eth.Accounts.SendRequestAsync()
+```
