@@ -7,3 +7,4 @@ Nethereum tutorials using Xamarin workbooks.
 
 * Nethereum getting started by @christophwille (Christoph Wille Twitter @WilleChristoph)
 * Retrieve the balance of an Ethereum account on main net using Infura.
+* Nethereum getting started with smart contracts.
