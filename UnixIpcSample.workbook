@@ -1,0 +1,32 @@
+---
+uti: com.xamarin.workbook
+id: c8a7c9b8-499a-4a89-bf85-78b79117dfa0
+title: UnixIpcSample
+platforms:
+- DotNetCore
+packages:
+- id: Nethereum.JsonRpc.IpcClient
+  version: 2.0.1
+- id: Nethereum.Web3
+  version: 2.0.1
+---
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+```csharp
+#r "Nethereum.JsonRpc.IpcClient"
+```
+
+```csharp
+using Nethereum.Web3; using Nethereum.JsonRpc.IpcClient;
+```
+
+```csharp
+var web3 = new Nethereum.Web3.Web3(new Nethereum.JsonRpc.IpcClient.UnixIpcClient("/Users/juanblanco/Documents/Repos/Nethereum.Workbooks/testchain/clique/devChain/geth.ipc"));
+```
+
+```csharp
+var accounts = await web3.Eth.Accounts.SendRequestAsync();
+```
