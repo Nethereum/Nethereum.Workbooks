@@ -1,0 +1,40 @@
+---
+uti: com.xamarin.workbook
+id: 5ae81721-2480-4fb0-baa6-62e1f79aa238
+title: nethereum-creating-a-new-account-using-geth
+platforms:
+- Console
+packages:
+- id: Nethereum.Geth
+  version: 2.0.1
+---
+
+## Creating a new Account using Geth Personal Api
+
+First we need to add a package reference to Nethereum.Web3. This package includes the base Personal management apis as it standard across clients.
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+## Prerequisites:
+
+Download the test chain from <https://github.com/Nethereum/Nethereum.Workbooks/tree/master/testchain/clique>.
+
+Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus, will start the mining process inmediatly by unlocking the account “ 0x12890d2cce102216644c59daE5baed380d84830c”
+
+```csharp
+using Nethereum.Web3;
+```
+
+We will add the Nethereum.Web3 namespace, and we will create a new instance of Web3
+
+```csharp
+var web3 = new Web3();
+```
+
+Using the Personal Api we can now execute the request NewAccount with the password to encrypt the account storage file.
+
+```csharp
+var account = await web3.Personal.NewAccount.SendRequestAsync("password");
+```
