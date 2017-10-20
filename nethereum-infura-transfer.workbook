@@ -1,0 +1,42 @@
+---
+uti: com.xamarin.workbook
+id: 578c6875-84b7-4d50-9013-86ecb08880d5
+title: nethereum-infura-transfer
+platforms:
+- Console
+packages:
+- id: Nethereum.Web3
+  version: 2.0.1
+---
+
+Sending Ether using Infura
+
+First of all, lets retrieve your private key from a file or just copy and paste it here:
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+```csharp
+using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.KeyStore;
+```
+
+```csharp
+IAccount account = null;
+```
+
+## Opening the account from the keyStore
+
+```csharp
+var openfromKeyStore = false;
+var keyStorePassword = "password";
+var keyStorePath = "I:\JuanFran\Documents\Source\Repos\Nethereum.Workbooks\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+```
+
+```csharp
+if(openfromKeyStore){
+    var file = System.IO.File.OpenText(keyStorePath);
+    var json = file.ReadToEnd();
+
+}
+```
