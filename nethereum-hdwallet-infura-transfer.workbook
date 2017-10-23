@@ -11,82 +11,43 @@ packages:
   version: 2.0.1
 ---
 
-# Sending Ether using Infura
+# Sending Ether using Infura and your HdWallet
+
+First of all we need to add a package reference to Nethereum.HdWallet
 
 ```csharp
 #r "Nethereum.HdWallet"
 ```
 
-```csharp
-using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions;
-```
-
-## 1st Step Retrive the Private Key
-
-First of all we need the accounts private key to sign the transaction, if known already it can just be pasted here.
+Namespaces
 
 ```csharp
-var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions; using Nethereum.HdWallet;
 ```
 
-## Opening the account from the keyStore
+## Retrive the account using the mneumonic backup seed words
 
-Or, if your private key is stored in the standard key store file (geth / parity), you can retrieve it as follows, just change your password and file path.
+Now using our backup seed words we will retrieve the Account to be able to sign the transactions, first we wil declare our word list.
 
 ```csharp
-//do we want to retrieve the account from the key store? 
-var openfromKeyStore = true;
-//key store file password
-var keyStorePassword = "password";
-//the file location
-var keyStorePath = @"I:\JuanFran\Documents\Source\Repos\Nethereum.Workbooks\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var wordlist = "brass bus same payment express already energy direct type have venture afraid";
 ```
 
-We just need to open the file, read its contents and decrypt them using our password
+And the address that we will use to sign the transaction, in this scenario this is the first indexed address.
 
 ```csharp
-if(openfromKeyStore)
-{
-    //open the file and read its contents
-    var file = System.IO.File.OpenText(keyStorePath);
-    var json = file.ReadToEnd();
-    //create a new Nethereum key store service
-    var service = new KeyStoreService();
-    //decrypt the json using the password and get the private key
-    privateKey = service.DecryptKeyStoreFromJson(keyStorePassword, json).ToHex();
-}
-var showPrivateKey = privateKey;
+var address = "0xE65B318b9dECf504d1cb6Ea5C367Ca657a070Db1"
 ```
 
-## The account object
-
-Now we have our private key, we can just simply create our account object.
+Now we are ready to create a wallet and retrive our account.
 
 ```csharp
-var account = new Account(privateKey);
+var account = new Wallet(wordlist, null).GetAccount(address);
 ```
-
-## Infura networks
-
-Currently infura provides client access to the following networks:
-
-Mainnet, this is the production Ethereum live network: [https://mainnet.infura.io](https://mainnet.infura.io/)
-
-And the testnet networks:
-
-Ropsten network: [https://ropsten.infura.io](https://ropsten.infura.io/)
-
-INFURAnet [https://infuranet.infura.io](https://infuranet.infura.io/)
-
-Kovan [https://kovan.infura.io](https://kovan.infura.io/)
-
-Rinkeby [https://rinkeby.infura.io](https://rinkeby.infura.io/)
-
-Please note that it is recommended that you should register to infura and append your access token.
 
 ## Web3
 
-If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io> , and together with our Account we can create a new instance of Web3.
+If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io> , and together with our Account we can create a new instance of Web3. In this scenario we are connecting to the testnet rinkeby.
 
 ```csharp
 var web3 = new Web3(account, "https://rinkeby.infura.io");
