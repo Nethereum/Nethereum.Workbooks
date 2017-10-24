@@ -13,33 +13,33 @@ packages:
 
 # Sending Ether using Infura and your HdWallet
 
-First of all we need to add a package reference to Nethereum.HdWallet
+First of all we need to add a nuget package reference to Nethereum.HdWallet
 
 ```csharp
 #r "Nethereum.HdWallet"
 ```
 
-Namespaces
+and declare the required namespaces:
 
 ```csharp
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions; using Nethereum.HdWallet;
 ```
 
-## Retrive the account using the mneumonic backup seed words
+## Retrieve the account using the mneumonic backup seed words
 
-Now using our backup seed words we will retrieve the Account to be able to sign the transactions, first we wil declare our word list.
+Using our backup seed words we will retrieve the Account to be able to sign the transactions. First step it will be to declare our word list:
 
 ```csharp
 var wordlist = "brass bus same payment express already energy direct type have venture afraid";
 ```
 
-And the address that we will use to sign the transaction, in this scenario this is the first indexed address.
+Next the address that we will using to sign the transaction, in this scenario this is the first indexed address. Note: Using HD wallets, we can generate and re-generate addresses based on an index number from the same seed. In this scenario our address is the first address.
 
 ```csharp
 var address = "0xE65B318b9dECf504d1cb6Ea5C367Ca657a070Db1"
 ```
 
-Now we are ready to create a wallet and retrive our account.
+Now with the backup seed and address we can create the HD wallet and retrive our account. The account contains the private key to sign our transactions.
 
 ```csharp
 var account = new Wallet(wordlist, null).GetAccount(address);
@@ -47,7 +47,7 @@ var account = new Wallet(wordlist, null).GetAccount(address);
 
 ## Web3
 
-If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io> , and together with our Account we can create a new instance of Web3. In this scenario we are connecting to the testnet rinkeby.
+If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io> , and together with our Account we can create a new instance of Web3.  In this scenario we are connecting to the testnet rinkeby.
 
 ```csharp
 var web3 = new Web3(account, "https://rinkeby.infura.io");
@@ -63,7 +63,7 @@ So if we were going to send 1 Ether we will use:
 var wei = Web3.Convert.ToWei(1);
 ```
 
-Finally we will just, set the address that we want to send some Ether, and using the Transaction manager this will be signed and and sent using our private key.
+Finally we will just, set the address that we want to send some Ether, and using the Transaction manager this will be signed with our private key and and sent to the network via Infura public node.
 
 ```csharp
 var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
