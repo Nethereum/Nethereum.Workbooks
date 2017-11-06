@@ -25,15 +25,15 @@ and declare the required namespaces:
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions; using Nethereum.HdWallet;
 ```
 
-## Retrieve the account using the mneumonic backup seed words
+## Retrieve the account using the mnemonic backup seed words
 
-Using our backup seed words we will retrieve the Account to be able to sign the transactions. First step it will be to declare our word list:
+Using our backup seed words we will retrieve the Account to be able to sign the transactions. The first step will be to declare our word list:
 
 ```csharp
 var wordlist = "brass bus same payment express already energy direct type have venture afraid";
 ```
 
-Next the address that we will using to sign the transaction, in this scenario this is the first indexed address. Note: Using HD wallets, we can generate and re-generate addresses based on an index number from the same seed. In this scenario our address is the first address.
+Next the address that we will use to sign the transaction, in this scenario this is the first indexed address. Note: Using HD wallets, we can generate and re-generate addresses based on an index number from the same seed. In this scenario our address is the first address.
 
 ```csharp
 var address = "0xE65B318b9dECf504d1cb6Ea5C367Ca657a070Db1"
@@ -63,7 +63,7 @@ So if we were going to send 1 Ether we will use:
 var wei = Web3.Convert.ToWei(1);
 ```
 
-Finally we will just, set the address that we want to send some Ether, and using the Transaction manager this will be signed with our private key and and sent to the network via Infura public node.
+Finally we will just set the address that we want to send some Ether, and using the Transaction manager this will be signed with our private key and and sent to the network via Infura public node.
 
 ```csharp
 var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
