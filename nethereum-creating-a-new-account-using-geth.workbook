@@ -11,7 +11,7 @@ packages:
 
 ## Creating a new Account using Geth Personal Api
 
-First we need to add a package reference to Nethereum.Web3. This package includes the base Personal management apis as it standard across clients.
+First we need to add a package reference to Nethereum.Web3. This package includes the base Personal management APIs as is standard across clients.
 
 ```csharp
 #r "Nethereum.Web3"
@@ -19,9 +19,9 @@ First we need to add a package reference to Nethereum.Web3. This package include
 
 ## Prerequisites:
 
-Download the test chain from <https://github.com/Nethereum/Nethereum.Workbooks/tree/master/testchain/clique>.
+Download the test chain from <https://github.com/Nethereum/Nethereum.Workbooks/tree/master/testchain/clique>
 
-Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus, will start the mining process inmediatly by unlocking the account “ 0x12890d2cce102216644c59daE5baed380d84830c”
+Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus, making it very fast to mine, will start the mining process inmediatly by unlocking the account “ 0x12890d2cce102216644c59daE5baed380d84830c”
 
 ```csharp
 using Nethereum.Web3;
@@ -33,7 +33,7 @@ We will add the Nethereum.Web3 namespace, and we will create a new instance of W
 var web3 = new Web3();
 ```
 
-Using the Personal Api we can now execute the request NewAccount with the password to encrypt the account storage file.
+Using the Personal API we can now execute the request for a NewAccount with our password to encrypt the account storage file.
 
 ```csharp
 var account = await web3.Personal.NewAccount.SendRequestAsync("password");
