@@ -11,7 +11,7 @@ packages:
 
 ## Creating a new Account using Geth Personal Api
 
-First we need to add a package reference to Nethereum.Web3. This package includes the base Personal management APIs as is standard across clients.
+First we need to add a package reference to Nethereum.Web3. This package includes the base Personal management APIs as it is standard across clients.
 
 ```csharp
 #r "Nethereum.Web3"
