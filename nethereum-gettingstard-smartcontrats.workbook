@@ -78,7 +78,7 @@ var account = new Nethereum.Web3.Accounts.Account(privateKey);
 
 ### Web3
 
-Web3 provides the simple interaction wrapper with Ethereum clients, in this scenario we will only use the Account to create an instance, as we will be interacting with our private test chain on the default “http://localhost:8545”
+Web3 provides the simple interaction wrapper with Ethereum clients. To create an instance of Web3, we need to supply our Account and the RPC uri of the Ethereum client. In this scenario we will only use the Account to create an instance, as we will be interacting with our private test chain on the default “http://localhost:8545”
 
 ```csharp
   var web3 = new Web3(account);
@@ -86,46 +86,48 @@ Web3 provides the simple interaction wrapper with Ethereum clients, in this scen
 
 ### Deploying Smart contracts
 
-We’ll use a standard token smart contract which is initialised on deployment with the “totalSupply”. This total balance is assigned to the sender (who deployed the contract)
+In this example, we are going to use the standard token smart contract. This smart contract is initialised on deployment with the “totalSupply” of tokens. As we can see in the code below, the total balance is assigned to the sender (the address that deployed the contract)
 
 function Standard\_Token(uint256 \_initialAmount) {
         balances\[msg.sender] = \_initialAmount;
         \_totalSupply = \_initialAmount;
     }
 
-This parameter is passed alongside the byteCode as follows:
+When deploying the smart contract using Nethereum, this constructor parameter is send alongside the byteCode as follows:
 
 ```csharp
  ulong totalSupply = 1000000;
  var receipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(abi, contractByteCode, senderAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(900000), null, totalSupply);
 ```
 
-When deploying the contract, we have waited for the transaction receipt. This means that we have waited until the transaction has been mined and included in the chain.
+The method used to deploy the contract, first send the transaction, waits for the transaction to be mined (included in the chain's next block) and returns the transaction receipt.
 
-The transaction receipt includes the contract address, which we can use now to interact with the smart contract.
+The transaction receipt, of a newly deployed contract, includes the address of the contract. From now on we will use this address to interact with the smart contract.
 
 ### Interacting with the Contract
 
-To interact with a contract we need its address and its abi (the abi provides the interface definition).
+To interact with a contract we need its address and its ABI. The abi provides the interface definition, including all the information about the different function calls, returned values and events. The abi is necessary to convert the .Net types and values to the ethereum format.
 
 ```csharp
  var contract = web3.Eth.GetContract(abi, receipt.ContractAddress);
 ```
 
-Once we have a contract, we can get specific function instances by using their names.
+Once we have created an instance of a contract, we can get specific function by using their names.
 
 ```csharp
 var transferFunction = contract.GetFunction("transfer");
 var balanceFunction = contract.GetFunction("balanceOf");
 ```
 
-### Transfer some tokens
+### Transfering some tokens
 
-The “transfer” smart contract function looks like this:
+Using a function we can start interacting with the smart contract. Our contract has the function "transfer", which used to transfer a token between 2 parties.
+
+The function looks like this, in solidity:
 
 function transfer(address \_to, uint256 \_value) returns (bool success) {…}
 
-So we will need the address to which we want to send the tokens and the amount (\_value) to send.
+To interact with this function in Nethereum, we will need the address that we want to send the tokens and the amount (\_value) to send.
 
 ```csharp
 var newAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
@@ -135,15 +137,15 @@ var newAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
 var amountToSend = 1000;
 ```
 
-But before we do the transaction, we can first “estimate” how much the transaction will cost in gas, by simulating it.
+Before we send the transaction, we can “estimate” how much the transaction will cost in gas, by simulating it. When interacting with smart contracts, in a public chain, each instruction and / or storage has some cost, each unit is represented as a gas unit. If we supply too much gas, the gas that has not been expent, it will be returned, but if an error occurred whilts processing the transaction all the gas will be consumed.
 
-In this scenario using the transfer function we can call ‘EstimateGasAsync’ passing the same parameters in the same order.
+To estimate the gas cost in the transfer function we can call ‘EstimateGasAsync’ passing the same parameters.
 
 ```csharp
 var gas = await transferFunction.EstimateGasAsync(senderAddress, null, null, newAddress, amountToSend);
 ```
 
-Now we have the “estimated gas” and we can use that value to include it in the transfer function transaction, alongside the other parameters.
+Now we have the “estimated gas”, we can use that value to include it in the transfer function transaction, alongside the other parameters.
 
 ```csharp
 var receiptFirstAmountSend = await transferFunction.SendTransactionAndWaitForReceiptAsync(senderAddress, gas, null, null, newAddress, amountToSend);
@@ -173,7 +175,7 @@ And when the transaction and mining has been completed we can query the balance,
  var balanceSecondAmountSend = await balanceFunction.CallAsync<int>(newAddress);
 ```
 
-If wanted we should be able to retrieve the state from a previous block, for example if we use the blockNumber of the first transfer transaction to query the balance, it will be 1000.
+To query the state from a previous block, we can include the blockNumber as one of the parameters. Here, we are retrieving the balance for the first transaction using the block number included in the receipt.
 
 ```csharp
 var balanceFirstAmoundSend = await balanceFunction.CallAsync<int>(new Nethereum.RPC.Eth.DTOs.BlockParameter(receiptFirstAmountSend.BlockNumber), newAddress);
