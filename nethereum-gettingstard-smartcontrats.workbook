@@ -66,7 +66,7 @@ We will use this to deploy this contract to the Ethereum chain and interact with
 
 ### The account address and private key
 
-First of all we will need a private key to be able to sign our transactions and verify that the account belongs to us. The private chain has already configured the address "0x12890d2cce102216644c59daE5baed380d84830c” with some Ether. The private key for this address is "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7”.
+First of all we will need a private key to be able to sign our transactions, the ethereum address is calculated from this private key, so each transaction or message signed with this private key can be related our the ethereum address / account. The private chain has already configured the address "0x12890d2cce102216644c59daE5baed380d84830c” with some Ether. The private key for this address is "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7”.
 
 Using the private key we can create an instance of an Account, which will then be used to sign the transactions in the background.
 
