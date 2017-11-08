@@ -15,7 +15,7 @@ The purpose of this sample is the following:
 
 * Creating an account using a private key
 
-* Deploying a smart contract (the sample provided is the standard contract)
+* Deploying a smart contract (the sample provided is the standard ERC20 token contract)
 
 * Estimating the gas cost of a contract transaction
 
