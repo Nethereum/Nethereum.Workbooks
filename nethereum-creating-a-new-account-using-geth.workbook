@@ -33,7 +33,7 @@ We will add the Nethereum.Web3 namespace, and we will create a new instance of W
 var web3 = new Web3();
 ```
 
-Using the Personal API we can now execute the request for a NewAccount with our password to encrypt the account storage file.
+Using the Personal API we can now execute the request "NewAccount" with a password to encrypt the account storage file.
 
 ```csharp
 var account = await web3.Personal.NewAccount.SendRequestAsync("password");
