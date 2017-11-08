@@ -33,7 +33,7 @@ Using our backup seed words we will retrieve the Account to be able to sign the 
 var wordlist = "brass bus same payment express already energy direct type have venture afraid";
 ```
 
-Next the address that we will use to sign the transaction, in this scenario this is the first indexed address. Note: Using HD wallets, we can generate and re-generate addresses based on an index number from the same seed. In this scenario our address is the first address.
+Next step is to retrieve the address that we will use to sign the transaction, in this scenario is the first indexed address. Note: Using HD wallets, we can generate and re-generate addresses based on an index number from the same seed.
 
 ```csharp
 var address = "0xE65B318b9dECf504d1cb6Ea5C367Ca657a070Db1"
