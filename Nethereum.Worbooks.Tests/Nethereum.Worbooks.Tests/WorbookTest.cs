@@ -1,9 +1,11 @@
+using System.IO;
+
 namespace Nethereum.Worbooks.Tests
 {
     public class WorbookTest
     {
-        private readonly string _worbookFilePath;
         private readonly MardownHelper _mardownHelper = new MardownHelper();
+        private readonly string _worbookFilePath;
 
         public WorbookTest(string worbookFilePath)
         {
@@ -12,7 +14,7 @@ namespace Nethereum.Worbooks.Tests
 
         public string GetCodeSectionsFromWorkbook()
         {
-            using (var file = System.IO.File.OpenText(_worbookFilePath))
+            using (var file = File.OpenText(_worbookFilePath))
             {
                 //Given
                 var workbookText = file.ReadToEnd();

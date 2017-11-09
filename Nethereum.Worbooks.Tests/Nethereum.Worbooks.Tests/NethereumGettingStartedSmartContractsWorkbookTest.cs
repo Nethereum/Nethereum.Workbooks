@@ -1,19 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
+﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    public class NethereumGettingStartedSmartContractsWorkbookTest:WorbookTest
+    public class NethereumGettingStartedSmartContractsWorkbookTest : WorbookTest
     {
-        private const string WORKBOOK_PATH = "nethereum-gettingstard-smartcontrats.workbook";
         public NethereumGettingStartedSmartContractsWorkbookTest() : base(WORKBOOK_PATH)
         {
-            
         }
+
+        private const string WORKBOOK_PATH = "nethereum-gettingstard-smartcontrats.workbook";
 
         [Fact]
         public async void Test()
@@ -22,12 +18,10 @@ namespace Nethereum.Worbooks.Tests
             //When
             var state = await CSharpScript.RunAsync(code);
             state = await state.ContinueWithAsync("return (balanceSecondAmountSend, originalBalanceFirstAmoundSend);");
-            var returnValue = (dynamic)state.ReturnValue;
+            var returnValue = (dynamic) state.ReturnValue;
             //Then
             Assert.Equal(2000, returnValue.Item1);
             Assert.Equal(1000, returnValue.Item2);
-            
         }
-       
     }
 }

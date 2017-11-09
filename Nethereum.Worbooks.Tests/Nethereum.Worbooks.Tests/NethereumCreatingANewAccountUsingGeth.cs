@@ -4,12 +4,13 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    public class NethereumCreatingANewAccountUsingGeth:WorbookTest
+    public class NethereumCreatingANewAccountUsingGeth : WorbookTest
     {
-        private const string WORKBOOK_PATH = "nethereum-creating-a-new-account-using-geth.workbook";
         public NethereumCreatingANewAccountUsingGeth() : base(WORKBOOK_PATH)
         {
         }
+
+        private const string WORKBOOK_PATH = "nethereum-creating-a-new-account-using-geth.workbook";
 
         [Fact]
         public async void Test()
