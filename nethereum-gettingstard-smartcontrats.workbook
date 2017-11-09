@@ -5,8 +5,50 @@ title: nethereum-gettingstard-smartcontrats
 platforms:
 - Console
 packages:
+- id: Microsoft.NETCore.Platforms
+  version: 2.0.0
+- id: EdjCase.JsonRpc.Client
+  version: 2.0.0
+- id: System.Security.Cryptography.Algorithms
+  version: 4.3.0
+- id: Newtonsoft.Json
+  version: 10.0.3
+- id: System.Net.Http
+  version: 4.3.3
+- id: Nethereum.RLP
+  version: 2.1.0
+- id: NETStandard.Library
+  version: 2.0.1
+- id: System.Security.Cryptography.X509Certificates
+  version: 4.3.1
+- id: Nethereum.JsonRpc.RpcClient
+  version: 2.1.0
+- id: System.Security.Cryptography.Primitives
+  version: 4.3.0
+- id: Nethereum.ABI
+  version: 2.1.0
+- id: Nethereum.Hex
+  version: 2.1.0
+- id: Nethereum.Util
+  version: 2.1.0
+- id: Nethereum.RPC
+  version: 2.1.0
+- id: Nethereum.KeyStore
+  version: 2.1.0
+- id: Nethereum.JsonRpc.Client
+  version: 2.1.0
+- id: Nethereum.Signer
+  version: 2.1.0
+- id: System.Security.Cryptography.Encoding
+  version: 4.3.0
 - id: Nethereum.Web3
   version: 2.0.1
+- id: EdjCase.JsonRpc.Core
+  version: 2.0.0
+- id: Nethereum.Contracts
+  version: 2.1.0
+- id: BouncyCastle
+  version: 1.8.1
 ---
 
 # Quick introduction to smart contracts integration with Nethereum
@@ -176,5 +218,5 @@ When the transaction has been included in the next block, if we check the balanc
 To query the state from a previous block, we can include the blockNumber as one of the parameters. Here, we are retrieving the balance for the first transaction using the block number included in the receipt.
 
 ```csharp
-var balanceFirstAmoundSend = await balanceFunction.CallAsync<int>(new Nethereum.RPC.Eth.DTOs.BlockParameter(receiptFirstAmountSend.BlockNumber), newAddress);
+var originalBalanceFirstAmoundSend = await balanceFunction.CallAsync<int>(new Nethereum.RPC.Eth.DTOs.BlockParameter(receiptFirstAmountSend.BlockNumber), newAddress);
 ```
