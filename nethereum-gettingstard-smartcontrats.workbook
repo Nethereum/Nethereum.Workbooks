@@ -1,54 +1,12 @@
----
+﻿---
 uti: com.xamarin.workbook
 id: c0e1acc1-2812-4cfc-8c5d-58f7b7a5174a
 title: nethereum-gettingstard-smartcontrats
 platforms:
 - Console
 packages:
-- id: Microsoft.NETCore.Platforms
-  version: 2.0.0
-- id: EdjCase.JsonRpc.Client
-  version: 2.0.0
-- id: System.Security.Cryptography.Algorithms
-  version: 4.3.0
-- id: Newtonsoft.Json
-  version: 10.0.3
-- id: System.Net.Http
-  version: 4.3.3
-- id: Nethereum.RLP
-  version: 2.1.0
-- id: NETStandard.Library
-  version: 2.0.1
-- id: System.Security.Cryptography.X509Certificates
-  version: 4.3.1
-- id: Nethereum.JsonRpc.RpcClient
-  version: 2.1.0
-- id: System.Security.Cryptography.Primitives
-  version: 4.3.0
-- id: Nethereum.ABI
-  version: 2.1.0
-- id: Nethereum.Hex
-  version: 2.1.0
-- id: Nethereum.Util
-  version: 2.1.0
-- id: Nethereum.RPC
-  version: 2.1.0
-- id: Nethereum.KeyStore
-  version: 2.1.0
-- id: Nethereum.JsonRpc.Client
-  version: 2.1.0
-- id: Nethereum.Signer
-  version: 2.1.0
-- id: System.Security.Cryptography.Encoding
-  version: 4.3.0
 - id: Nethereum.Web3
-  version: 2.0.1
-- id: EdjCase.JsonRpc.Core
-  version: 2.0.0
-- id: Nethereum.Contracts
   version: 2.1.0
-- id: BouncyCastle
-  version: 1.8.1
 ---
 
 # Quick introduction to smart contracts integration with Nethereum
