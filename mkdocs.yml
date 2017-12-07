@@ -1,5 +1,5 @@
-site_name: Nethereum
+site_name: Nethereum Workbooks
 pages:
-- 'Home': 'Index.md'
+- 'Home': 'index.md'
 - 'Started': 'nethereum-gettingstard-smartcontrats.workbook'
 theme: readthedocs
