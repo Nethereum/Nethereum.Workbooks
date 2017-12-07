@@ -16,3 +16,4 @@ password = ["node.pwds"]
 [mining]
 engine_signer = "0x12890d2cce102216644c59dae5baed380d84830c"
 reseal_on_txs = "none"
+usd_per_tx = "0"
