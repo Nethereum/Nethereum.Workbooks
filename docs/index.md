@@ -3,8 +3,11 @@ Nethereum tutorials using Xamarin workbooks.
 
 "Xamarin Workbooks provide a blend of documentation and code that is perfect for experimentation, learning, and creating guides and teaching aids." For more info an installation requirements go to: https://developer.xamarin.com/guides/cross-platform/workbooks/
 
+![Workbook sample](screenshots/deploymentSample.gif)
+
 ## Workbooks
 
-* Nethereum getting started by @christophwille (Christoph Wille Twitter @WilleChristoph)
-* Retrieve the balance of an Ethereum account on main net using Infura.
-* Nethereum getting started with smart contracts.
+| Workbook      | Description   | File  |
+| ------------- |:-------------:| -----:|
+| [Getting Started with smart contracts](nethereum-gettingstard-smartcontrats.workbook) | Walkthrough on how to create an account using a private key. Deploy a smart contract (the sample provided is the standard ERC20 token contract). Estimating the gas cost of a contract transaction. Sending a transaction to the smart contract (in this scenario transfering balance).Making a call to a smart contract (in this scenario get the balance of an account). Retrieving the state of a smart contract from a previous block. | [Workbook](https://raw.githubusercontent.com/Nethereum/Nethereum.Workbooks/master/docs/nethereum-gettingstard-smartcontrats.workbook)|
+
