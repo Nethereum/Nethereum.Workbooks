@@ -1,7 +1,7 @@
 # Nethereum.Workbooks
 Nethereum tutorials using Xamarin workbooks.
 
-"Xamarin Workbooks provide a blend of documentation and code that is perfect for experimentation, learning, and creating guides and teaching aids." For more info an installation requirements go to: https://developer.xamarin.com/guides/cross-platform/workbooks/
+"Xamarin Workbooks provide a blend of documentation and code that is perfect for experimentation, learning, and creating guides and teaching aids." For more info and installation requirements go to the [Xamarin Workbooks web site]( https://developer.xamarin.com/guides/cross-platform/workbooks/)
 
 ![Workbook sample](screenshots/deploymentSample.gif)
 
