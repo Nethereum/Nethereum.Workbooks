@@ -3,8 +3,15 @@ Nethereum tutorials using Xamarin workbooks.
 
 "Xamarin Workbooks provide a blend of documentation and code that is perfect for experimentation, learning, and creating guides and teaching aids." For more info an installation requirements go to: https://developer.xamarin.com/guides/cross-platform/workbooks/
 
-## Workbooks
+![Workbook sample](docs/screenshots/deploymentSample.gif)
 
-* Nethereum getting started by @christophwille (Christoph Wille Twitter @WilleChristoph)
-* Retrieve the balance of an Ethereum account on main net using Infura.
-* Nethereum getting started with smart contracts.
+# Workbooks
+You can find a list of all the workbooks on the [Nethereum documentation](http://nethereum.readthedocs.io/en/latest/Nethereum.Workbooks/docs/) or just browse through them in the [repository](docs)
+
+
+## Workbooks contributionn
+1. Any modificactions should be pushed on the Nethereum.Worbooks repository
+2. Any new workbooks need to have a unit test associated with it, or changes unit tested before hand.
+  For an introduction on unit testing workbooks [Check this blog post](https://medium.com/@juanfranblanco/unit-or-integration-tests-of-xamarin-workbooks-6f206b8483d6)
+3. All the workbooks need to be in the same folder and indexed in the index.md file. See any entries on the index.md on how to format links.
+
