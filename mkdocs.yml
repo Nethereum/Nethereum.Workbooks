@@ -1,4 +1,5 @@
 site_name: Nethereum
-pages: 
+pages:
+- 'Home': 'Readme.md'
 - 'Getting started with smart contracts': 'nethereum-gettingstard-smartcontrats.workbook'
 theme: readthedocs
