@@ -1,9 +1,12 @@
-﻿---
+---
+uti: com.xamarin.workbook
+id: 701d2cce-38a5-43b6-a682-e7684c44d480
+title: nethereum-gettingstard-smartcontrats.workbook
 platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 2.1.0
+  version: 2.0.1
 ---
 
 # Quick introduction to smart contracts integration with Nethereum
