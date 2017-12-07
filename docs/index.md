@@ -9,5 +9,5 @@ Nethereum tutorials using Xamarin workbooks.
 
 | Workbook      | Description   | File  |
 | ------------- |:-------------| -----:|
-| [Getting Started with smart contracts](nethereum-gettingstard-smartcontrats.workbook) | Walkthrough on how to create an account using a private key. Deploy a smart contract (the sample provided is the standard ERC20 token contract). Estimating the gas cost of a contract transaction. Sending a transaction to the smart contract (in this scenario transfering balance).Making a call to a smart contract (in this scenario get the balance of an account). Retrieving the state of a smart contract from a previous block. | [Workbook](https://raw.githubusercontent.com/Nethereum/Nethereum.Workbooks/master/docs/nethereum-gettingstard-smartcontrats.workbook)|
+| [Getting Started with smart contracts](nethereum-gettingstard-smartcontrats) | Walkthrough on how to create an account using a private key. Deploy a smart contract (the sample provided is the standard ERC20 token contract). Estimating the gas cost of a contract transaction. Sending a transaction to the smart contract (in this scenario transfering balance).Making a call to a smart contract (in this scenario get the balance of an account). Retrieving the state of a smart contract from a previous block. | [Workbook](nethereum-gettingstard-smartcontrats.workbook)|
 
