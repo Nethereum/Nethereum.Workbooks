@@ -1,7 +1,4 @@
 ﻿---
-uti: com.xamarin.workbook
-id: c0e1acc1-2812-4cfc-8c5d-58f7b7a5174a
-title: nethereum-gettingstard-smartcontrats
 platforms:
 - Console
 packages:
