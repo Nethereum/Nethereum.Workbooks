@@ -1,4 +1,4 @@
-﻿---
+---
 uti: com.xamarin.workbook
 id: c0e1acc1-2812-4cfc-8c5d-58f7b7a5174a
 title: nethereum-gettingstard-smartcontrats
@@ -96,7 +96,7 @@ function Standard\_Token(uint256 \_initialAmount) {
 When deploying the smart contract using Nethereum, this constructor parameter is send alongside the byteCode as follows:
 
 ```csharp
- ulong totalSupply = 1000000;
+ System.Numerics.BigInteger totalSupply = System.Numerics.BigInteger.Parse("1000000000000000000");
  var receipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(abi, contractByteCode, senderAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(900000), null, totalSupply);
 ```
 
