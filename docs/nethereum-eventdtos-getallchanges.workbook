@@ -114,7 +114,7 @@ You are now ready to deploy your contract, using the DeployContract method and t
  var transactionReceipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(ABI, BYTE_CODE, account.Address, new Nethereum.Hex.HexTypes.HexBigInteger(900000));
 ```
 
-Using the “contract address” parameter returned by the transactionReceipt, you can now declare a \*\*\*contract \*\*\*variable that points to an instance of a contract object.
+Using the “contract address” parameter returned by the transactionReceipt, you can now declare a ***contract*** variable that points to an instance of a contract object.
 
 ```csharp
 var contract  = web3.Eth.GetContract(ABI, transactionReceipt.ContractAddress);
@@ -132,7 +132,7 @@ Before calling an Ethereum function, it’s good practice to evaluate the gas co
 var gas = await addBidFunction.EstimateGasAsync(account.Address,new Nethereum.Hex.HexTypes.HexBigInteger(90000), null);
 ```
 
-Finally, you can call your function, the **_transaction_** ***receipt ***will return information regarding the transaction that was sent.
+Finally, you can call your function, the **_transaction receipt_** will return information regarding the transaction that was sent.
 
 ```csharp
 var addBidReceipt = await addBidFunction.SendTransactionAndWaitForReceiptAsync(account.Address,gas, null);
