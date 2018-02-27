@@ -17,8 +17,9 @@ namespace Nethereum.Worbooks.Tests
             var code = GetCodeSectionsFromWorkbook();
             //When
             var state = await CSharpScript.RunAsync(code);
-            state = await state.ContinueWithAsync("return (balanceSecondAmountSend, originalBalanceFirstAmoundSend);");
-            var returnValue = (dynamic) state.ReturnValue;
+            state = await state.ContinueWithAsync(code: "return (balanceSecondAmountSend, originalBalanceFirstAmoundSend);");
+            var returnValue = (dynamic)state.ReturnValue;
+ 
             //Then
             Assert.Equal(2000, returnValue.Item1);
             Assert.Equal(1000, returnValue.Item2);
