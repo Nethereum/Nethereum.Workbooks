@@ -41,7 +41,7 @@ var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf15
 var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
 ```
 
-We also need to [compile our Solidity contract and generate an interface](Nethereum.Docs/docs/nethereum-code-generation.md), below is the contract’s **abi **signature, which will allow us to interface with our StandardToken.sol contract:
+We also need to [compile our Solidity contract and generate an interface](Nethereum.Docs/docs/nethereum-code-generation.md). Below is the generated abi signature, generated after compiling our contract to Bytecode and ABI. This interface will allow us to interact faster with our StandardToken.sol contract:
 
 ```csharp
         
