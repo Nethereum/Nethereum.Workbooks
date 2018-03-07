@@ -51,7 +51,7 @@ using Nethereum.Web3;
 
 The next step is to declare the contract byte code and abi for the contrat.
 
-This is an standard token contract which can be found here: https://github.com/Nethereum/Nethereum.Workbooks/blob/master/StandardToken.sol.
+This is a standard token contract which can be found here: https://github.com/Nethereum/Nethereum.Workbooks/blob/master/StandardToken.sol.
 
 The contract includes an initial supply of tokens when deployed, and capability to transfer amounts between accounts and retrieve the balance.
 
