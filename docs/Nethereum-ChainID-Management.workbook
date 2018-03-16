@@ -46,11 +46,11 @@ To counteract this issue, an Ethereum fix was implemented (the improvement name 
 
 The preconfigured chainIds can be found in Nethereum.Signer.Chain:
 
-![Nethereum-ChainID-Management-1](\screenshots\Nethereum-ChainID-Management-1.jpg)
+![Nethereum-ChainID-Management-1](Nethereum-ChainID-Management-1.jpg)
 
 To configure the chainId in geth, edit the genesis as follows (example configuration):
 
-![Nethereum-ChainID-Management-1](\screenshots\Nethereum-ChainID-Management-2.jpg)
+![Nethereum-ChainID-Management-2](Nethereum-ChainID-Management-2.jpg)
 
 To sign a transaction using the ChainID attribute, we need to create an instance of the "Account" object using our private key and ChainID as arguments.
 
