@@ -14,22 +14,6 @@ platforms:
 ```
 
 ```csharp
-#r "Nethereum.Accounts"
-```
-
-```csharp
-#r "Nethereum.Signer"
-```
-
-```csharp
-#r "Nethereum.RPC"
-```
-
-```csharp
-#r "Nethereum.Hex"
-```
-
-```csharp
 using Nethereum.Web3; using Nethereum.Signer; using Nethereum.Web3.Accounts; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions; using Nethereum.RPC.Eth.DTOs; using Nethereum.Hex.HexTypes;
 ```
 
@@ -60,43 +44,48 @@ First, we need to declare our private key:
 var privatekey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
 ```
 
-Then we can create an Account instance as follows:
+Then we can create an Account instance as follows, using the chainId from the MainNet:
 
 ```csharp
-var account = new Account(privatekey, 444444444500);
+var account = new Account(privatekey, Chain.MainNet);
 ```
 
-or as such:
+or just using our custom chainId as such:
 
 ```csharp
 account =  new Account(privatekey, 444444444500);
 ```
 
-Using our new account, let's simplify our interactions with Ethereum by creating a Web3 instance:
+For this sample we will use our custom chainId already set in our testnet 444444444500.
+
+We now can create a new instance of Web3 using the account configured with the chainId. Internally the TransactionManager will use this chainId to sign all transactions.
 
 ```csharp
 var web3 = new Web3(account);
 ```
 
-Let's  now create a recipient address for our transaction:
+Let's use it in a simple example, for example the transfer of Ether. 
 
 ```csharp
-var toAddress = await web3.Personal.NewAccount.SendRequestAsync("password");
+var toAddress = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
 ```
 
-Finally let's just transfer some Ether using the transaction manager. The transaction will be signed and sent using our private key.
+First let's convert 1 Ether to Wei.
 
 ```csharp
 var wei = Web3.Convert.ToWei(1);
 ```
+
+And then use the TransactionManager to make the transfer and wait for the receipt.
 
 ```csharp
  var transactionReceipt = await web3.TransactionManager.TransactionReceiptService.SendRequestAndWaitForReceiptAsync(
                new TransactionInput() {From = account.Address, To = toAddress, Value = new HexBigInteger(wei)}, null);
 ```
 
-Now, we can check if the balance of the recipient account has increased:
+Finally, we can see that the receivers address balance has incresed by 1 Ether
 
 ```csharp
- var balance = await web3.Eth.GetBalance.SendRequestAsync("0x12890d2cce102216644c59dae5baed380d84830c");
+ var balance = await web3.Eth.GetBalance.SendRequestAsync("0x13f022d72158410433cbd66f5dd8bf6d2d129924");
+ var amountInEther = Web3.Convert.FromWei(balance.Value);
 ```
