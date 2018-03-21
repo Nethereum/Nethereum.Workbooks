@@ -11,9 +11,6 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
     <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
