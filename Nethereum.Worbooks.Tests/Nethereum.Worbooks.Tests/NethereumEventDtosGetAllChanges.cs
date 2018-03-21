@@ -22,6 +22,7 @@ namespace Nethereum.Worbooks.Tests
             //Then
             Assert.Equal(25534, returnValue.Item1.Value);
             Assert.Equal(1, returnValue.Item2.Count);
+
         }
     }
 }
