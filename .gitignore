@@ -27,6 +27,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 testchain/clique/devChain/geth/*
+testchain/parity poa/parity0/chains/*
+testchain/clique/devChain/history
 
 
 # Visual Studio 2015 cache/options directory
