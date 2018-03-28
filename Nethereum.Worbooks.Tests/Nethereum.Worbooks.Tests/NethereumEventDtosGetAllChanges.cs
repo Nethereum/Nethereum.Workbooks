@@ -20,7 +20,7 @@ namespace Nethereum.Worbooks.Tests
             state = await state.ContinueWithAsync("return (gas, logs2);");
             var returnValue = (dynamic)state.ReturnValue;
             //Then
-            Assert.Equal(25534, returnValue.Item1.Value);
+            Assert.Equal(25535, returnValue.Item1.Value);
             Assert.Equal(1, returnValue.Item2.Count);
         }
     }
