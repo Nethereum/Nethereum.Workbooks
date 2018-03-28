@@ -11,17 +11,11 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-    <None Include="..\..\docs\nethereum-gettingstard-smartcontrats.workbook" Link="nethereum-gettingstard-smartcontrats.workbook">
+    <None Include="..\..\Nethereum-ChainID-Management.workbook\index.workbook" Link="index.workbook" />
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-        <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
+      <!-- <None Include="..\..\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook" />
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-       <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </None> -->
   </ItemGroup>
 </Project>
