@@ -18,7 +18,7 @@ namespace Nethereum.Worbooks.Tests
             //When
             var state = await CSharpScript.RunAsync(code);
             state = await state.ContinueWithAsync("return (balanceSecondAmountSend, originalBalanceFirstAmoundSend);");
-            var returnValue = (dynamic) state.ReturnValue;
+            var returnValue = (dynamic)state.ReturnValue;
             //Then
             Assert.Equal(2000, returnValue.Item1);
             Assert.Equal(1000, returnValue.Item2);

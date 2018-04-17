@@ -51,7 +51,7 @@ using Nethereum.Web3;
 
 The next step is to declare the contract byte code and abi for the contrat.
 
-This is an standard token contract which can be found here: https://github.com/Nethereum/Nethereum.Workbooks/blob/master/StandardToken.sol.
+This is a standard token contract which can be found here: https://github.com/Nethereum/Nethereum.Workbooks/blob/master/StandardToken.sol.
 
 The contract includes an initial supply of tokens when deployed, and capability to transfer amounts between accounts and retrieve the balance.
 
@@ -96,7 +96,7 @@ function Standard\_Token(uint256 \_initialAmount) {
 When deploying the smart contract using Nethereum, this constructor parameter is send alongside the byteCode as follows:
 
 ```csharp
- ulong totalSupply = 1000000;
+ System.Numerics.BigInteger totalSupply = System.Numerics.BigInteger.Parse("1000000000000000000");
  var receipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(abi, contractByteCode, senderAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(900000), null, totalSupply);
 ```
 
