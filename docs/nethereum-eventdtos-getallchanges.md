@@ -11,13 +11,15 @@ packages:
 
 # Setting Up Events Polling Services Using Nethereum
 
-This workbook explains how to set up a polling service tracking events occuring on a Smart Contract.
+This workbook explains how to set up a polling service tracking events occuring on a Smart Contract. 
+GetLogs
+Creating a filter input and
 
 ## Prerequisites:
 
 Download the test chain from https://github.com/Nethereum/Nethereum.Workbooks/tree/master/testchain/clique.
 
-Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process inmediatly.
+Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
 ## Nuget Packages
 
@@ -35,27 +37,7 @@ using Nethereum.Web3;using Nethereum.Web3.Accounts;using System.Numerics; using 
 
 Here is the Smart Contract we are going to log using events:
 
-pragma solidity 0.4.18;\
-
-contract EventsTest { 
-
-  event BidAdded(address indexed sender, uint amount, string encryptedRate, uint time);
-
-  event StateChanged(uint currentState, uint newState, uint time);
-
-  function EventsTest() public payable {  }
-
-  function () public payable {  }
-
-  function addBid() external payable {
-
-  BidAdded(msg.sender, 3, "encRate", now);
-
-  StateChanged(0, 1, now);
-
-  }
-
-}
+![](screenshots/testEventContract.jpg)
 
 In order to deploy your Smart Contract, you will need first to compile it  (using the VS Code’s “Solidity” extension, for instance), and declare your ABI and ByteCode in your CSharp class from the compilation output.
 
