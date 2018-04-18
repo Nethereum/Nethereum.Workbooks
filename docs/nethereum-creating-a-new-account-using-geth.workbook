@@ -16,6 +16,7 @@ First we need to add a package reference to Nethereum.Web3. This package include
 ```csharp
 #r "Nethereum.Web3"
 ```
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 ## Prerequisites:
 

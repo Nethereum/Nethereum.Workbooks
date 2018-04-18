@@ -12,6 +12,9 @@ packages:
 ---
 
 # Sending Ether using Infura and an HD Wallet
+
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
 Walkthrough on how to instantiate an HD wallet using the mnemonic backup seed words, retrieve the first account private key and finally transfer some Ether using Infura.
 
 First of all we need to add a nuget package reference to Nethereum.HdWallet

@@ -1,25 +1,16 @@
 ---
+id: f06eb0cb-0694-4277-b7e0-212e28997dc3
+title: nethereum-gettingstarted
 uti: com.xamarin.workbook
 platforms:
 - Console
-packages:
-- id: EdjCase.JsonRpc.Client
-  version: 1.1.2
-- id: Newtonsoft.Json
-  version: 9.0.1
-- id: Portable.BouncyCastle
-  version: 1.8.1.2
-- id: EdjCase.JsonRpc.Core
-  version: 1.1.2
-- id: Nethereum.Portable
-  version: 1.0.4
 ---
 
 # DevChain Getting Started Guide
 
-First, you need to clone/download [https://github.com/Nethereum/Nethereum/](https://github.com/Nethereum/Nethereum/), then run startgeth.sh|bat in the testchain folder.
+First, you need to clone/download <https://github.com/Nethereum/Nethereum/>, then run startgeth.sh|bat in the testchain folder.
 
-Documentation for Nethereum can be found at [https://nethereum.readthedocs.io](https://nethereum.readthedocs.io)
+Documentation for Nethereum can be found at <https://nethereum.readthedocs.io>
 
 To get started, reference the NuGet package
 

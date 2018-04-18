@@ -11,6 +11,8 @@ packages:
 
 # Quick introduction to smart contracts integration with Nethereum
 
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
 The purpose of this sample is the following:
 
 * Creating an account using a private key

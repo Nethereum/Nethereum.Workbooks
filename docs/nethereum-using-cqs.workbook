@@ -9,7 +9,9 @@ id: 655c2dec-bc9a-4bf8-a70f-841ab231788d
 title: nethereum-cqs-test
 ---
 
-## Using CQS (Command Query Separation) to interact with a Smart Contract
+# Using CQS (Command Query Separation) to interact with a Smart Contract
+
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 The following will provide an example of how to easily deploy a[ Token Contract ](https://github.com/Nethereum/Nethereum.Workbooks/edit/master/StandardToken.sol)and interact with it using CQS.
 
