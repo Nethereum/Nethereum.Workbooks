@@ -11,9 +11,12 @@ title: nethereum-cqs-test
 
 # Using CQS (Command Query Separation) to interact with a Smart Contract
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 The following will provide an example of how to easily deploy a[ Token Contract ](https://github.com/Nethereum/Nethereum.Workbooks/edit/master/StandardToken.sol)and interact with it using CQS.
+
+First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
+
+Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
 As usual, let’s start setting up the environment by adding the Nethereum.Web3 and nuget package and using statements to Nethereum classes:
 
