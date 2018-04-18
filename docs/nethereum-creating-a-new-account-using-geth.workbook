@@ -19,21 +19,18 @@ First we need to add a package reference to Nethereum.Web3. This package include
 
 ## Prerequisites:
 
-Download the test chain from <https://github.com/Nethereum/Nethereum.Workbooks/tree/master/testchain/clique>
+Download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
 
-Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus will start the creation of new blocks ("mining") inmediatly by unlocking the account “ 0x12890d2cce102216644c59daE5baed380d84830c”. The Proof of Authority consensus provides a faster consensus when creating blocks than Proof of Work.
+Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
-```csharp
-using Nethereum.Web3;
-```
 
-We will add the Nethereum.Web3 namespace, and we will create a new instance of Web3
+We can now create a new instance of Web3:
 
 ```csharp
 var web3 = new Web3();
 ```
 
-Using the Personal API we can now execute the request "NewAccount" with a password to encrypt the account storage file.
+Using the Personal API we can now execute the request "NewAccount" with a password to encrypt the account storage file:
 
 ```csharp
 var account = await web3.Personal.NewAccount.SendRequestAsync("password");
