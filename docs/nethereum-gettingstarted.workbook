@@ -4,6 +4,9 @@ title: nethereum-gettingstarted
 uti: com.xamarin.workbook
 platforms:
 - Console
+packages:
+- id: Nethereum.Web3
+  version: 2.0.1
 ---
 
 # DevChain Getting Started Guide

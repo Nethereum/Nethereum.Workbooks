@@ -11,8 +11,9 @@ title: nethereum-cqs-test
 
 # Using CQS (Command Query Separation) to interact with a Smart Contract
 
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
-The following will provide an example of how to easily deploy a[ Token Contract ](https://github.com/Nethereum/Nethereum.Workbooks/edit/master/StandardToken.sol)and interact with it using CQS.
+The following provides an example of how to easily deploy a [Token Contract](https://github.com/Nethereum/Nethereum.Workbooks/edit/master/StandardToken.sol)and interact with it using CQS.
 
 First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
 
@@ -96,7 +97,7 @@ We can then create an Ethereum account:
 var account = new Account(privateKey);
 ```
 
-Create a web3 instance based on our our new account object:
+Next step: let's create a web3 instance based on our our new account object:
 
 ```csharp
 var web3 = new Web3(account);
