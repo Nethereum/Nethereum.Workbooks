@@ -8,7 +8,7 @@ platforms:
 
 # Events, get all changes for a block range.
 
-This workbook explains how to get all the events for a block range writen to the log by a Smart Contract.
+This workbook explains how to get all the event logs for a specific block range written to the logs by a Smart Contract.
 
 Background:
 
