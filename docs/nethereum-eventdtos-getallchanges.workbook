@@ -4,18 +4,15 @@ id: 5808030e-e736-41a5-b749-8556e0b08727
 title: nethereum-eventdtos-getallchanges
 platforms:
 - Console
-packages:
-- id: Nethereum.Web3
-  version: 2.2.3
 ---
 
-# Setting Up Events Polling Services Using Nethereum
+# Events, get all changes for a block range.
 
-This workbook explains how to set up a polling service tracking events occurring on a Smart Contract.
+This workbook explains how to get all the events for a block range writen to the log by a Smart Contract.
 
 Background:
 
-In the Ethereum environment, functions don't return anything. In order to compensate for that limitation,  Solidity offers a way to log state changes which is called Event. The following explains how to track events using Nethereum.
+In the Ethereum environment, functions don't return anything. In order to compensate for that limitation,  Solidity offers a way to log state changes which is called Event. The following explains how to get all events for a block range using Nethereum.
 
 ## Prerequisites:
 
@@ -39,7 +36,7 @@ using Nethereum.Web3;using Nethereum.Web3.Accounts;using System.Numerics; using 
 
 Here is the Smart Contract we are going to log using events:
 
-![](screenshots/testEventContract.jpg)
+![](https://raw.githubusercontent.com/Nethereum/Nethereum.Workbooks/master/docs/screenshots/testEventContract.jpg)
 
 In order to deploy your Smart Contract, you will need first to compile it  (using the VS Code’s “Solidity” extension, for instance), and declare your ABI and ByteCode in your CSharp class from the compilation output.
 
