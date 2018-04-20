@@ -11,6 +11,8 @@ packages:
 
 # Sending Ether using Infura
 
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
 ```csharp
 #r "Nethereum.Web3"
 ```
