@@ -7,11 +7,14 @@ Nethereum tutorials using Xamarin workbooks.
 
 ## Workbooks
 
-| Workbook      | Description   | File  |
+| Workbook      | Description   | File |
 | ------------- |:-------------| -----:|
-| [Getting Started With Smart Contracts](nethereum-gettingstard-smartcontrats.workbook) | Walkthrough on how to create an account using a private key. Deploy a smart contract (the sample provided is the standard ERC20 token contract). Estimating the gas cost of a contract transaction. Sending a transaction to the smart contract (in this scenario transfering balance).Making a call to a smart contract (in this scenario get the balance of an account). Retrieving the state of a smart contract from a previous block. | [Workbook](nethereum-gettingstard-smartcontrats.workbook)|
-| [Getting started Infura](nethereum-gettingstarted-infura.workbook)|Simple sample will take you through the steps of connecting to Infura and retrieve the balance of an account| [Workbook](nethereum-gettingstarted-infura.workbook)|
-|[HD Wallet](nethereum-hdwallet-infura-transfer.workbook)|Walkthrough on how to instantiate an HD wallet using the mnemonic backup seed words, retrieve the first account private key and finally transfer some Ether using Infura.|[Workbook](nethereum-hdwallet-infura-transfer.workbook)|
+|[Getting Started With Smart Contracts](nethereum-gettingstard-smartcontrats.workbook)|Learn how to create an account using a private key. Deploy a smart contract. Estimate the gas cost of a contract transaction. Send a transaction to the smart contract. Make a call to a smart contract. Retrieve the state of a smart contract from a previous block|[Workbook](nethereum-gettingstard-smartcontrats.workbook)|
+|[Nethereum Getting Started](nethereum-gettingstarted.workbook)|Learn a few simple interactions with a Blockchain|[Workbook](nethereum-gettingstarted.workbook)|
+[Getting started Infura](nethereum-gettingstarted-infura.workbook)|Connect to Infura and retrieve the balance of an account|[Workbook](nethereum-gettingstarted-infura.workbook)|
+[HD Wallet](nethereum-hdwallet-infura-transfer.workbook)|Learn to instantiate an HD wallet using the mnemonic backup seed words, retrieve the first account private key and finally transfer some Ether using Infura|[Workbook](nethereum-hdwallet-infura-transfer.workbook)|
 |[Setting Up Events Polling Services](nethereum-eventdtos-getallchanges.workbook)|Learn how to log events by setting up polling services|[Workbook](nethereum-eventdtos-getallchanges.workbook)|
-|[Creating A New Account Using Geth](nethereum-creating-a-new-account-using-geth.workbook)| Quick workbook to learn how to create a new account with Geth|[Workbook](nethereum-creating-a-new-account-using-geth.workbook)|
-|
+|[Creating A New Account Using Geth](nethereum-creating-a-new-account-using-geth.workbook)|Create a new account with Geth |[Workbook](nethereum-creating-a-new-account-using-geth.workbook)|
+[Chain Id Management](nethereum-chainid-management.workbook)|Learn how to protect your code against replay attacks|[Workbook](nethereum-chainid-management.workbook)|
+[Unit conversion](nethereum-converting-units.workbook)|Convert Ethereum currency units \(Eth\Gwei\Wei\) using Nethereum methods|[Workbook](nethereum-chainid-management.workbook)|
+[CQS - Using messages](nethereum-cqs-test.workbook)|Use messages to send transactions|[Workbook](nethereum-cqs-test.workbook)||
