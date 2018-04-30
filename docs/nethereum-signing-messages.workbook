@@ -21,7 +21,7 @@ Every transaction in Ethereum needs to be sent and signed by an account. The acc
 
 Nethereum simplifies the management of accounts' passwords as well as the signing process, allowing to sign online or offline depending on the context (working with a local node or with remote nodes such as Infura).
 
-The following will demonstrate how to use Nethereum to sign a transaction with managed accounts.
+The following will demonstrate how to use Nethereum to sign a transaction with Nethereum managed and regular accounts.
 
 ## Prerequisites:
 
@@ -56,7 +56,7 @@ To send a transaction you will either manage your account and sign the raw trans
 
 In Nethereum.Web3, to simplify the process, there are two types of accounts that you can use. An "Account" object or a "ManagedAccount" object. Both store the account information required to send a transaction, private key, or password.
 
-At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using the TransactionManager, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal\_sendTransaction message will be sent using the password.
+At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using Nethereum `TransactionManager`, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal\_sendTransaction message will be sent using the password.
 
 ### Signing with an `account` object
 
