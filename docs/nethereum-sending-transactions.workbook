@@ -15,11 +15,11 @@ This workbook will walk you through the basics of using Nethereum to send transa
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
-## What happens when you send a transaction with Ethereum?
+##  What happens when you send a transaction with Ethereum?
 
 Transactions can be put in two categories, those sent "manually" (without using an Ethereum client) and those that are managed by an Ethereum client.
 
-To address those two cases, Nethereum provides `account` and `managed account` objects.
+To address those two cases, Nethereum provides `account` and `managed account` objects. 
 
 The following will demonstrate how to use Nethereum to send a transaction with Nethereum `managed` and `regular` accounts.
 
@@ -34,7 +34,7 @@ We need to add Web3 Nuget package:
 ```csharp
 #r "Nethereum.Web3"
 ```
-
+   
 Then, let's add the using statement to Nethereum.Web3.
 
 ```csharp
@@ -58,7 +58,7 @@ In Nethereum.Web3, to simplify the process, there are two types of accounts that
 
 At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using Nethereum `TransactionManager`, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal\_sendTransaction message will be sent using the password.
 
-The next two sections detail how to send a transaction with or without a \`managed account\`:
+The below explains how to: 
 
 ### Sending a transaction with an `account` object
 
@@ -68,8 +68,6 @@ Here is how to set up a new account by creating an `account` object instance:
 var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
 var account = new Account(privateKey);
 ```
-
-We can now send a transaction, the process does
 
 ```csharp
 var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
@@ -88,7 +86,7 @@ var account = new ManagedAccount(senderAddress, password);
 var web3 = new Web3(account);
 ```
 
-We can now perform our transaction using the \`TransactionManager\`, the signing will be made automatically by the Ethereum client in use:
+We can now perform our transaction using the `TransactionManager`, the signing will be made automatically by the Ethereum client in use:
 
 ```csharp
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(20))
