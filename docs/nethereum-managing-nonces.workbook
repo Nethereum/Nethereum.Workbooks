@@ -20,9 +20,14 @@ Therefore, failing to increment this value correctly can result in different kin
 Reusing nonce: if we send a new transaction for the same account with a nonce of either 121 or below, the node will reject it.
 “Gaps”: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
 
-This workbook shows how Nethereum helps manage `nonce`.
+## How Nethereum helps managing nonces
 
-Let's first set our environment:
+Each time a transaction is sent via clients like Geth or Parity, the clients confirm the transaction with a delay, this can generate duplicate nonces when several transactions are sent in a short timeframe.
+
+To keep nonce count in sync between a Nethereum Dapp and the client it communicates with, Nethereum provides with `NonceServices`.
+`NonceServices` is assigned to Nethereum's `TransactionManager` and keeps track of the nonce assigned to every transaction sent to your Ethereum client.
+
+This workbook shows how to leverage `NonceServices` 
 
 ## prerequisites:
 
@@ -47,6 +52,14 @@ using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.KeyStore;
 using Nethereum.Hex.HexConvertors;
 using Nethereum.Hex.HexTypes;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Nethereum.Hex.HexTypes;
+using Nethereum.RPC.NonceServices;
+using Nethereum.RPC.TransactionReceipts;
+using Nethereum.Web3.Accounts;
 ```
 
 ## Nonce management with Nethereum `accounts` objects
@@ -92,18 +105,3 @@ var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(a
 var nonce = txCount.Value;
 
 ```
-
-## Nonce management signing a row transaction manually
-
-Methods dealing with nonce management
-
-GetTransactionCount
-Nethereum does that in the background
-so, if you send a transaction with an `account` object or a `managed account` object, the nonce management is done automatically
-With the nonce service
-in this particular case http://nethereum.readthedocs.io/en/latest/introduction/web3/#offline-transaction-signing
-you need to add it yourself
-correct?
-Yes but that is the do it yourself scenario
-The account uses the transaction manager
-That uses the nonce service
