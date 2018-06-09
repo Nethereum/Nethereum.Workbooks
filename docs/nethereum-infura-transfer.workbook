@@ -21,7 +21,7 @@ Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.KeyStore; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions;
 ```
 
-## 1st Step Retrive the Private Key
+## 1st Step Retrieve the Private Key
 
 First of all we need the accounts private key to sign the transaction, if known already it can just be pasted here.
 
@@ -102,7 +102,7 @@ So if we were going to send 1 Ether we will use:
 var wei = Web3.Convert.ToWei(1);
 ```
 
-Finally we will just, set the address that we want to send some Ether, and using the Transaction manager this will be signed and and sent using our private key.
+Finally we will just set the address to which we want to send some Ether, and using the Transaction manager this will be signed and and sent using our private key.
 
 ```csharp
 var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
