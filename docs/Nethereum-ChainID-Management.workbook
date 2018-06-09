@@ -56,7 +56,7 @@ or just using our custom chainId as such:
 account =  new Account(privatekey, 444444444500);
 ```
 
-For this sample we will use our custom chainId already set in our testnet 444444444500.
+For this sample we will use our custom chainId already set in our testnet **444444444500**.
 
 We now can create a new instance of Web3 using the account configured with the chainId. Internally the TransactionManager will use this chainId to sign all transactions.
 
@@ -64,7 +64,7 @@ We now can create a new instance of Web3 using the account configured with the c
 var web3 = new Web3(account);
 ```
 
-Let's use it in a simple example, for example the transfer of Ether. 
+Let's use it in a simple example, for example the transfer of Ether.
 
 ```csharp
 var toAddress = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
@@ -76,14 +76,14 @@ First let's convert 1 Ether to Wei.
 var wei = Web3.Convert.ToWei(1);
 ```
 
-And then use the TransactionManager to make the transfer and wait for the receipt.
+And then use the TransactionManager to execute the transfer and wait for the receipt.
 
 ```csharp
  var transactionReceipt = await web3.TransactionManager.TransactionReceiptService.SendRequestAndWaitForReceiptAsync(
                new TransactionInput() {From = account.Address, To = toAddress, Value = new HexBigInteger(wei)}, null);
 ```
 
-Finally, we can see that the receivers address balance has incresed by 1 Ether
+Finally, we can see that the receiver’s address balance has increased by 1 Ether
 
 ```csharp
  var balance = await web3.Eth.GetBalance.SendRequestAsync("0x13f022d72158410433cbd66f5dd8bf6d2d129924");
