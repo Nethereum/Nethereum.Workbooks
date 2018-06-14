@@ -5,6 +5,8 @@ Nethereum tutorials using Xamarin workbooks.
 
 ![Workbook sample](screenshots/deploymentSample.gif)
 
+The table below provides Download links to Nethereum workbooks:
+
 ## Workbooks
 
 | Workbook      | Description   | File |
