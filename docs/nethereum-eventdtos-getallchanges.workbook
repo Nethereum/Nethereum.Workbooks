@@ -27,7 +27,7 @@ First add the Nethereum.Web3 nuget package.
 #r "Nethereum.Web3"
 ```
 
-Then add Nethereum.Web3 "using" statements as well as other requred extensions. All other namespaces will be included directly in the sample.
+Then add Nethereum.Web3 "using" statements as well as other required extensions. All other namespaces will be included directly in the sample.
 
 ```csharp
 using Nethereum.Web3;
@@ -114,7 +114,7 @@ You are now ready to deploy your contract, using the DeployContract method and t
  var transactionReceipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(ABI, BYTE_CODE, account.Address, new Nethereum.Hex.HexTypes.HexBigInteger(900000));
 ```
 
-Using the “contract address” parameter returned by the transactionReceipt, you can now declare a ***contract*** variable that points to an instance of a contract object.
+Using the “contract address” parameter returned by the transactionReceipt, you can now declare a **_contract_** variable that points to an instance of a contract object.
 
 ```csharp
 var contract  = web3.Eth.GetContract(ABI, transactionReceipt.ContractAddress);
