@@ -18,4 +18,4 @@ The table below provides Download links to Nethereum workbooks:
 |[Creating A New Account Using Geth](nethereum-creating-a-new-account-using-geth.workbook)|Create a new account with Geth |[Workbook](nethereum-creating-a-new-account-using-geth.workbook)|
 [Chain Id Management](nethereum-chainid-management.workbook)|Learn how to protect your code against replay attacks|[Workbook](nethereum-chainid-management.workbook)|
 [Unit conversion](nethereum-converting-units.workbook)|Convert Ethereum currency units \(Eth\Gwei\Wei\) using Nethereum methods|[Workbook](nethereum-chainid-management.workbook)|
-[CQS - Using messages](nethereum-cqs-test.workbook)|Use messages to send transactions|[Workbook](nethereum-cqs-test.workbook)||
+[CQS - Using messages](nethereum-cqs-test.md)|Use messages to send transactions|[Workbook](nethereum-cqs-test.workbook)||
