@@ -21,7 +21,7 @@ Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.KeyStore; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions;
 ```
 
-## 1st Step Retrive the Private Key
+## 1st Step Retrieve the Private Key
 
 First of all we need the accounts private key to sign the transaction, if known already it can just be pasted here.
 
@@ -39,7 +39,7 @@ var openfromKeyStore = true;
 //key store file password
 var keyStorePassword = "password";
 //the file location
-var keyStorePath = @"I:\JuanFran\Documents\Source\Repos\Nethereum.Workbooks\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var keyStorePath = ".\\keystore\\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c"
 ```
 
 We just need to open the file, read its contents and decrypt them using our password

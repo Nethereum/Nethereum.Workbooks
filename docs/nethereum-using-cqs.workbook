@@ -116,8 +116,6 @@ var deploymentMessage = new StandardTokenDeployment
 
 Then deploy our contract and get the deployment transaction receipt:
 
-
-
 ```csharp
 var deploymentHandler = web3.Eth.GetContractDeploymentHandler<StandardTokenDeployment>();
 var transactionReceipt = await deploymentHandler.SendRequestAndWaitForReceiptAsync(deploymentMessage);

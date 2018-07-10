@@ -5,8 +5,8 @@ title: nethereum-creating-a-new-account-using-geth
 platforms:
 - Console
 packages:
-- id: Nethereum.Geth
-  version: 2.0.1
+- id: Nethereum.Web3
+  version: 2.5.1
 ---
 
 ## Creating a new Account using Geth Personal Api
@@ -16,6 +16,11 @@ First we need to add a package reference to Nethereum.Web3. This package include
 ```csharp
 #r "Nethereum.Web3"
 ```
+
+```csharp
+using Nethereum.Web3;
+```
+
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 ## Prerequisites:
@@ -23,7 +28,6 @@ Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io
 First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
 
 Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
-
 
 We can now create a new instance of Web3:
 

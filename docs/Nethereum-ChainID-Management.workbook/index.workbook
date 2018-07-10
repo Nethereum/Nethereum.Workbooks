@@ -7,10 +7,13 @@ id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
 title: Nethereum-ChainID-Management
 platforms:
 - Console
+packages:
+- id: Nethereum.Portable
+  version: 2.5.1
 ---
 
 ```csharp
-#r "Nethereum.Web3"
+#r "Nethereum.Portable"
 ```
 
 ```csharp

@@ -1,9 +1,14 @@
 ---
 uti: com.xamarin.workbook
-id: 701d2cce-38a5-43b6-a682-e7684c44d480
-title: nethereum-gettingstarted-infura
+id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
+title: Nethereum-getting-started-infura.workbook
 platforms:
 - Console
+packages:
+- id: Nethereum.Portable
+  version: 2.5.1
+- id: Nethereum.Web3
+  version: 2.5.1
 ---
 
 The very first step to get started working with Nethereum is to add a package reference to Nethereum.Web3.
