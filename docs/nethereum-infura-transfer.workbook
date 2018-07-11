@@ -11,6 +11,7 @@ packages:
 
 # Sending Ether using Infura
 
+<<<<<<< HEAD
 ```csharp
 #r "Nethereum.Web3"
 ```
@@ -20,11 +21,28 @@ using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.KeyStore; u
 ```
 
 ## 1st Step Retrive the Private Key
+=======
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+```csharp
+using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.KeyStore; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions;
+```
+
+## 1st Step Retrieve the Private Key
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 
 First of all we need the accounts private key to sign the transaction, if known already it can just be pasted here.
 
 ```csharp
+<<<<<<< HEAD
 var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+=======
+var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 ## Opening the account from the keyStore
@@ -32,17 +50,27 @@ var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf15
 Or, if your private key is stored in the standard key store file (geth / parity), you can retrieve it as follows, just change your password and file path.
 
 ```csharp
+<<<<<<< HEAD
 //do we want to retrieve the account from the key store? 
 var openfromKeyStore = true;
 //key store file password
 var keyStorePassword = "password";
 //the file location
 var keyStorePath = @"I:\JuanFran\Documents\Source\Repos\Nethereum.Workbooks\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+=======
+//do we want to retrieve the account from the key store? 
+var openfromKeyStore = true;
+//key store file password
+var keyStorePassword = "password";
+//the file location
+var keyStorePath = ".\\keystore\\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c"
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 We just need to open the file, read its contents and decrypt them using our password
 
 ```csharp
+<<<<<<< HEAD
 if(openfromKeyStore)
 {
     //open the file and read its contents
@@ -54,6 +82,19 @@ if(openfromKeyStore)
     privateKey = service.DecryptKeyStoreFromJson(keyStorePassword, json).ToHex();
 }
 var showPrivateKey = privateKey;
+=======
+if(openfromKeyStore)
+{
+    //open the file and read its contents
+    var file = System.IO.File.OpenText(keyStorePath);
+    var json = file.ReadToEnd();
+    //create a new Nethereum key store service
+    var service = new KeyStoreService();
+    //decrypt the json using the password and get the private key
+    privateKey = service.DecryptKeyStoreFromJson(keyStorePassword, json).ToHex();
+}
+var showPrivateKey = privateKey;
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 ## The account object
@@ -61,7 +102,11 @@ var showPrivateKey = privateKey;
 Now we have our private key, we can just simply create our account object.
 
 ```csharp
+<<<<<<< HEAD
 var account = new Account(privateKey);
+=======
+var account = new Account(privateKey);
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 ## Infura networks
@@ -87,7 +132,11 @@ Please note that it is recommended that you should register to infura and append
 If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io> , and together with our Account we can create a new instance of Web3.
 
 ```csharp
+<<<<<<< HEAD
 var web3 = new Web3(account, "https://rinkeby.infura.io");
+=======
+var web3 = new Web3(account, "https://rinkeby.infura.io");
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 ## Converting Ether to Wei
@@ -97,12 +146,21 @@ Ether needs to be converted to Wei before sending it, for this we will use the C
 So if we were going to send 1 Ether we will use:
 
 ```csharp
+<<<<<<< HEAD
 var wei = Web3.Convert.ToWei(1);
+=======
+var wei = Web3.Convert.ToWei(1);
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 Finally we will just, set the address that we want to send some Ether, and using the Transaction manager this will be signed and and sent using our private key.
 
 ```csharp
+<<<<<<< HEAD
 var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, toAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(wei));
+=======
+var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
+var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, toAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(wei));
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```

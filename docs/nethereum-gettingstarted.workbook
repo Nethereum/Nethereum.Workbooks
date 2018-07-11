@@ -1,8 +1,14 @@
 ---
+<<<<<<< HEAD
+=======
+id: f06eb0cb-0694-4277-b7e0-212e28997dc3
+title: nethereum-gettingstarted
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 uti: com.xamarin.workbook
 platforms:
 - Console
 packages:
+<<<<<<< HEAD
 - id: EdjCase.JsonRpc.Client
   version: 1.1.2
 - id: Newtonsoft.Json
@@ -13,40 +19,72 @@ packages:
   version: 1.1.2
 - id: Nethereum.Portable
   version: 1.0.4
+=======
+- id: Nethereum.Portable
+  version: 2.5.1
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ---
 
 # DevChain Getting Started Guide
 
+<<<<<<< HEAD
 First, you need to clone/download [https://github.com/Nethereum/Nethereum/](https://github.com/Nethereum/Nethereum/), then run startgeth.sh|bat in the testchain folder.
 
 Documentation for Nethereum can be found at [https://nethereum.readthedocs.io](https://nethereum.readthedocs.io)
+=======
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
+First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
+
+Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 
 To get started, reference the NuGet package
 
 ```csharp
+<<<<<<< HEAD
 #r "Nethereum.Portable"
+=======
+#r "Nethereum.Portable"
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 First, we need to new up a web3 object for localhost:8545 (this uses RPC)
 
 ```csharp
+<<<<<<< HEAD
 var web3 = new Nethereum.Web3.Web3();
+=======
+var web3 = new Nethereum.Web3.Web3();
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 Are we mining? (startgeth.sh|bat auto-starts mining)
 
 ```csharp
+<<<<<<< HEAD
 var isMining = await web3.Eth.Mining.IsMining.SendRequestAsync()
+=======
+var isMining = await web3.Eth.Mining.IsMining.SendRequestAsync()
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 List all pre-defined accounts in the devchain
 
 ```csharp
+<<<<<<< HEAD
 var accounts = await web3.Eth.Accounts.SendRequestAsync()
+=======
+var accounts = await web3.Eth.Accounts.SendRequestAsync()
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
 
 Get the balance for the default account
 
 ```csharp
+<<<<<<< HEAD
 var balance = await web3.Eth.GetBalance.SendRequestAsync("0x12890d2cce102216644c59dae5baed380d84830c")
+=======
+var balance = await web3.Eth.GetBalance.SendRequestAsync("0x12890d2cce102216644c59dae5baed380d84830c")
+>>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ```
