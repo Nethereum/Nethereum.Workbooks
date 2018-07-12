@@ -5,13 +5,8 @@ title: nethereum-creating-a-new-account-using-geth
 platforms:
 - Console
 packages:
-<<<<<<< HEAD
-- id: Nethereum.Geth
-  version: 2.0.1
-=======
 - id: Nethereum.Web3
   version: 2.5.1
->>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40
 ---
 
 ## Creating a new Account using Geth Personal Api
@@ -19,32 +14,6 @@ packages:
 First we need to add a package reference to Nethereum.Web3. This package includes the base Personal management APIs as it is standard across clients.
 
 ```csharp
-<<<<<<< HEAD
-#r "Nethereum.Web3"
-```
-
-## Prerequisites:
-
-Download the test chain from <https://github.com/Nethereum/Nethereum.Workbooks/tree/master/testchain/clique>
-
-Start the chain using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus will start the creation of new blocks ("mining") inmediatly by unlocking the account “ 0x12890d2cce102216644c59daE5baed380d84830c”. The Proof of Authority consensus provides a faster consensus when creating blocks than Proof of Work.
-
-```csharp
-using Nethereum.Web3;
-```
-
-We will add the Nethereum.Web3 namespace, and we will create a new instance of Web3
-
-```csharp
-var web3 = new Web3();
-```
-
-Using the Personal API we can now execute the request "NewAccount" with a password to encrypt the account storage file.
-
-```csharp
-var account = await web3.Personal.NewAccount.SendRequestAsync("password");
-```
-=======
 #r "Nethereum.Web3"
 ```
 
@@ -71,4 +40,3 @@ Using the Personal API we can now execute the request "NewAccount" with a passwo
 ```csharp
 var account = await web3.Personal.NewAccount.SendRequestAsync("password");
 ```
->>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40

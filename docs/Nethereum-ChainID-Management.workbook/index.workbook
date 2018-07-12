@@ -7,12 +7,6 @@ id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
 title: Nethereum-ChainID-Management
 platforms:
 - Console
-<<<<<<< HEAD:docs/Nethereum-ChainID-Management.workbook
----
-
-```csharp
-#r "Nethereum.Web3"
-=======
 packages:
 - id: Nethereum.Portable
   version: 2.5.1
@@ -20,7 +14,6 @@ packages:
 
 ```csharp
 #r "Nethereum.Portable"
->>>>>>> f9fc970b817ce2fb25f4cd01648f35a84620bc40:docs/Nethereum-ChainID-Management.workbook/index.workbook
 ```
 
 ```csharp
