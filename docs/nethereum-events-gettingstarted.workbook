@@ -59,7 +59,7 @@ public class StandardTokenDeployment : ContractDeploymentMessage
 }
 ```
 
-The transfer function definition,  includes the parameters of necessary to interact with the “transfer” function. The “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer. All the parameters include the solidity type, parameter name and parameter order, all these together with the function name, make the signature of the function.
+The transfer function definition,  includes the parameters necessary to interact with the “transfer” function. The “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer. All the parameters include the solidity type, parameter name and parameter order, all these together with the function name, make the signature of the function.
 
 ```csharp
 [Function("transfer", "bool")]
