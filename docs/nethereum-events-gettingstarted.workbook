@@ -19,18 +19,18 @@ packages:
 
 ## Quick introduction to Events, Logs and Filters
 
-Events in smart contracts provide a mechanism to write data to the transaction receipt logs,  these events/logs provide a great mechanism to provide futher information about a Smart contract transaction occurred on the chain.
+Events in smart contracts write data to the transaction receipt logs, providing a way to get extra information about a smart contract transactions.
 
-A very good example is the “Transfer” event in the ERC20 Standard Token contract. Every time that a token transfer has ocurred, an event gets logged providing information of the “sender”, “receiver” and the token amount.
+A very good example is the “Transfer” event in the ERC20 Standard Token contract. Everytime that a token transfer has ocurred, an event gets logged providing information of the “sender”, “receiver” and the token amount.
 
 ![Transfer and transfer event](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/transfer-event.png)\
-Above we can see, the event declaration with the different indexed parameters, these will allow us later on to “filter” for specific events. For example “Transfer” events for a specific receiver address “\_to”.
+Above we can see, the event declaration with the different indexed parameters, these will allow us later on to “filter” for specific events. For example ,“Transfer” events for a specific receiver address “\_to”.
 
 The Transfer event can be seen in the function prefixed with the “emit” keyword.
 
 ### Pre-Conditions
 
-First of all we need to declare our namespaces, and contract definition to interact with the smart contract, for this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
+First of all, we need to declare our namespaces, and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
 
 ```csharp
 using Nethereum.Web3;
@@ -44,7 +44,7 @@ using Nethereum.Contracts.Extensions;
 using System.Numerics;
 ```
 
-The StandardTokenDeployment is the contract deploy message including the compiled bytecode and the constructor with the “totalSupply” which is the number of tokens of the smart contract.
+The StandardToken deployment message includes the compiled bytecode and the constructor parameter with the “totalSupply” of tokens.
 
 ```csharp
 public class StandardTokenDeployment : ContractDeploymentMessage
@@ -59,7 +59,7 @@ public class StandardTokenDeployment : ContractDeploymentMessage
 }
 ```
 
-This is the transfer function definition and message, including the “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer. All the parameters include the solidity type, parameter name and parameter order, all these together with the function name, make the signature of the function.
+The transfer function definition,  includes the parameters of necessary to interact with the “transfer” function. The “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer. All the parameters include the solidity type, parameter name and parameter order, all these together with the function name, make the signature of the function.
 
 ```csharp
 [Function("transfer", "bool")]
@@ -73,7 +73,7 @@ public class TransferFunction : FunctionMessage
 }
 ```
 
-Finally this is the Transfer Event, events like functions include as the parameters but this time also if they are indexed or not. Indexed parameters have a different location in the logs.
+Finally the Transfer Event, similar to the Function it also includes the parameters with the name, order and type. But also a boolean value indicating if the parameter is indexed or not.
 
 ```csharp
 [Event("Transfer")]
@@ -96,7 +96,7 @@ public class TransferEventDTO : IEventDTO
 
 A simple way to run this sample is to use one of the pre-configured private chains which can be found https://github.com/Nethereum/TestChains (Geth, Parity, Ganache) using the Account “0x12890d2cce102216644c59daE5baed380d84830c” with private key “0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7“, or alternatively use your own testchain with your own account / private key.
 
-To create an instance of web3 we first provide the url of our testchain and the private key of our account. When providing a privatekey all our transactions will be signed “offline” by Nethereum.
+To create an instance of web3 we first provide the url of our testchain and the private key of our account. When providing an Account instantiated with a  private key all our transactions will be signed “offline” by Nethereum.
 
 ```csharp
 var url = "http://localhost:8545";
@@ -118,7 +118,9 @@ var deploymentMessage = new StandardTokenDeployment
 };
 ```
 
-Then we create a deployment handler for our contract deployment definition and simply deploy the contract (we are auto estimating the gas, getting the latest gas price and nonce so no need to set anything on the deployment message) and finally we retrieve the contract address from the receipt.
+Then we create a deployment handler using our contract deployment definition and simply deploy the contract using the deployment message. We are auto estimating the gas, getting the latest gas price and nonce so nothing else is set anything on the deployment message.
+
+Finally, we wait for the deployment transaction to be mined, and retrieve the contract address of the new contract from the receipt.
 
 ```csharp
 var deploymentHandler = web3.Eth.GetContractDeploymentHandler<StandardTokenDeployment>();
@@ -128,9 +130,11 @@ var contractAddress = transactionReceipt.ContractAddress;
 
 ### Transfer
 
-Once we have deployed the contract, we can do our first transfer which will write to the log the Transfer Event. To do so we create a TransactionHandler for our TrasferFunction definition and a TransferFunction message including the “receiverAddress” and the amount of tokens we want to send.
+Once we have deployed the contract, we can execute our first transfer transaction. The transfer function will write to the log the transfer event.
 
-Finally do the transfer and wait for the receipt to be “mined” and included in the blockchain.
+First we can create a TransactionHandler using the TrasferFunction definition and a TransferFunction message including the “receiverAddress” and the amount of tokens we want to send.
+
+Finally do the transaction transfer and wait for the receipt to be “mined” and included in the blockchain.
 
 ```csharp
 var receiverAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
@@ -145,7 +149,9 @@ var transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync
 
 ## Decoding the Event from the TransactionReceipt
 
-Event logs are part of the TransactionReceipts, so using the Transaction receipt from the transfer we can decode the TransferEvent from the logs using the extension method “DecodeAllEvents<TransferEventDTO>()”.  This method returns an array of Decoded Transfer Events as opposed to a single value, because the receipt can include more than one Transfer Event from the same or other smart contracts that are called by the current smart contract.
+Event logs are part of the TransactionReceipts, so using the Transaction receipt from the previous transfer we can decode the TransferEvent using the extension method “DecodeAllEvents<TransferEventDTO>()”.
+
+Note that this method returns an array of Decoded Transfer Events as opposed to a single value, because the receipt can include more than one event of the same signature.
 
 ```csharp
 var transferEventOuput = transactionReceipt.DecodeAllEvents<TransferEventDTO>();
@@ -155,19 +161,21 @@ var transferEventOuput = transactionReceipt.DecodeAllEvents<TransferEventDTO>();
 
 Another way to access the event logs of a smart contract is to either get all changes of the logs (providing a filter message) or create filters and retrieve changes which apply to our filter message periodically.\
 \
-First of all we need to create a transfer event handler for our contract address, as we are interested in events specific to our contract providing the Event definition TrasferEventDTO.
+To access the logs, first of all, we need to create a transfer event handler for our contract address, and Evend definition.(TransferEventDTO).
 
 ```csharp
 var transferEventHandler = web3.Eth.GetEvent<TransferEventDTO>(contractAddress);
 ```
 
-Then we can create the simplest filter message for our transfer event using using the default values. The default values for the BlockParameters are Earliest and Latest, also the message will include our contract address and event signature.
+Using the event handler, we can create a filter message for our transfer event using the default values.
+
+The default values for BlockParameters are Earliest and Latest, so when we retrieve the logs we will get all the transfer events from the first block to the latest block of this contract.
 
 ```csharp
 var filterAllTransferEventsForContract = transferEventHandler.CreateFilterInput();
 ```
 
-Once we have created the message we can retrieve all the logs using the event and GetAllChanges. In this scenario as we have made only one transfer, we will have only one Transfer Event.
+Once we have created the message we can retrieve all the logs using the event and GetAllChanges. In this scenario, because we have made only one transfer, we will have only one Transfer Event.
 
 ```csharp
 var allTransferEventsForContract = await transferEventHandler.GetAllChanges(filterAllTransferEventsForContract);
@@ -191,7 +199,7 @@ Using the same filter input message and making another GetAllChanges call, we wi
 var allTransferEventsForContract2 = await transferEventHandler.GetAllChanges(filterAllTransferEventsForContract);
 ```
 
-Filter messages can limit the results (apart from the block ranges) to the indexed parameters,  for example we can create a filter for only our sender address AND the receiver address. As a reminder our Event has as indexed parameters the “\_from” address and “\_to” address.
+Filter messages can limit the results (similar to block ranges) to the indexed parameters,  for example we can create a filter for only our sender address AND the receiver address. As a reminder our Event has as indexed parameters the “\_from” address and “\_to” address.
 
 ```csharp
 var filterTransferEventsForContractReceiverAddress2 = transferEventHandler.CreateFilterInput(account.Address, receiverAddress2);
@@ -256,7 +264,7 @@ In Nethereum creating an Event (handler) without a contract address allows to cr
 var transferEventHandlerAnyContract = web3.Eth.GetEvent<TransferEventDTO>();
 ```
 
-There is already a contract deployed in the chain,  to demonstrate this we can deploy another standard token contract to the chain
+There is already a contract deployed in the chain, from the previous sample,  so to demonstrate the access to events of multiple contracts we can deploy another standard token contract.
 
 ```csharp
 var transactionReceiptNewContract = await deploymentHandler.SendRequestAndWaitForReceiptAsync(deploymentMessage);
@@ -276,7 +284,7 @@ var filterAllTransferEventsForAllContracts = transferEventHandlerAnyContract.Cre
 var allTransferEventsForContract = await transferEventHandlerAnyContract.GetAllChanges(filterAllTransferEventsForAllContracts);
 ```
 
-If we want to retrieve only all the tranfers to the “receiverAddress”,  we can create the same filter as before including only the second indexd paramter (“to”). This will return the Transfers only to this address for both contracts.
+If we want to retrieve only all the tranfers to the “receiverAddress”,  we can create the same filter as before ,including only the second indexd paramter (“to”). This will return the Transfers only to this address for both contracts.
 
 ```csharp
 var filterTransferEventsForAllContractsReceiverAddress2 = transferEventHandlerAnyContract.CreateFilterInput<string, string>(null, receiverAddress);
