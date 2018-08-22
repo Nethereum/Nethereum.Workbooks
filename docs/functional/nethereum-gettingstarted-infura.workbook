@@ -1,0 +1,48 @@
+---
+uti: com.xamarin.workbook
+id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
+title: Nethereum-getting-started-infura.workbook
+platforms:
+- Console
+packages:
+- id: Nethereum.Portable
+  version: 2.5.1
+- id: Nethereum.Web3
+  version: 2.5.1
+---
+
+The very first step to get started working with Nethereum is to add a package reference to Nethereum.Web3.
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+# Getting started using Infura with Nethereum
+
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
+This simple sample will take you through the steps of connecting to [Infura](https://www.infura.io) and retrieve the balance of an account from the mainnet (live Ethereum). Infura provides a set of public nodes removing the need to have a local or maintained client fully synchronised with the main Ethereum network.
+
+First, we need to add our required namespaces for Nethereum:
+
+```csharp
+using Nethereum.Web3;
+```
+
+The next step is to create an instance of Web3, with the infura url for mainnet.
+
+```csharp
+var web3 = new Web3("https://mainnet.infura.io");
+```
+
+Using the Eth API we can execute the GetBalance request asynchronously, for our selected account. In this scenario I have chosen the Ethereum Foundation account. “0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae”
+
+```csharp
+var balance = await web3.Eth.GetBalance.SendRequestAsync("0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae");
+```
+
+The amount returned is in Wei, the lowest unit of value. We can convert this to Ether using the Convertion utility:
+
+```csharp
+var etherAmount = Web3.Convert.FromWei(balance.Value);
+```
