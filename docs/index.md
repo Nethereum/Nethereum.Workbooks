@@ -18,5 +18,5 @@ The table below provides Download links to Nethereum workbooks:
 [HD Wallet](nethereum-hdwallet-infura-transfer.workbook)|Learn to instantiate an HD wallet using the mnemonic backup seed words, retrieve the first account private key and finally transfer some Ether using Infura|[Workbook](nethereum-hdwallet-infura-transfer.workbook)|
 |[Setting Up Events Polling Services](nethereum-eventdtos-getallchanges.workbook)|Learn how to log events by setting up polling services|[Workbook](nethereum-eventdtos-getallchanges.workbook)|
 |[Creating A New Account Using Geth](nethereum-creating-a-new-account-using-geth.workbook)|Create a new account with Geth |[Workbook](nethereum-creating-a-new-account-using-geth.workbook)|
-[Chain Id Management](nethereum-chainid-management.workbook)|Learn how to protect your code against replay attacks|[Workbook](Nethereum-ChainID-Management.workbook)|
-[Unit conversion](nethereum-converting-units.workbook)|Convert Ethereum currency units \(Eth\Gwei\Wei\) using Nethereum methods|[Workbook](nethereum-chainid-management.workbook)|
+[Chain Id Management](Nethereum-ChainID-Management.workbook)|Learn how to protect your code against replay attacks|[Workbook](Nethereum-ChainID-Management.workbook)|
+[Unit conversion](nethereum-converting-units.workbook)|Convert Ethereum currency units \(Eth\Gwei\Wei\) using Nethereum methods|[Workbook](nethereum-converting-units.workbook)|
