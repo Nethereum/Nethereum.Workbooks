@@ -344,10 +344,17 @@ using Nethereum.Contracts.Extensions;
 Some of the extension methods are the following:
 
 **SetGasPriceFromGwei** which sets the GasPrice and converts it to Wei.
+
 **CreateCallInput** creates the call input which can be used to query or estimate transactions.
+
 **CreateTransactionInput** creates the transaction input which can be used to send or sign the raw transaction
+
 **DecodeInput** decodes the data of a transaction into a FunctionMessage
+
 **DecodeTransactionToFunctionMessage** decodes the full transaction into a FunctionMessage
+
 **GetCallData** returns the encoded call data with all the function and parameter information to be send to Ethereum
+
 **DecodeTransactionToDeploymentMessage** decodes the full transaction into DeploymentMessage
+
 **GetSwarmAddressFromByteCode** using the bytecode of a DeploymentMessage finds the swarm address included
