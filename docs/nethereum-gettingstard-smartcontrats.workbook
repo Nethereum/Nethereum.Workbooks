@@ -21,7 +21,7 @@ The purpose of this sample is the following:
 
 * Estimating the gas cost of a contract transaction
 
-* Sending a transaction to the smart contract (in this scenario transfering balance)
+* Sending a transaction to a smart contract (in this scenario transfering balance)
 
 * Making a call to a smart contract (in this scenario get the balance of an account)
 
@@ -51,13 +51,13 @@ using Nethereum.Web3;
 
 ### Byte code and ABI
 
-The next step is to declare the contract byte code and abi for the contrat.
+The next step is to declare the contract byte code and ABI for the contrat.
 
 This is a standard token contract which can be found here: <https://github.com/Nethereum/Nethereum.Workbooks/blob/master/StandardToken.sol>.
 
 The contract includes an initial supply of tokens when deployed, and capability to transfer amounts between accounts and retrieve the balance.
 
-The bytecode represents the compiled contract, and the abi represents the interface definition with the contract.
+The bytecode represents the compiled contract, and the ABI represents the interface definition with the contract.
 
 We will use this to deploy this contract to the Ethereum chain and interact with it.
 
@@ -68,9 +68,9 @@ We will use this to deploy this contract to the Ethereum chain and interact with
 
 ### The account address and private key
 
-First of all we will need a private key to be able to sign our transactions, the ethereum address is calculated from this private key, so each transaction or message signed with this private key can be related to the ethereum address / account. The private chain has already been configured with the address "0x12890d2cce102216644c59daE5baed380d84830c” containing some Ether. The private key for this address is "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7”.
+First of all we will need a private key to be able to sign our transactions, the Ethereum address is calculated from this private key, so each transaction or message signed with this private key can be related to the ethereum address / account. The private chain has already been configured with the address "0x12890d2cce102216644c59daE5baed380d84830c” containing some Ether. The private key for this address is "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7”.
 
-We can create an instance of an Account using its private key , which will then be used to sign the transactions in the background.
+We can create an instance of an `Account` using its private key , which will then be used to sign the transactions in the background.
 
 ```csharp
 var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
@@ -80,7 +80,7 @@ var account = new Nethereum.Web3.Accounts.Account(privateKey);
 
 ### Web3
 
-Web3 provides a simple interaction wrapper with Ethereum clients. To create an instance of Web3, we need to supply our Account and the RPC uri of the Ethereum client. In this scenario we will only use the Account, as we will be interacting with our private test chain on the default RPC uri “http://localhost:8545”
+Web3 provides a simple interaction wrapper with Ethereum clients. To create an instance of Web3, we need to supply our Account and the RPC URI of the Ethereum client. In this scenario we will only use the Account, as we will be interacting with our private test chain on the default RPC uri “http://localhost:8545”
 
 ```csharp
   var web3 = new Web3(account);
@@ -95,7 +95,7 @@ function Standard\_Token(uint256 \_initialAmount) {
         \_totalSupply = \_initialAmount;
     }
 
-When deploying the smart contract using Nethereum, this constructor parameter is send alongside the byteCode as follows:
+When deploying the smart contract using Nethereum, this constructor parameter is sent alongside the ByteCode as follows:
 
 ```csharp
  System.Numerics.BigInteger totalSupply = System.Numerics.BigInteger.Parse("1000000000000000000");
@@ -137,7 +137,7 @@ var newAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
 var amountToSend = 1000;
 ```
 
-Before we execute the transaction, we can “estimate” how much the transaction will cost in gas, by simulating it. When interacting with smart contracts, each instruction and / or storage has some cost. Each cost unit is represented as a gas unit. If we supply too much gas, the gas that has not been spent will be returned, but if an error occurred whilts processing the transaction all the gas will be consumed.
+Before we execute the transaction, we can “estimate” how much the transaction will cost in gas, by simulating it. When interacting with smart contracts, each instruction and / or storage has some cost. Each cost unit is represented as a gas unit. If we supply too much gas, the gas that has not been spent will be returned, but if an error occurred whilst processing the transaction all the gas will be consumed.
 
 To estimate the gas cost in our transfer function we can call **EstimateGasAsync **passing the same parameters.
 
