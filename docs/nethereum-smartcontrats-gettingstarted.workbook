@@ -82,9 +82,9 @@ public class StandardTokenDeployment : ContractDeploymentMessage
 
 We can call the functions of smart contract to query the state of a smart contract or do any computation, which will not affect the state of the blockchain.
 
-To do so we will need to create a class which inherits from "FunctionMessage". First we will decorate the class with a "Function" attribute, including the name and return type.
+To do so,  we will need to create a class which inherits from "FunctionMessage". First we will decorate the class with a "Function" attribute, including the name and return type.
 
-Each parameter of the the function will be a property of the class, each of them decorated with the "Parameter" attribute, including the smart contract name, type and parameter order.
+Each parameter of the function will be a property of the class, each of them decorated with the "Parameter" attribute, including the smart contract’s parameter name, type and parameter order.
 
 For the ERC20 smart contract, the "balanceOf" function definition, provides the query interface to get the token balance of a given address. As we can see this function includes only one parameter "\_owner", of the type "address".
 
@@ -97,13 +97,13 @@ public class BalanceOfFunction : FunctionMessage
 }
 ```
 
-Another type of smart contract function will be correspondent to a transaction that will change the state of the smart contract (or smart contracts).
+Another type of smart contract function will be a transaction that will change the state of the smart contract (or smart contracts).
 
-For example The "transfer" function definition for the ERC20 smart contract, includes the parameters “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer.
+For example The "transfer" function definition for the ERC20 smart contract, includes the parameters “\_to”, which is an address parameter as a string, and the “\_value” or TokenAmount we want to transfer.
 
-In a similar way to the "balanceOf" function, all the parameters include the solidity type, parameter name and parameter order.
+In a similar way to the "balanceOf" function, all the parameters include the solidity type, the contract’s parameter name and parameter order.
 
-Note: When working with functions, it is very important to have the parameters types, and function name correct as all of these make the signature of the function.
+Note: When working with functions, it is very important to have the parameters types and function name correct as all of these make the signature of the function.
 
 ```csharp
 [Function("transfer", "bool")]
@@ -117,11 +117,11 @@ public class TransferFunction : FunctionMessage
 }
 ```
 
-Finally smart contracts also have events. Events in smart contracts write the blockchain log, providing a way to retrieve further information of any smart contract interaction occurred.
+Finally, smart contracts also have events. Events defined in smart contracts write in the blockchain log, providing a way to retrieve further information when a smart contract interaction occurs.
 
 To create an Event definition, we need to create a class that inherits from IEventDTO, decorated with the Event attribute.
 
-The Transfer Event, similar to the Function it also includes the parameters with the name, order and type. But also a boolean value indicating if the parameter is indexed or not.
+The Transfer Event is similar to a Function: it  also includes parameters with name, order and type. But also a boolean value indicating if the parameter is indexed or not.
 
 Indexed parameters will allow us later on to query the blockchain for those values.
 
@@ -142,9 +142,9 @@ public class TransferEventDTO : IEventDTO
 
 ### Instantiating Web3 and the Account
 
-A simple way to run this sample is to use one of the pre-configured private chains which can be found https://github.com/Nethereum/TestChains (Geth, Parity, Ganache) using the Account “0x12890d2cce102216644c59daE5baed380d84830c” with private key “0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7“, or alternatively use your own testchain with your own account / private key.
+A simple way to run this sample is to use one of the pre-configured private chains which can be found at [https://github.com/Nethereum/TestChains ](https://github.com/Nethereum/TestChains)(Geth, Parity, Ganache) using the Account “0x12890d2cce102216644c59daE5baed380d84830c” with private key “0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7“, or alternatively use your own testchain with your own account / private key.
 
-To create an instance of web3 we first provide the url of our testchain and the private key of our account. When providing an Account instantiated with a  private key all our transactions will be signed by Nethereum.
+To create an instance of web3 we first provide the url of our testchain and the private key of our account. When providing an Account instantiated with a  private key, all our transactions will be signed by Nethereum.
 
 ```csharp
 var url = "http://localhost:8545";
@@ -182,7 +182,7 @@ Once we have deployed the contract, we can start interaction with the contract.
 
 #### Querying
 
-To retrieve the balance of an address we can create an instance of the BalanceFunction message and set the parameter as our account "Address", because we are the "owner" of the Token the full balance has been assigned to us.
+To retrieve the balance of an address we can create an instance of the BalanceFunction message and set the parameter as our account "Address", since we are the "owner" of the Token, the full balance has been assigned to us.
 
 ```csharp
 var balanceOfFunctionMessage = new BalanceOfFunction()
@@ -196,9 +196,9 @@ var balance = await balanceHandler.QueryAsync<BigInteger>(contractAddress, balan
 
 To retrieve the balance, we will create a QueryHandler and finally using our contract address and message retrieve the balance amount.
 
-##### Multiple return types or complex objects
+### Multiple return types or complex objects
 
-Functions of smart contracts can return one or multiple values in a single call. To decode the return values, we use a FunctionOutputDTO.
+Functions of smart contracts can return one or multiple values in a single call. To decode the returned values, we use a FunctionOutputDTO.
 
 Function outputs are classes which are decorated with a FunctionOutput attribute and implement the interface IFunctionOutputDTO.
 
@@ -240,7 +240,7 @@ var balance = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutp
 
 Another great feature of the Ethereum blockchain is the capability to retrieve the state of a smart contract from a previous block.
 
-For example, we could get the balance of the owner at the time of deployment by using the block number, in which the contract was deployed.
+For example, we could get the balance of the owner at the time of deployment by using the block number in which the contract was deployed.
 
 ```csharp
 var balance = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress, new Nethereum.RPC.Eth.DTOs.BlockParameter(transactionReceipt.BlockNumber));
@@ -248,13 +248,13 @@ var balance = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutp
 
 #### Transfer
 
-Making a transfer will change, the state of the blockchain, so in this scenario we will need to create a TransactionHandler using the TransferFunction definition.
+Making a transfer will change the state of the blockchain, so in this scenario we will need to create a TransactionHandler using the TransferFunction definition.
 
 In the transfer message, we will include the receiver address "To", and the "TokenAmount" to transfer.
 
-The final step is to Send the request wait for the receipt to be “mined” and included in the blockchain.
+The final step is to Send the request, wait for the receipt to be “mined” and included in the blockchain.
 
-Another option will be not to wait (poll) for the transaction to mined and just retrieve the transaction hash.
+Another option will be to not wait (poll) for the transaction to be mined and just retrieve the transaction hash.
 
 ```csharp
 var receiverAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
@@ -271,7 +271,7 @@ var transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync
 
 A function or deployment transaction can send Ether to the smart contract. The FunctionMessage and DeploymentMessage have the property "AmountToSend".
 
-So if the "transfer" function accepts also Ether, we will set it this way.
+So if the "transfer" function also accepts Ether, we will set it this way.
 
 ```csharp
 transfer.AmountToSend = Nethereum.Web3.Web3.Convert.ToWei(1);
@@ -279,11 +279,11 @@ transfer.AmountToSend = Nethereum.Web3.Web3.Convert.ToWei(1);
 
 The GasPrice is set in "Wei" which is the lowest unit in Ethereum, so in the scenario above we have converted 1 Ether to Wei.
 
-##### Gas Price
+### Gas Price
 
-Nethereum sets automatically the GasPrice if not provided by using the clients "GasPrice" call, which provides the average gas price from previous blocks.
+Nethereum automatically sets the GasPrice if not provided by using the clients "GasPrice" call, which provides the average gas price from previous blocks.
 
-If you want to have more control of the GasPrice these can be set in both FunctionMessages and DeploymentMessages.
+If you want to have more control over the GasPrice these can be set in both FunctionMessages and DeploymentMessages.
 
 ```csharp
   transfer.GasPrice =  Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUnit.Gwei);
@@ -291,38 +291,38 @@ If you want to have more control of the GasPrice these can be set in both Functi
 
 The GasPrice is set in "Wei" which is the lowest unit in Ethereum, so if we are used to the usual "Gwei" units, this will need to be converted using the Nethereum Convertion utilities.
 
-##### Estimating Gas
+### Estimating Gas
 
 Nethereum does an automatic estimation of the total gas necessary to make the function transaction by calling the "EthEstimateGas" internally with the "CallInput".
 
-If wanted this can be done manually, using the TransactionHandler and the "transfer" transaction FucntionMessage.
+If needed, this can be done manually, using the TransactionHandler and the "transfer" transaction FunctionMessage.
 
 ```csharp
  var estimate = await transferHandler.EstimateGasAsync(contractAddress, transfer);
  transfer.Gas = estimate.Value;
 ```
 
-##### Nonces
+### Nonces
 
-Each account transaction has a Nonce associated with it, this is the order and unique number for that transaction. This allows each transaction to be differentiate it from each other, but also ensure transactions are processed on the same order.
+Each account transaction has a Nonce associated with it, this is the order and unique number for that transaction. This allows each transaction to be differentiated from each other, but also ensure transactions are processed in the same order.
 
 Nethereum calculates the Nonce automatically for all Transactions by retrieving the latest count of the transactions from the chain. Also internally manages at Account level an in memory counter on the nonces, to allow for situations in which we want to send multiple transactions before giving time to the Ethereum client to update its internal counter.
 
-Nevertheless it might be scenarios, we want to supply our Nonce, for example if we want to sign the transaction completely offline.
+Nevertheless there might be scenarios where we want to supply our Nonce, for example if we want to sign the transaction completely offline.
 
 ```csharp
 transfer.Nonce = 2;
 ```
 
-##### Signing a Function / Deployment message online / offline
+### Signing a Function / Deployment message online / offline
 
-The TransactionHandler also provides a mechanism to sign the Function and Deployments messages, provided we use an Account and/or ExternalAccount
+The TransactionHandler also provides a mechanism to sign the Function and Deployments messages, provided we use an Account and/or an ExternalAccount
 
 ```csharp
 var signedTransaction = await transferHandler.SignTransactionAsync(ContractAddress, transfer);
 ```
 
-Nethereum internally calls the Ethereum client to set the GasPrice, Nonce and estimate the Gas, so if want to sign the transaction for the contract completely offline we will need to set those values before hand.
+Nethereum internally calls the Ethereum client to set the GasPrice, Nonce and estimate the Gas, so if we want to sign the transaction for the contract completely offline we will need to set those values before hand.
 
 ```csharp
 transfer.Nonce = 2;
@@ -331,14 +331,14 @@ transfer.GasPrice =  Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUni
 var signedTransaction = await transferHandler.SignTransactionAsync(ContractAddress, transfer);
 ```
 
-##### Extension methods for Functions and Deployment Messages
+### Extension methods for Functions and Deployment Messages
 
 There are a number of extensions that can simplify the interaction with Function messages and Deployment messages.
 
 These are under the namespace
 
 ```csharp
-using Nethereum.Contracts.Extensions;
+ using Nethereum.Contracts.Extensions;
 ```
 
 Some of the extension methods are the following:
