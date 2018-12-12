@@ -19,8 +19,9 @@ namespace Nethereum.Worbooks.Tests
             //When
             var state = await CSharpScript.RunAsync(code);
             state = await state.ContinueWithAsync("return account;");
-            Assert.NotNull(state.ReturnValue);
-            Assert.Equal(40, state.ReturnValue.ToString().RemoveHexPrefix().Length);
+            var returnValue = (dynamic)state.ReturnValue;
+            Assert.NotNull(returnValue);
+            Assert.Matches("^0x[0-9a-fA-F]{40}$", returnValue);
         }
     }
 }
