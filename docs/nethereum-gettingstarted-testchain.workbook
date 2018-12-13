@@ -32,17 +32,17 @@ var web3 = new Nethereum.Web3.Web3();
 Are we mining? (startgeth.sh|bat auto-starts mining)
 
 ```csharp
-var isMining = await web3.Eth.Mining.IsMining.SendRequestAsync()
+var isMining = await web3.Eth.Mining.IsMining.SendRequestAsync();
 ```
 
 List all pre-defined accounts in the devchain
 
 ```csharp
-var accounts = await web3.Eth.Accounts.SendRequestAsync()
+var accounts = await web3.Eth.Accounts.SendRequestAsync();
 ```
 
 Get the balance for the default account
 
 ```csharp
-var balance = await web3.Eth.GetBalance.SendRequestAsync("0x12890d2cce102216644c59dae5baed380d84830c")
+var balance = await web3.Eth.GetBalance.SendRequestAsync("0x12890d2cce102216644c59dae5baed380d84830c");
 ```
