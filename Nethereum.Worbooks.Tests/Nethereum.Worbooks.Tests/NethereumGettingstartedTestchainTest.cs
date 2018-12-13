@@ -4,9 +4,9 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    public class NethereumGettingstartedTestchain : WorbookTest
+    public class NethereumGettingstartedTestchainTest : WorbookTest
     {
-        public NethereumGettingstartedTestchain() : base(WORKBOOK_PATH)
+        public NethereumGettingstartedTestchainTest() : base(WORKBOOK_PATH)
         {
         }
 
