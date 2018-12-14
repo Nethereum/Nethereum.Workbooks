@@ -20,7 +20,6 @@ namespace Nethereum.Worbooks.Tests
             var state = await CSharpScript.RunAsync(code);
             state = await state.ContinueWithAsync("return etherAmount;");
             Assert.NotNull(state.ReturnValue);
-            //Assert.Equal(40, state.ReturnValue.ToString().RemoveHexPrefix().Length);
         }
     }
 }
