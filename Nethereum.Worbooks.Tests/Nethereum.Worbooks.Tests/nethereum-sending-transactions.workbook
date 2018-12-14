@@ -41,6 +41,7 @@ We need to add Web3 Nuget package:
 #r "Nethereum.Accounts"
 ```
 
+
 Then, let's add the using statement to Nethereum.Web3.
 
 ```csharp
