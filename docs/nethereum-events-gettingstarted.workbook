@@ -6,7 +6,7 @@ platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 3.0.0-rc1
+  version: 3.0.0
 ---
 
 ```csharp
@@ -43,9 +43,10 @@ using Nethereum.Contracts;
 using Nethereum.Contracts.Extensions;
 using System.Numerics;
 ```
+
 To deploy a contract we will create a class inheriting from the ContractDeploymentMessage, here we can include our compiled byte code and other constructor parameters.
 
-As we can see below the StandardToken deployment message includes the compiled bytecode of the ERC20 smart contract and the constructor parameter with the “totalSupply” of tokens. 
+As we can see below the StandardToken deployment message includes the compiled bytecode of the ERC20 smart contract and the constructor parameter with the “totalSupply” of tokens.
 
 Each parameter is described with an attribute Parameter, including its name "totalSupply", type "uint256" and order.
 
@@ -62,13 +63,13 @@ public class StandardTokenDeployment : ContractDeploymentMessage
 }
 ```
 
-We can call the functions of smart contract to query the state of a smart contract or do any computation, which will not affect the state of the blockchain. 
+We can call the functions of smart contract to query the state of a smart contract or do any computation, which will not affect the state of the blockchain.
 
 To do so we will need to create a class which inherits from "FunctionMessage". First we will decorate the class with a "Function" attribute, including the name and return type.
 
 Each parameter of the the function will be a property of the class, each of them decorated with the "Parameter" attribute, including the smart contract name, type and parameter order.
 
-For the ERC20 smart contract, the "balanceOf" function definition, provides the query interface to get the token balance of a given address. As we can see this function includes only one parameter "_owner", of the type "address".
+For the ERC20 smart contract, the "balanceOf" function definition, provides the query interface to get the token balance of a given address. As we can see this function includes only one parameter "\_owner", of the type "address".
 
 ```csharp
 [Function("balanceOf", "uint256")]
@@ -81,9 +82,9 @@ public class BalanceOfFunction : FunctionMessage
 
 Another type of smart contract function will be correspondent to a transaction that will change the state of the smart contract (or smart contracts).
 
-For example The "transfer" function definition for the ERC20 smart contract, includes the parameters “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer. 
+For example The "transfer" function definition for the ERC20 smart contract, includes the parameters “\_to” address parameter as a string, and the “\_value” or TokenAmount we want to transfer.
 
-In a similar way to the "balanceOf" function, all the parameters include the solidity type, parameter name and parameter order. 
+In a similar way to the "balanceOf" function, all the parameters include the solidity type, parameter name and parameter order.
 
 Note: When working with functions, it is very important to have the parameters types, and function name correct as all of these make the signature of the function.
 
@@ -238,8 +239,10 @@ var transferEventsForContractReceiverAddress2 = await transferEventHandler.GetAl
 
 The order the filter values is based on the event parameters order, if we want to include all the transfers to the “receiverAddress2”, the account address from will need to be set to null to be ignored.
 
+Note: We are using the array format to allow for null input of the first parameter.
+
 ```csharp
-var filterTransferEventsForContractAllReceiverAddress2 = transferEventHandler.CreateFilterInput<string, string>(null, receiverAddress2);
+var filterTransferEventsForContractAllReceiverAddress2 = transferEventHandler.CreateFilterInput(null, new []{receiverAddress2});
 var transferEventsForContractAllReceiverAddress2 = await transferEventHandler.GetAllChanges(filterTransferEventsForContractAllReceiverAddress2);
 ```
 
@@ -317,6 +320,6 @@ var allTransferEventsForContract = await transferEventHandlerAnyContract.GetAllC
 If we want to retrieve only all the transfers to the “receiverAddress”,  we can create the same filter as before ,including only the second indexed parameter (“to”). This will return the Transfers only to this address for both contracts.
 
 ```csharp
-var filterTransferEventsForAllContractsReceiverAddress2 = transferEventHandlerAnyContract.CreateFilterInput<string, string>(null, receiverAddress);
+var filterTransferEventsForAllContractsReceiverAddress2 = transferEventHandlerAnyContract.CreateFilterInput(null, new[]{receiverAddress});
 await transferEventHandlerAnyContract.GetAllChanges(filterTransferEventsForAllContractsReceiverAddress2);
 ```
