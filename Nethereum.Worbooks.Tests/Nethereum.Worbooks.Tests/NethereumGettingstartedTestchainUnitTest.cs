@@ -20,7 +20,7 @@ namespace Nethereum.Worbooks.Tests
             var state = await CSharpScript.RunAsync(code);
             state = await state.ContinueWithAsync("return (isMining, balance);");
             var returnValue = (dynamic)state.ReturnValue;
-            Assert.True(returnValue.Item1); // override object.Equals
+            Assert.True(returnValue.Item1);
             Assert.NotNull(returnValue.Item2);
         }
     }
