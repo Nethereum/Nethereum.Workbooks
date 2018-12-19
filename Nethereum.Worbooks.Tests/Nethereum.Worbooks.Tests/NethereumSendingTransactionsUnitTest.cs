@@ -1,11 +1,14 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Xunit;
+using Nethereum.XUnitEthereumClients;
 
 namespace Nethereum.Worbooks.Tests
 {
-    public class NethereumSendingTransactions : WorbookTest
+
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    public class NethereumSendingTransactionsUnitTest : WorbookTest
     {
-        public NethereumSendingTransactions() : base(WORKBOOK_PATH)
+        public NethereumSendingTransactionsUnitTest() : base(WORKBOOK_PATH)
         {
         }
 

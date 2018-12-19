@@ -6,12 +6,26 @@ using System.Threading.Tasks;
 
 namespace Updater
 {
-    class Nuget
+    public class Nuget
     {
-        public Nuget()
+
+        public string Path
         {
-            nugets = new List<string>();
+            get;
+            set;
         }
-        List<string> nugets;
+
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public string Version
+        {
+            get;
+            set;
+        }
+
     }
 }

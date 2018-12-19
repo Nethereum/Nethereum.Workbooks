@@ -11,8 +11,8 @@ namespace Updater
     {
         static void Main(string[] args)
         {
-            Nug
             FileIndexer pouet = new FileIndexer();
+            //Console.WriteLine("Nuget Name: {0} Arbitrary string: {1}", nouguette.name, "chahouette");
             Console.ReadLine();
         }
     }
