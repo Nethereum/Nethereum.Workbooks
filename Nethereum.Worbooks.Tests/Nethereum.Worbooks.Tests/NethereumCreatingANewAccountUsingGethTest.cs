@@ -7,9 +7,9 @@ namespace Nethereum.Worbooks.Tests
 {
 
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumCreatingANewAccountUsingGeth : WorbookTest
+    public class NethereumCreatingANewAccountUsingGethTest : WorbookTest
     {
-        public NethereumCreatingANewAccountUsingGeth() : base(WORKBOOK_PATH)
+        public NethereumCreatingANewAccountUsingGethTest() : base(WORKBOOK_PATH)
         {
         }
 

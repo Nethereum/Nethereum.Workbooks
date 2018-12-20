@@ -7,9 +7,9 @@ namespace Nethereum.Worbooks.Tests
 {
 
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumGettingStartedInfura : WorbookTest
+    public class NethereumGettingStartedInfuraTest : WorbookTest
     {
-        public NethereumGettingStartedInfura() : base(WORKBOOK_PATH)
+        public NethereumGettingStartedInfuraTest() : base(WORKBOOK_PATH)
         {
         }
 

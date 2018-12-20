@@ -6,7 +6,7 @@ platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 3.0.0-rc3
+  version: 3.0.0
 ---
 
 # Quick introduction to smart contracts integration with Nethereum
@@ -237,7 +237,7 @@ If we were going to return multiple values we could have something like:
 When querying the chain we will use the following method instead:
 
 ```csharp
-var balance = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress);
+var balanceOutput = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress);
 ```
 
 #### Querying previous state of the smart contract
@@ -247,7 +247,7 @@ Another great feature of the Ethereum blockchain is the capability to retrieve t
 For example, we could get the balance of the owner at the time of deployment by using the block number in which the contract was deployed.
 
 ```csharp
-var balance = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress, new Nethereum.RPC.Eth.DTOs.BlockParameter(transactionReceipt.BlockNumber));
+balanceOutput = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress, new Nethereum.RPC.Eth.DTOs.BlockParameter(transactionReceipt.BlockNumber));
 ```
 
 #### Transfer
@@ -268,7 +268,7 @@ var transfer = new TransferFunction()
     To = receiverAddress,
     TokenAmount = 100
 };
-var transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
+transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
 ```
 
 ##### Transferring Ether to a smart contract
@@ -323,7 +323,7 @@ transfer.Nonce = 2;
 The TransactionHandler also provides a mechanism to sign the Function and Deployments messages, provided we use an Account and/or an ExternalAccount
 
 ```csharp
-var signedTransaction = await transferHandler.SignTransactionAsync(ContractAddress, transfer);
+var signedTransaction = await transferHandler.SignTransactionAsync(contractAddress, transfer);
 ```
 
 Nethereum internally calls the Ethereum client to set the GasPrice, Nonce and estimate the Gas, so if we want to sign the transaction for the contract completely offline we will need to set those values before hand.
@@ -332,18 +332,16 @@ Nethereum internally calls the Ethereum client to set the GasPrice, Nonce and es
 transfer.Nonce = 2;
 transfer.Gas = 21000;
 transfer.GasPrice =  Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUnit.Gwei);
-var signedTransaction = await transferHandler.SignTransactionAsync(ContractAddress, transfer);
+signedTransaction = await transferHandler.SignTransactionAsync(contractAddress, transfer);
 ```
 
 ### Extension methods for Functions and Deployment Messages
 
 There are a number of extensions that can simplify the interaction with Function messages and Deployment messages.
 
-These are under the namespace
+These are under the namespace:
 
-```csharp
- using Nethereum.Contracts.Extensions;
-```
+***Nethereum.Contracts.Extensions;***
 
 Some of the extension methods are the following:
 

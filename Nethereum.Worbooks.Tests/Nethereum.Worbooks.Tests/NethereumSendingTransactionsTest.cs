@@ -1,19 +1,18 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Xunit;
 using Nethereum.XUnitEthereumClients;
-using System.Collections.Generic;
 
 namespace Nethereum.Worbooks.Tests
 {
+
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumGettingStartedSmartContractsWorkbookTest : WorbookTest
+    public class NethereumSendingTransactionsTest : WorbookTest
     {
-        public NethereumGettingStartedSmartContractsWorkbookTest() : base(WORKBOOK_PATH)
+        public NethereumSendingTransactionsTest() : base(WORKBOOK_PATH)
         {
         }
 
-
-        private const string WORKBOOK_PATH = "nethereum-smartcontrats-gettingstarted.workbook";
+        private const string WORKBOOK_PATH = "nethereum-sending-transactions.workbook";
 
         [Fact]
         public async void Test()
@@ -21,11 +20,10 @@ namespace Nethereum.Worbooks.Tests
             var code = GetCodeSectionsFromWorkbook();
             //When
             var state = await CSharpScript.RunAsync(code);
-             state = await state.ContinueWithAsync("return (transferNonce, balance);");
+             state = await state.ContinueWithAsync("return (transaction, transactionManagedAccount);");
             var returnValue = (dynamic)state.ReturnValue;
-            //Then
-            Assert.Equal(2, returnValue.Item1);
-            Assert.Equal(100000, returnValue.Item2);
+            Assert.Matches("^0x[0-9a-fA-F]{64}$", returnValue.Item1);
+            Assert.Matches("^0x[0-9a-fA-F]{64}$", returnValue.Item2);
         }
     }
 }

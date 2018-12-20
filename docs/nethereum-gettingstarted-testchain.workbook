@@ -6,7 +6,7 @@ platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 3.0.0-rc3
+  version: 3.0.0
 ---
 
 # TestChain Getting Started Guide

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
@@ -22,5 +22,14 @@
        <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+       <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-sending-transactions.workbook" Link="nethereum-sending-transactions.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
   </ItemGroup>
 </Project>

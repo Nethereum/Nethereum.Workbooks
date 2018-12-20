@@ -6,7 +6,7 @@ platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 3.0.0-rc3
+  version: 3.0.0
 ---
 
 The very first step to get started working with Nethereum is to add a package reference to Nethereum.Web3.
