@@ -1,4 +1,6 @@
-﻿contract Token {
+﻿pragma solidity "0.4.24";
+
+contract Token {
  
     /// @return total amount of tokens
     function totalSupply() constant returns (uint256 supply) {}
@@ -31,7 +33,7 @@
     /// @return Amount of remaining tokens allowed to spent
     function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
 
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+   
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 }
 
@@ -41,7 +43,6 @@ contract EIP20 is Token {
     mapping (address => uint256) public balances;
     mapping (address => mapping (address => uint256)) public allowed;
     uint256 public totalSupply;
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
     /*
     NOTE:
@@ -53,22 +54,26 @@ contract EIP20 is Token {
     uint8 public decimals;                //How many decimals to show.
     string public symbol;                 //An identifier: eg SBX
 
-    constructor(uint256 _initialAmount, string _tokenName, uint8 _decimalUnits, string _tokenSymbol) public {
+
+    constructor(uint256 _initialAmount) public {
         balances[msg.sender] = _initialAmount;               // Give the creator all initial tokens
-        totalSupply = _initialAmount;                        // Update total supply
-        name = _tokenName;                                   // Set the name for display purposes
-        decimals = _decimalUnits;                            // Amount of decimals for display purposes
-        symbol = _tokenSymbol;                               // Set the symbol for display purposes
-         
+        totalSupply = _initialAmount;                        // Update total supply   
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balances[msg.sender] >= _value);
         balances[msg.sender] -= _value;
         balances[_to] += _value;
-        emit Transfer(msg.sender, _to, _value); //solhint-disable-line indent, no-unused-vars
+        emit Transfer(msg.sender, _to, _value); 
         return true;
     }
+    
+    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+
+    function balanceOf(address _owner) public view returns (uint256 balance) {
+        return balances[_owner];
+    }
+
 
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
         uint256 allowance = allowed[_from][msg.sender];
@@ -82,9 +87,7 @@ contract EIP20 is Token {
         return true;
     }
 
-    function balanceOf(address _owner) public view returns (uint256 balance) {
-        return balances[_owner];
-    }
+   
 
     function approve(address _spender, uint256 _value) public returns (bool success) {
         allowed[msg.sender][_spender] = _value;

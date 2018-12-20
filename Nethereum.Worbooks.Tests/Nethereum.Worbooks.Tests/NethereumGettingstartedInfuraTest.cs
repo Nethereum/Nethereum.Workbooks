@@ -1,12 +1,15 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Nethereum.Hex.HexConvertors.Extensions;
 using Xunit;
+using Nethereum.XUnitEthereumClients;
 
 namespace Nethereum.Worbooks.Tests
 {
-    public class NethereumGettingStartedInfura : WorbookTest
+
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    public class NethereumGettingStartedInfuraTest : WorbookTest
     {
-        public NethereumGettingStartedInfura() : base(WORKBOOK_PATH)
+        public NethereumGettingStartedInfuraTest() : base(WORKBOOK_PATH)
         {
         }
 

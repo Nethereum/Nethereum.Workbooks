@@ -28,10 +28,6 @@ Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-ma
 We can now create a new instance of Web3:
 
 ```csharp
-#r "Nethereum.Web3"
-```
-
-```csharp
 using Nethereum.Web3;
 ```
 

@@ -1,12 +1,15 @@
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Nethereum.Hex.HexConvertors.Extensions;
 using Xunit;
+using Nethereum.XUnitEthereumClients;
 
 namespace Nethereum.Worbooks.Tests
 {
-    public class NethereumCreatingANewAccountUsingGeth : WorbookTest
+
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    public class NethereumCreatingANewAccountUsingGethTest : WorbookTest
     {
-        public NethereumCreatingANewAccountUsingGeth() : base(WORKBOOK_PATH)
+        public NethereumCreatingANewAccountUsingGethTest() : base(WORKBOOK_PATH)
         {
         }
 
