@@ -8,7 +8,7 @@ title: Nethereum-ChainID-Management
 platforms:
 - Console
 ---
-## Prerequisites:
+## Pre-requisites:
 
 Download the test chain matching your environment from https://github.com/Nethereum/Testchains
 
