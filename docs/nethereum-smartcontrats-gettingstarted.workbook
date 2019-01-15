@@ -41,7 +41,13 @@ In this tutorial we are going to interact with the ERC20 standard token contract
 
 ![Constructor, transfer, balance and event of ERC20](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/simpleERC20.png)
 
-First of all, we need to declare our namespaces, and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and BalanceOf Function of the ERC20 smart contract.
+## Pre-requisites:
+
+Download the test chain matching your environment from https://github.com/Nethereum/Testchains
+
+Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
+
+Then, declare your namespaces and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and BalanceOf Function of the ERC20 smart contract.
 
 Add a reference to the nuget package "Nethereum.Web3"
 

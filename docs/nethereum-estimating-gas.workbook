@@ -8,7 +8,6 @@ packages:
 - id: Nethereum.Web3
   version: 2.0.1
 ---
-
 # Estimating the cost of a transaction with Nethereum
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>

@@ -28,7 +28,11 @@ Above we can see, the event declaration with the different indexed parameters, t
 
 The Transfer event can be seen in the function prefixed with the “emit” keyword.
 
-### Pre-Conditions
+## Pre-requisites:
+
+Download the test chain matching your environment from https://github.com/Nethereum/Testchains
+
+Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
 First of all, we need to declare our namespaces, and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
 
