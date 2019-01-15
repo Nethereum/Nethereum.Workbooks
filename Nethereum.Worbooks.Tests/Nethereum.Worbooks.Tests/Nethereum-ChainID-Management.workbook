@@ -8,7 +8,6 @@ title: Nethereum-ChainID-Management
 platforms:
 - Console
 ---
-
 ## Pre-requisites:
 
 Download the test chain matching your environment from https://github.com/Nethereum/Testchains
@@ -19,10 +18,6 @@ First add the necessary namespaces and using statements:
 
 ```csharp
 #r "Nethereum.Web3"
-```
-
-```csharp
-#r "Nethereum.Accounts"
 ```
 
 ```csharp
@@ -42,31 +37,11 @@ To counteract this issue, an Ethereum fix was implemented (the improvement name 
 
 The preconfigured chainIds can be found in Nethereum.Signer.Chain:
 
-public enum Chain\
-{\
-MainNet = 1,\
-Morden = 2,\
-Ropsten = 3,\
-Rinkeby = 4,\
-RootstockMainNet = 30,\
-RootstockTestNet = 31,\
-Kovan = 42,\
-ClassicMainNet = 61,\
-ClassicTestNet = 62,\
-Private = 1337\
-}
+![](screenshots/Nethereum-ChainID-Management-1.jpg)
 
 To configure the chainId in geth, edit the genesis as follows (example configuration):
 
-“config”: {\
-”chainID”: 444444444500,\
-”homesteadBlock”: 0,\
-”eip150Block”: 0,\
-”eip155Block”: 0,\
-”clique”: {\
-”period”: 1,\
-”epoch”: 30000\
-}
+![](screenshots/Nethereum-ChainID-Management-2.jpg)
 
 To sign a transaction using the ChainID attribute, we need to create an instance of the "Account" object using our private key and ChainID as arguments.
 
