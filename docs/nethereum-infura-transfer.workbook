@@ -15,7 +15,7 @@ Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io
 
 ## Pre-requisites:
 
-This document is a Workbook, find more about workbooks' installation requirement  [here](https://developer.xamarin.com/guides/cross-platform/workbooks/). 
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install). 
 
 For this example the nuget packages used are: 
 Nethereum.Web3, Nethereum.Web3.Accounts, Nethereum.KeyStore, Nethereum.Util,  Nethereum.Hex.HexConvertors.Extensions.
