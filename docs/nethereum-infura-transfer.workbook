@@ -15,13 +15,17 @@ Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io
 
 ## Pre-requisites:
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install). 
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-For this example the nuget packages used are: 
+For this example the nuget packages used are:
 Nethereum.Web3, Nethereum.Web3.Accounts, Nethereum.KeyStore, Nethereum.Util,  Nethereum.Hex.HexConvertors.Extensions.
 
 ```csharp
 #r "Nethereum.Web3"
+```
+
+```csharp
+#r "Nethereum.Accounts"
 ```
 
 ```csharp
@@ -46,7 +50,7 @@ var openfromKeyStore = true;
 //key store file password
 var keyStorePassword = "password";
 //the file location
-var keyStorePath = @"I:\JuanFran\Documents\Source\Repos\Nethereum.Workbooks\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var keyStorePath = @".\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
 ```
 
 We just need to open the file, read its contents and decrypt them using our password
