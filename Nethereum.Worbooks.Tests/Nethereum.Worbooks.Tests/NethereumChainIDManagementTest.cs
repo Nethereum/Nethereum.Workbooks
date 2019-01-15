@@ -7,13 +7,13 @@ namespace Nethereum.Worbooks.Tests
 {
 
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumCreatingANewAccountUsingGethTest : WorbookTest
+    public class NethereumChainIDManagementTest : WorbookTest
     {
-        public NethereumCreatingANewAccountUsingGethTest() : base(WORKBOOK_PATH)
+        public NethereumChainIDManagementTest() : base(WORKBOOK_PATH)
         {
         }
 
-        private const string WORKBOOK_PATH = "nethereum-creating-a-new-account-using-geth.workbook";
+        private const string WORKBOOK_PATH = "Nethereum-ChainID-Management.workbook";
 
         [Fact]
         public async void Test()
@@ -21,10 +21,9 @@ namespace Nethereum.Worbooks.Tests
             var code = GetCodeSectionsFromWorkbook();
             //When
             var state = await CSharpScript.RunAsync(code);
-            state = await state.ContinueWithAsync("return account;");
+            state = await state.ContinueWithAsync("return balance;");
             var returnValue = (dynamic)state.ReturnValue;
             Assert.NotNull(returnValue);
-            Assert.Matches("^0x[0-9a-fA-F]{40}$", returnValue);
         }
     }
 }

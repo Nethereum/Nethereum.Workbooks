@@ -1,12 +1,14 @@
 ---
-packages:
-- id: Nethereum.Web3
-  version: 2.4.0
 uti: com.xamarin.workbook
 id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
 title: Nethereum-ChainID-Management
 platforms:
 - Console
+packages:
+- id: Nethereum.Web3
+  version: 3.0.0
+- id: Nethereum.Accounts
+  version: 3.0.0
 ---
 
 ## Pre-requisites:
@@ -115,7 +117,7 @@ And then use the TransactionManager to execute the transfer and wait for the rec
                new TransactionInput() {From = account.Address, To = toAddress, Value = new HexBigInteger(wei)}, null);
 ```
 
-Finally, we can see that the receiver’s address balance has increased by 1 Ether
+Finally, we can see that the receiver’s address balance has increased by 1 Ether.
 
 ```csharp
  var balance = await web3.Eth.GetBalance.SendRequestAsync("0x13f022d72158410433cbd66f5dd8bf6d2d129924");
