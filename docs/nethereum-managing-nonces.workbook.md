@@ -6,10 +6,12 @@ platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 2.0.1
+  version: 3.0.0
 ---
 
 # Managing nonces with Nethereum
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
 To prevent replay attacks (submitting the same transaction several times) Ethereum provides a transaction counter: the `nonce` parameter. Nonce keeps track of the number of times a transaction has been run by an account.
 
@@ -35,7 +37,6 @@ first, let's download the test chain matching your environment from <https://git
 
 start a geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (windows) or **startgeth.sh** (mac/linux). the chain is setup with the proof of authority consensus and will start the mining process immediately.
 
-we then need to add nethereum's nuget package:
 
 ```csharp
 #r "nethereum.web3"

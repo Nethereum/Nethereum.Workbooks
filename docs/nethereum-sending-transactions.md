@@ -1,6 +1,8 @@
 
 # Sending transactions with Nethereum
 
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
 This workbook will walk you through the basics of using Nethereum to send transactions.
 
 ## Pre-requisites

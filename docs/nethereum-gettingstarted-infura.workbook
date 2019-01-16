@@ -1,29 +1,22 @@
 ---
 uti: com.xamarin.workbook
-id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
-title: Nethereum-getting-started-infura.workbook
+id: 701d2cce-38a5-43b6-a682-e7684c44d480
+title: nethereum-gettingstarted-infura
 platforms:
 - Console
 packages:
-- id: Nethereum.Portable
-  version: 2.5.1
 - id: Nethereum.Web3
-  version: 2.5.1
+  version: 3.0.0
 ---
 
-The very first step to get started working with Nethereum is to add a package reference to Nethereum.Web3.
-
-```csharp
-#r "Nethereum.Web3"
-```
-
 # Getting started using Infura with Nethereum
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 This simple sample will take you through the steps of connecting to [Infura](https://www.infura.io) and retrieve the balance of an account from the mainnet (live Ethereum). Infura provides a set of public nodes removing the need to have a local or maintained client fully synchronised with the main Ethereum network.
 
-First, we need to add our required namespaces for Nethereum:
 
 ```csharp
 using Nethereum.Web3;

@@ -1,0 +1,89 @@
+---
+uti: com.xamarin.workbook
+id: 0230a546-0dba-4f2c-8cc9-d26049912d20
+title: nethereum-estimating-gas
+platforms:
+- Console
+packages:
+- id: Nethereum.Web3
+  version: 3.0.0
+---
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
+# Estimating the cost of a transaction with Nethereum
+
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
+The purpose of this sample is to estimate the gas cost of a simple transaction
+
+## Ethereum and Gas: a primer
+
+Gas is the pricing system for running a transaction or contract in Ethereum.
+The gas system is not very different from the use of Kw for measuring electricity home use. One difference from actual energy market is that the originator of the transaction sets the price of gas, to which the miner can or not accept, this causes an emergence of a market around gas. You can see the evolution of the price of gas here: https://etherscan.io/charts/gasprice
+
+The gas price per transaction or contract is set up to deal with the Turing Complete nature of Ethereum and its EVM (Ethereum Virtual Machine Code) – the idea being to limit infinite loops. If there is not enough Ether in the account to perform the transaction or message then it is considered invalid. The idea is to stop denial of service attacks from infinite loops, encourage efficiency in the code – and to make an attacker pay for the resources they use, from bandwidth through to CPU calculations through to storage.
+
+Here are the terms needed to define the **gas** cost of a transaction:
+
+* **Gas limit** refers to the maximum amount of gas you’re willing to spend on a particular transaction.
+
+* **Gas price** refers to the amount of Ether you’re willing to pay for every unit of gas, and is usually measured in “Gwei”.
+
+## Quick environment setup
+
+First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
+
+Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+```csharp
+using Nethereum.Web3;
+```
+
+### Setting up sender address
+
+Let's declare our private key and address as variables (we'll use the address to send the transaction) and use them to create a new account:
+
+```csharp
+var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
+var account = new Nethereum.Web3.Accounts.Account(privateKey);
+```
+
+### Web3
+
+Web3 provides a simple interaction wrapper with Ethereum clients. To create an instance of Web3, we need to supply our Account and the RPC uri of the Ethereum client. In this scenario we will only use the Account, as we will be interacting with our private test chain on the default RPC uri “http://localhost:8545”
+
+```csharp
+  var web3 = new Web3(account);
+```
+
+## Transfering some Ether
+
+To interact with this function using Nethereum we will need to define the address to which we want to send the Ether as well as the amount we intend to send:
+
+```csharp
+var newAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
+```
+
+```csharp
+var amountToSend = 1000;
+```
+
+Before we execute the transaction, we can “estimate” how much the transaction will cost in gas, by simulating it. This will allow us to avoid supplying too much or too little gas.
+
+To estimate the gas cost in our transfer function we can call \*\*EstimateGasAsync \*\* passing the same parameters.
+
+```csharp
+var gas = await transferFunction.EstimateGasAsync(senderAddress, null, null, newAddress, amountToSend);
+```
+
+Now that we defined the “estimated gas”, we can use **gas **that value as one of the parameters for the transaction.
+
+```csharp
+var receiptFirstAmountSend = await web3.TransactionManager.SendTransactionAsync(senderAddress, gas, null, null, newAddress, amountToSend);
+```

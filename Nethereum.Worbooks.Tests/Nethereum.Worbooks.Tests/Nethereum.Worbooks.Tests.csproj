@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
@@ -6,7 +6,12 @@
     <PackageReference Include="FluentAssertions" Version="5.4.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="2.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
-    <PackageReference Include="Nethereum.Web3" Version="2.1.0" />
+    <PackageReference Include="Nethereum.Web3" Version="3.0.0" />
+    <PackageReference Include="NuGet.Client" Version="4.3.0-beta1-2418" />
+    <PackageReference Include="NuGet.CommandLine" Version="4.7.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
@@ -15,14 +20,17 @@
     <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-    <None Include="..\..\docs\nethereum-gettingstard-smartcontrats.workbook" Link="nethereum-gettingstard-smartcontrats.workbook">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-        <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
        <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+       <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-sending-transactions.workbook" Link="nethereum-sending-transactions.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
   </ItemGroup>
 </Project>

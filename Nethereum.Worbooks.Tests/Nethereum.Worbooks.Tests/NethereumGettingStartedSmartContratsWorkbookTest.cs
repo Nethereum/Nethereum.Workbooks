@@ -1,27 +1,31 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Xunit;
+using Nethereum.XUnitEthereumClients;
+using System.Collections.Generic;
 
 namespace Nethereum.Worbooks.Tests
 {
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
     public class NethereumGettingStartedSmartContractsWorkbookTest : WorbookTest
     {
         public NethereumGettingStartedSmartContractsWorkbookTest() : base(WORKBOOK_PATH)
         {
         }
 
-        private const string WORKBOOK_PATH = "nethereum-gettingstard-smartcontrats.workbook";
+
+        private const string WORKBOOK_PATH = "nethereum-smartcontrats-gettingstarted.workbook";
 
         [Fact]
         public async void Test()
         {
             var code = GetCodeSectionsFromWorkbook();
+            //When
             var state = await CSharpScript.RunAsync(code);
-            state = await state.ContinueWithAsync("return (balanceSecondAmountSend, originalBalanceFirstAmoundSend);");
+             state = await state.ContinueWithAsync("return (transfer.Nonce, balance);");
             var returnValue = (dynamic)state.ReturnValue;
-           var returnValue1 = returnValue.Item1.Value;
-           var returnValue2 = returnValue.Item2.Value;
-            Assert.NotNull(returnValue1);
-            
+            //Then
+            Assert.Equal(2, returnValue.Item1);
+            Assert.Equal(100000, returnValue.Item2);
         }
     }
 }
