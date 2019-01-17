@@ -30,12 +30,16 @@ Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-c
 ```
 
 ```csharp
+#r "Nethereum.Accounts"
+```
+
+```csharp
 using Nethereum.Web3;using Nethereum.Web3.Accounts;using System.Numerics; using Nethereum.RPC.Eth.DTOs;using Nethereum.ABI.FunctionEncoding.Attributes;
 ```
 
 Here is the Smart Contract we are going to log using events:
 
-![](screenshots/testEventContract.jpg)
+![](./screenshots/testEventContract.jpg)
 
 In order to deploy your Smart Contract, you will need first to compile it  (using the VS Code’s “Solidity” extension, for instance), and declare your ABI and ByteCode in your CSharp class from the compilation output.
 
@@ -50,6 +54,7 @@ Declare now two classes corresponding to the "event" logs so they can be deseria
 ps: VS Code’s “Solidity” extension allows you to code generate those classes.
 
 ```csharp
+[Event("BidAddedEventDTO")]
 public class BidAddedEventDTO
     {
         [Parameter("address", "sender", 1, true)]
@@ -66,6 +71,7 @@ public class BidAddedEventDTO
 
     }
 
+[Event("StateChangedEventDTO")]
     public class StateChangedEventDTO
     {
         [Parameter("uint256", "currentState", 1, false)]

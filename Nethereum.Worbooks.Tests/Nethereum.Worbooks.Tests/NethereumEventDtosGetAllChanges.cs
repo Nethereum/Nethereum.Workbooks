@@ -1,8 +1,10 @@
 using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Nethereum.XUnitEthereumClients;
 using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
     public class NethereumEventDtosGetAllChangesWorkbookTest : WorbookTest
     {
         public NethereumEventDtosGetAllChangesWorkbookTest() : base(WORKBOOK_PATH)

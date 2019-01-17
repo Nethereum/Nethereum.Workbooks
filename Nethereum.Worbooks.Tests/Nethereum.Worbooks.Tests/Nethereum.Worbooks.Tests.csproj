@@ -20,6 +20,9 @@
     <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+    <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
        <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -32,5 +35,10 @@
        <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="NethereumEventDtosGetAllChanges.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 </Project>
