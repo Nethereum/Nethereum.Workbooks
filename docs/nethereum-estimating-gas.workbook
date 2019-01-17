@@ -6,8 +6,11 @@ platforms:
 - Console
 packages:
 - id: Nethereum.Web3
-  version: 2.0.1
+  version: 3.0.0
 ---
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
 # Estimating the cost of a transaction with Nethereum
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
@@ -21,7 +24,7 @@ The gas system is not very different from the use of Kw for measuring electricit
 
 The gas price per transaction or contract is set up to deal with the Turing Complete nature of Ethereum and its EVM (Ethereum Virtual Machine Code) – the idea being to limit infinite loops. If there is not enough Ether in the account to perform the transaction or message then it is considered invalid. The idea is to stop denial of service attacks from infinite loops, encourage efficiency in the code – and to make an attacker pay for the resources they use, from bandwidth through to CPU calculations through to storage.
 
-Here are the terms needed to define the \`gas\*\* cost of a transaction:
+Here are the terms needed to define the **gas** cost of a transaction:
 
 * **Gas limit** refers to the maximum amount of gas you’re willing to spend on a particular transaction.
 
@@ -33,15 +36,9 @@ First, let's download the test chain matching your environment from <https://git
 
 Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
-### Nuget Packages
-
-Please add the Nethereum.Web3 nuget package:
-
 ```csharp
 #r "Nethereum.Web3"
 ```
-
-Next, add the using statement to Nethereum.Web3. All other namespaces will be included directly in the sample.
 
 ```csharp
 using Nethereum.Web3;

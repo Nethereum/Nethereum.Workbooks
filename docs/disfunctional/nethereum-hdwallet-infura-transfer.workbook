@@ -74,9 +74,24 @@ So if we were going to send 1 Ether we will use:
 var wei = Web3.Convert.ToWei(1);
 ```
 
-Finally we will just set the address that we want to send some Ether, and using the Transaction manager this will be signed with our private key and and sent to the network via Infura public node.
+Let’s now set the address we want to send some Ether to:
 
 ```csharp
 var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
+```
+
+We also need to format the amount of Ether we wish to send:
+
+```csharp
+var amountToSend = new Nethereum.Hex.HexTypes.HexBigInteger(wei)
+```
+
+```csharp
+var gas = await web3.TransactionManager.EstimateGasAsync(account.Address, null, null, toAddress, amountToSend.Value);
+```
+
+Finally we will just , and using the Transaction manager this will be signed with our private key and and sent to the network via Infura public node.
+
+```csharp
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, toAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(wei));
 ```

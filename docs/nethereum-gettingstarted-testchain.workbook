@@ -11,13 +11,13 @@ packages:
 
 # TestChain Getting Started Guide
 
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
 
 Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
-
-To get started, reference the NuGet package
 
 ```csharp
 #r "Nethereum.Web3"

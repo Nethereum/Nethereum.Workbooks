@@ -3,7 +3,7 @@ packages:
 - id: Nethereum.StandardTokenEIP20
   version: 2.2.3
 - id: Nethereum.Web3
-  version: 2.2.3
+  version: 3.0.0
 uti: com.xamarin.workbook
 id: 655c2dec-bc9a-4bf8-a70f-841ab231788d
 title: nethereum-cqs-test

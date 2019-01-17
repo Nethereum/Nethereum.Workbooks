@@ -8,10 +8,12 @@ packages:
 - id: Assert
   version: 4.2.1
 - id: Nethereum.Web3
-  version: 2.0.1
+  version: 3.0.0
 ---
 
 # Signing messages with Nethereum
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
 Nethereum allows you to sign any type of data using Ethereum signature format. The following is a quick guide to signing with Nethereum.
 
@@ -23,7 +25,6 @@ First, let's download the test chain matching your environment from <https://git
 
 Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
-We then need to add Nethereum's Nuget package:
 
 ```csharp
 #r "Nethereum.Web3"

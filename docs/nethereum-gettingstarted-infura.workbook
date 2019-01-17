@@ -9,25 +9,14 @@ packages:
   version: 3.0.0
 ---
 
-The very first step to get started working with Nethereum is to add a package reference to Nethereum.Web3.
-
-```csharp
-#r "Nethereum.Web3"
-```
-
 # Getting started using Infura with Nethereum
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
 This simple sample will take you through the steps of connecting to [Infura](https://www.infura.io) and retrieve the balance of an account from the mainnet (live Ethereum). Infura provides a set of public nodes removing the need to have a local or maintained client fully synchronised with the main Ethereum network.
 
-## Pre-requisites:
-
-Download the test chain matching your environment from https://github.com/Nethereum/Testchains
-
-Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
-
-First add the necessary namespaces and using statements (ie: #r "Nethereum.Web3", using Nethereum.Web3):
 
 ```csharp
 using Nethereum.Web3;
