@@ -10,6 +10,7 @@ title: nethereum-managed-accounts
 platforms:
 - Console
 ---
+
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
 ## Pre-requisites:
@@ -44,13 +45,14 @@ using Nethereum.Web3.Accounts;
 using Nethereum.Web3.Accounts.Managed;
 using Nethereum.Hex.HexTypes;
 ```
+
 Every transaction in Ethereum needs to be sent and signed by an account. The account needs to verify (sign) in order to authenticate the account holder of their Ether or the one that intents to interact with a smart contract.
 
 To send a transaction you will either manage your account and sign the raw transaction locally, or the account will be managed by the client (Parity / Geth), requiring to send the password at the time of sending a transaction or unlock the account before hand.
 
 In Nethereum.Web3, to simplify the process, there are two types of accounts that you can use. An "Account" object or a "ManagedAccount" object. Both store the account information required to send a transaction, private key, or password.
 
-At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using the TransactionManager, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal_sendTransaction message will be sent using the password.
+At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using the TransactionManager, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal\_sendTransaction message will be sent using the password.
 
 ### Working with an Account
 
@@ -63,21 +65,27 @@ One of the major advantages, apart from security (avoiding the transfer of passw
 Encrypted Accounts key store files can be found in different locations depending on the client and operating system:
 
 Geth:
+
 * Linux: ~/.ethereum/keystore
+
 * Mac: /Library/Ethereum/keystore
+
 * Windows: %APPDATA%/Ethereum
 
 Parity:
-* Windows %APPDATA%\Roaming\Parity\Ethereum
+
+* Windows %APPDATA%\\Roaming\\Parity\\Ethereum
+
 * Mac: /Library/Application Support/io.parity.ethereum
+
 * Linux: ~/.local/share/io.parity.ethereum
 
 When using net451 or above you can load your file directly:
 
 ```csharp
 var password = "password";
-var accountFilePath = @"c:\xxx\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
-var firstAccount = Account.LoadFromKeyStoreFile(accountFilePath, string password);
+var accountFilePath = @".\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var firstAccount = Account.LoadFromKeyStoreFile(accountFilePath, password);
 ```
 
 If you are targetting other frameworks like core or netstandard, portable loading directly from a file is not supported, to allow for major platform compatibility, in this scenario you will need to extract the json fist and pass it as a parameter.
@@ -97,9 +105,9 @@ For example, in this scenario we are creating an account with the private key fr
 
 ```csharp
 var password = "password";
-var accountFilePath = @"c:\xxx\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
-var thirdAccount = Nethereum.Web3.Accounts.Account.LoadFromKeyStoreFile(accountFilePath, string password);
-
+var accountFilePath = @".\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var thirdAccount = Nethereum.Web3.Accounts.Account.LoadFromKeyStoreFile(accountFilePath, password);
+var addressTo = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
 var web3 = new Nethereum.Web3.Web3(thirdAccount);
 ```
 
@@ -108,11 +116,20 @@ Now all these types of transactions will be signed offline.
 Transfer an amount to another address, using the transaction manager:
 
 ```csharp
-await web3.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(20));
-
+await web3.TransactionManager.SendTransactionAsync(thirdAccount.Address, addressTo, new HexBigInteger(20));
 ```
 
 Deploy a contract:
+
+```csharp
+ var byteCode = "0x60606040526040516020806106f5833981016040528080519060200190919050505b80600160005060003373ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060005081905550806000600050819055505b506106868061006f6000396000f360606040523615610074576000357c010000000000000000000000000000000000000000000000000000000090048063095ea7b31461008157806318160ddd146100b657806323b872dd146100d957806370a0823114610117578063a9059cbb14610143578063dd62ed3e1461017857610074565b61007f5b610002565b565b005b6100a060048080359060200190919080359060200190919050506101ad565b6040518082815260200191505060405180910390f35b6100c36004805050610674565b6040518082815260200191505060405180910390f35b6101016004808035906020019091908035906020019091908035906020019091905050610281565b6040518082815260200191505060405180910390f35b61012d600480803590602001909190505061048d565b6040518082815260200191505060405180910390f35b61016260048080359060200190919080359060200190919050506104cb565b6040518082815260200191505060405180910390f35b610197600480803590602001909190803590602001909190505061060b565b6040518082815260200191505060405180910390f35b600081600260005060003373ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060005060008573ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925846040518082815260200191505060405180910390a36001905061027b565b92915050565b600081600160005060008673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600050541015801561031b575081600260005060008673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060005060003373ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000505410155b80156103275750600082115b1561047c5781600160005060008573ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828282505401925050819055508273ffffffffffffffffffffffffffffffffffffffff168473ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a381600160005060008673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282825054039250508190555081600260005060008673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060005060003373ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828282505403925050819055506001905061048656610485565b60009050610486565b5b9392505050565b6000600160005060008373ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000505490506104c6565b919050565b600081600160005060003373ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600050541015801561050c5750600082115b156105fb5781600160005060003373ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282825054039250508190555081600160005060008573ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828282505401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a36001905061060556610604565b60009050610605565b5b92915050565b6000600260005060008473ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060005060008373ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060005054905061066e565b92915050565b60006000600050549050610683565b9056";
+ var abi = @"[{""constant"":false,""inputs"":[{""name"":""_spender"",""type"":""address""},{""name"":""_value"",""type"":""uint256""}],""name"":""approve"",""outputs"":[{""name"":""success"",""type"":""bool""}],""type"":""function""},{""constant"":true,""inputs"":[],""name"":""totalSupply"",""outputs"":[{""name"":""supply"",""type"":""uint256""}],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""_from"",""type"":""address""},{""name"":""_to"",""type"":""address""},{""name"":""_value"",""type"":""uint256""}],""name"":""transferFrom"",""outputs"":[{""name"":""success"",""type"":""bool""}],""type"":""function""},{""constant"":true,""inputs"":[{""name"":""_owner"",""type"":""address""}],""name"":""balanceOf"",""outputs"":[{""name"":""balance"",""type"":""uint256""}],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""_to"",""type"":""address""},{""name"":""_value"",""type"":""uint256""}],""name"":""transfer"",""outputs"":[{""name"":""success"",""type"":""bool""}],""type"":""function""},{""constant"":true,""inputs"":[{""name"":""_owner"",""type"":""address""},{""name"":""_spender"",""type"":""address""}],""name"":""allowance"",""outputs"":[{""name"":""remaining"",""type"":""uint256""}],""type"":""function""},{""inputs"":[{""name"":""_initialAmount"",""type"":""uint256""}],""type"":""constructor""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""_from"",""type"":""address""},{""indexed"":true,""name"":""_to"",""type"":""address""},{""indexed"":false,""name"":""_value"",""type"":""uint256""}],""name"":""Transfer"",""type"":""event""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""_owner"",""type"":""address""},{""indexed"":true,""name"":""_spender"",""type"":""address""},{""indexed"":false,""name"":""_value"",""type"":""uint256""}],""name"":""Approval"",""type"":""event""}]";
+```
+
+```csharp
+var senderAddress = "12890d2cce102216644c59dae5baed380d84830c";
+var multiplier = 2;
+```
 
 ```csharp
  var transactionHash = web3.Eth.DeployContract.SendRequestAsync(abi, byteCode, senderAddress, new HexBigInteger(900000),
@@ -140,7 +157,7 @@ The Nethereum.KeyStore library, allows you to encrypt and save your private key,
 
 ### Working with a Managed Account in Web3
 
-Clients retrieve the private key for an account (if stored on their keystore folder) using a password provided to decrypt the file. This is done when unlocking an account, or just at the time of sending a transaction if using personal_sendTransaction with a password.
+Clients retrieve the private key for an account (if stored on their keystore folder) using a password provided to decrypt the file. This is done when unlocking an account, or just at the time of sending a transaction if using personal\_sendTransaction with a password.
 
 Having an account unlocked for a certain period of time might be a security issue, so the prefered option in this scenario, is to use the rpc method `personal_sendTransaction`.
 
@@ -160,7 +177,6 @@ Transfer an amount to another address, using the transaction manager:
 
 ```csharp
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(20));
-
 ```
 
 Deploy a contract:
