@@ -1,22 +1,28 @@
+---
+uti: com.xamarin.workbook
+id: 8fca2999-4dc1-4f1f-878f-efce183cd0d4
+title: nethereum-gettingstarted-accounts
+platforms:
+- Console
+packages:
+- id: Nethereum.Web3
+  version: 3.0.0
+---
 
-# Accounts in Web Nethereum
+This document is a Workbook, find more about workbooks' installation requirements  \[here](<https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install>).
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+Documentation about Nethereum can be found at: \<<https://nethereum.readthedocs.io>\>
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+First, let's download the test chain matching your environment from \<<https://github.com/Nethereum/Testchains>\>
 
-First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
-
-Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
-
-As usual, let’s start setting up the environment by adding the Nethereum.Web3 and nuget package and using statements to Nethereum classes:
-
-```csharp
-#r "Nethereum.Web3"
-```
+Start a Geth chain (geth-clique-linux\\\\, geth-clique-windows\\\\ or geth-clique-mac\\\\) using \*\*startgeth.bat\*\* (Windows) or \*\*startgeth.sh\*\* (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
 ```csharp
 #r "Nethereum.Accounts"
+```
+
+```csharp
+#r "Nethereum.Web3"
 ```
 
 ```csharp
@@ -25,13 +31,14 @@ using Nethereum.Web3.Accounts;
 using Nethereum.Web3.Accounts.Managed;
 using Nethereum.Hex.HexTypes;
 ```
+
 Every transaction in Ethereum needs to be sent and signed by an account. The account needs to verify (sign) in order to authenticate the account holder of their Ether or the one that intents to interact with a smart contract.
 
 To send a transaction you will either manage your account and sign the raw transaction locally, or the account will be managed by the client (Parity / Geth), requiring to send the password at the time of sending a transaction or unlock the account before hand.
 
 In Nethereum.Web3, to simplify the process, there are two types of accounts that you can use. An "Account" object or a "ManagedAccount" object. Both store the account information required to send a transaction, private key, or password.
 
-At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using the TransactionManager, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal_sendTransaction message will be sent using the password.
+At the time of sending a transaction, the right method to deliver the transaction will be chosen. If using the TransactionManager, deploying a contract or using a contract function, the transaction will either be signed offline using the private key or a personal\_sendTransaction message will be sent using the password.
 
 ### Working with an Account
 
@@ -44,21 +51,27 @@ One of the major advantages, apart from security (avoiding the transfer of passw
 Encrypted Accounts key store files can be found in different locations depending on the client and operating system:
 
 Geth:
+
 * Linux: ~/.ethereum/keystore
+
 * Mac: /Library/Ethereum/keystore
+
 * Windows: %APPDATA%/Ethereum
 
 Parity:
-* Windows %APPDATA%\Roaming\Parity\Ethereum
+
+* Windows %APPDATA%\\Roaming\\Parity\\Ethereum
+
 * Mac: /Library/Application Support/io.parity.ethereum
+
 * Linux: ~/.local/share/io.parity.ethereum
 
 When using net451 or above you can load your file directly:
 
 ```csharp
 var password = "password";
-var accountFilePath = @"c:\xxx\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
-var firstAccount = Account.LoadFromKeyStoreFile(accountFilePath, string password);
+var accountFilePath = @".\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var firstAccount = Account.LoadFromKeyStoreFile(accountFilePath, password);
 ```
 
 If you are targetting other frameworks like core or netstandard, portable loading directly from a file is not supported, to allow for major platform compatibility, in this scenario you will need to extract the json fist and pass it as a parameter.
@@ -78,8 +91,8 @@ For example, in this scenario we are creating an account with the private key fr
 
 ```csharp
 var password = "password";
-var accountFilePath = @"c:\xxx\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
-var thirdAccount = Nethereum.Web3.Accounts.Account.LoadFromKeyStoreFile(accountFilePath, string password);
+var accountFilePath = @".\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var thirdAccount = Nethereum.Web3.Accounts.Account.LoadFromKeyStoreFile(accountFilePath, password);
 
 var web3 = new Nethereum.Web3.Web3(thirdAccount);
 ```
@@ -90,7 +103,6 @@ Transfer an amount to another address, using the transaction manager:
 
 ```csharp
 await web3.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(20));
-
 ```
 
 Deploy a contract:
@@ -121,7 +133,7 @@ The Nethereum.KeyStore library, allows you to encrypt and save your private key,
 
 ### Working with a Managed Account in Web3
 
-Clients retrieve the private key for an account (if stored on their keystore folder) using a password provided to decrypt the file. This is done when unlocking an account, or just at the time of sending a transaction if using personal_sendTransaction with a password.
+Clients retrieve the private key for an account (if stored on their keystore folder) using a password provided to decrypt the file. This is done when unlocking an account, or just at the time of sending a transaction if using personal\_sendTransaction with a password.
 
 Having an account unlocked for a certain period of time might be a security issue, so the prefered option in this scenario, is to use the rpc method `personal_sendTransaction`.
 
@@ -141,7 +153,6 @@ Transfer an amount to another address, using the transaction manager:
 
 ```csharp
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, addressTo, new HexBigInteger(20));
-
 ```
 
 Deploy a contract:
@@ -159,3 +170,5 @@ Make a contract Function transaction:
 var multiplyFunction = contract.GetFunction("multiply");
 await multiplyFunction.SendTransactionAsync(senderAddress,7);
 ```
+
+\`
