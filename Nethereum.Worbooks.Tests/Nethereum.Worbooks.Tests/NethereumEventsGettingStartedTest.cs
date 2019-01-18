@@ -24,6 +24,7 @@ namespace Nethereum.Worbooks.Tests
             //returnValue = returnValue.Item1.Value;
             //Then
             Assert.NotNull(returnValue);
+            Assert.Matches("^0x[0-9a-fA-F]{40}$", returnValue);
         }
     }
 }
