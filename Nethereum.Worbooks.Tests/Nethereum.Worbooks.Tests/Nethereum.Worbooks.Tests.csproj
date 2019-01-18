@@ -23,6 +23,9 @@
     <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\..\docs\nethereum-events-gettingstarted.workbook" Link="nethereum-events-gettingstarted.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
        <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

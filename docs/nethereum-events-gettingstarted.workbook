@@ -179,7 +179,7 @@ var transfer = new TransferFunction()
     To = receiverAddress,
     TokenAmount = 100
 };
-var transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
+var transactionReceipt2 = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
 ```
 
 ## Decoding the Event from the TransactionReceipt
@@ -189,7 +189,7 @@ Event logs are part of the TransactionReceipts, so using the Transaction receipt
 Note that this method returns an array of Decoded Transfer Events as opposed to a single value, because the receipt can include more than one event of the same signature.
 
 ```csharp
-var transferEventOutput = transactionReceipt.DecodeAllEvents<TransferEventDTO>();
+var transferEventOutput = transactionReceipt2.DecodeAllEvents<TransferEventDTO>();
 ```
 
 ## Contract Filters and Event Logs
@@ -225,7 +225,7 @@ var transfer2 = new TransferFunction()
     To = receiverAddress2,
     TokenAmount = 1000
 };
-var transactionReceipt2 = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer2);
+var transactionReceipt3 = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer2);
 ```
 
 Using the same filter input message and making another GetAllChanges call, we will now get the two Transfer Event logs.
@@ -282,13 +282,13 @@ await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfe
 and execute get filter changes using the same filter id, we will get the event for the previous transfer.
 
 ```csharp
-var result = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
+var result2 = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
 ```
 
 Executing the same again will return no results because no new transfers have occurred since the last execution of GetFilterChanges.
 
 ```csharp
-var result = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
+var result3 = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
 ```
 
 ## Events for all Contracts
@@ -318,7 +318,7 @@ Creating a default filter input, and getting all changes, will retrieve all the 
 
 ```csharp
 var filterAllTransferEventsForAllContracts = transferEventHandlerAnyContract.CreateFilterInput();
-var allTransferEventsForContract = await transferEventHandlerAnyContract.GetAllChanges(filterAllTransferEventsForAllContracts);
+var allTransferEventsForContract3 = await transferEventHandlerAnyContract.GetAllChanges(filterAllTransferEventsForAllContracts);
 ```
 
 If we want to retrieve only all the transfers to the “receiverAddress”,  we can create the same filter as before ,including only the second indexed parameter (“to”). This will return the Transfers only to this address for both contracts.
