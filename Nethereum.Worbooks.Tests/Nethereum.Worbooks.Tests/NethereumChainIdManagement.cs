@@ -23,7 +23,7 @@ namespace Nethereum.Worbooks.Tests
             dynamic returnValue = (dynamic)state.ReturnValue;
             //Then
             Assert.NotNull(returnValue.Item1);
-            Assert.Matches("^0x[0-9a-fA-F]{16}$", returnValue.Item2.HexValue);
+            Assert.Matches("^0x[0-9a-fA-F]*$", returnValue.Item2.HexValue);
         }
     }
 }
