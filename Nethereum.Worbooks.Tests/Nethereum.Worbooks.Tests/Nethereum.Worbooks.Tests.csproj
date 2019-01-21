@@ -38,6 +38,9 @@
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+       <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
        <None Include="..\..\docs\nethereum-sending-transactions.workbook" Link="nethereum-sending-transactions.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
