@@ -51,8 +51,6 @@ Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-c
 
 Then, declare your namespaces and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and BalanceOf Function of the ERC20 smart contract.
 
-Add a reference to the nuget package "Nethereum.Web3"
-
 ```csharp
 #r "Nethereum.Web3"
 ```
@@ -349,7 +347,7 @@ There are a number of extensions that can simplify the interaction with Function
 
 These are under the namespace:
 
-***Nethereum.Contracts.Extensions;***
+**_Nethereum.Contracts.Extensions;_**
 
 Some of the extension methods are the following:
 

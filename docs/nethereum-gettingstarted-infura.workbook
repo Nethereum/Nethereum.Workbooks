@@ -25,13 +25,13 @@ This simple sample will take you through the steps of connecting to [Infura](htt
 using Nethereum.Web3;
 ```
 
-The next step is to create an instance of Web3, with the infura url for mainnet.
+Let’s create an instance of Web3, with the infura url for mainnet.
 
 ```csharp
 var web3 = new Web3("https://mainnet.infura.io");
 ```
 
-Using the Eth API we can execute the GetBalance request asynchronously, for our selected account. In this scenario I have chosen the Ethereum Foundation account. “0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae”
+Using the Eth API we can execute the GetBalance request asynchronously, for our selected account. In this scenario the chosen account belongs to the Ethereum Foundation. “0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae”
 
 ```csharp
 var balance = await web3.Eth.GetBalance.SendRequestAsync("0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae");

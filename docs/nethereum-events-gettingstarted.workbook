@@ -9,6 +9,25 @@ packages:
   version: 3.0.0
 ---
 
+## Pre-requisites:
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
+Download the test chain matching your environment from https://github.com/Nethereum/Testchains
+
+Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
+
+## Quick introduction to Events, Logs and Filters
+
+Events in smart contracts write data to the transaction receipt logs, providing a way to get extra information about a smart contract transactions.
+
+A very good example is the “Transfer” event in the ERC20 Standard Token contract. Everytime that a token transfer has ocurred, an event gets logged providing information of the “sender”, “receiver” and the token amount. In this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
+
+![Transfer and transfer event](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/transfer-event.png)
+Above we can see, the event declaration with the different indexed parameters, these will allow us later on to “filter” for specific events. For example ,“Transfer” events for a specific receiver address “\_to”.
+
+The Transfer event can be seen in the function prefixed with the “emit” keyword.
+
 ```csharp
 #r "Nethereum.Web3"
 ```
@@ -16,25 +35,6 @@ packages:
 ```csharp
 #r "Nethereum.Accounts"
 ```
-
-## Quick introduction to Events, Logs and Filters
-
-Events in smart contracts write data to the transaction receipt logs, providing a way to get extra information about a smart contract transactions.
-
-A very good example is the “Transfer” event in the ERC20 Standard Token contract. Everytime that a token transfer has ocurred, an event gets logged providing information of the “sender”, “receiver” and the token amount.
-
-![Transfer and transfer event](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/transfer-event.png)
-Above we can see, the event declaration with the different indexed parameters, these will allow us later on to “filter” for specific events. For example ,“Transfer” events for a specific receiver address “\_to”.
-
-The Transfer event can be seen in the function prefixed with the “emit” keyword.
-
-## Pre-requisites:
-
-Download the test chain matching your environment from https://github.com/Nethereum/Testchains
-
-Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
-
-First of all, we need to declare our namespaces, and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
 
 ```csharp
 using Nethereum.Web3;
