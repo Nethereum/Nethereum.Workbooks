@@ -5,9 +5,9 @@ using Xunit;
 namespace Nethereum.Worbooks.Tests
 {
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumChainIdManagement : WorbookTest
+    public class NethereumChainIdManagementTest : WorbookTest
     {
-        public NethereumChainIdManagement() : base(WORKBOOK_PATH)
+        public NethereumChainIdManagementTest() : base(WORKBOOK_PATH)
         {
         }
 
