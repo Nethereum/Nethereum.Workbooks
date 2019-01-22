@@ -14,9 +14,6 @@ Backup/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
-# Temporary Work Folder
-/defective_workbooks
-/old_workbooks
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
