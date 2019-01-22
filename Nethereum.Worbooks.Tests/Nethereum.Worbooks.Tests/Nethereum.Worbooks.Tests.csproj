@@ -49,7 +49,7 @@
        </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="NethereumEventDtosGetAllChanges.cs">
+    <Compile Update="NethereumEventDtosGetAllChangesTest.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
