@@ -41,7 +41,11 @@ Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-ma
 ```
 
 ```csharp
-using Nethereum.Web3;
+#r "Nethereum.Accounts"
+```
+
+```csharp
+using Nethereum.Web3; using Nethereum.Web3.Accounts;
 ```
 
 ### Setting up sender address
@@ -82,7 +86,7 @@ To estimate the gas cost in our transfer function we can call \*\*EstimateGasAsy
 var gas = await transferFunction.EstimateGasAsync(senderAddress, null, null, newAddress, amountToSend);
 ```
 
-Now that we defined the “estimated gas”, we can use **gas **that value as one of the parameters for the transaction.
+Now that we defined the “estimated gas”, we can use \*\*gas \*\*that value as one of the parameters for the transaction.
 
 ```csharp
 var receiptFirstAmountSend = await web3.TransactionManager.SendTransactionAsync(senderAddress, gas, null, null, newAddress, amountToSend);
