@@ -6,13 +6,13 @@ namespace Nethereum.Worbooks.Tests
 {
 
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumSendingTransactionsTest : WorbookTest
+    public class NethereumUsingAccountObjectsTest : WorbookTest
     {
-        public NethereumSendingTransactionsTest() : base(WORKBOOK_PATH)
+        public NethereumUsingAccountObjectsTest() : base(WORKBOOK_PATH)
         {
         }
 
-        private const string WORKBOOK_PATH = "nethereum-sending-transactions.workbook";
+        private const string WORKBOOK_PATH = "nethereum-using-account-objects.workbook";
 
         [Fact]
         public async void Test()
