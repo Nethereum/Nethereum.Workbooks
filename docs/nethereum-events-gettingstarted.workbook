@@ -8,6 +8,26 @@ packages:
 - id: Nethereum.Web3
   version: 3.0.0
 ---
+# Getting started with events
+
+## Pre-requisites:
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
+Download the test chain matching your environment from https://github.com/Nethereum/Testchains
+
+Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
+
+## Quick introduction to Events, Logs and Filters
+
+Events in smart contracts write data to the transaction receipt logs, providing a way to get extra information about a smart contract transactions.
+
+A very good example is the “Transfer” event in the ERC20 Standard Token contract. Everytime that a token transfer has ocurred, an event gets logged providing information of the “sender”, “receiver” and the token amount. In this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
+
+![Transfer and transfer event](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/TransferEvent.png)
+Above we can see, the event declaration with the different indexed parameters, these will allow us later on to “filter” for specific events. For example ,“Transfer” events for a specific receiver address “\_to”.
+
+The Transfer event can be seen in the function prefixed with the “emit” keyword.
 
 ```csharp
 #r "Nethereum.Web3"
@@ -16,21 +36,6 @@ packages:
 ```csharp
 #r "Nethereum.Accounts"
 ```
-
-## Quick introduction to Events, Logs and Filters
-
-Events in smart contracts write data to the transaction receipt logs, providing a way to get extra information about a smart contract transactions.
-
-A very good example is the “Transfer” event in the ERC20 Standard Token contract. Everytime that a token transfer has ocurred, an event gets logged providing information of the “sender”, “receiver” and the token amount.
-
-![Transfer and transfer event](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/transfer-event.png)
-Above we can see, the event declaration with the different indexed parameters, these will allow us later on to “filter” for specific events. For example ,“Transfer” events for a specific receiver address “\_to”.
-
-The Transfer event can be seen in the function prefixed with the “emit” keyword.
-
-### Pre-Conditions
-
-First of all, we need to declare our namespaces, and contract definition to interact with the smart contract. In this scenario we are only interested in the Deployment, Transfer function and Transfer Event of the ERC20 smart contract.
 
 ```csharp
 using Nethereum.Web3;
@@ -175,7 +180,7 @@ var transfer = new TransferFunction()
     To = receiverAddress,
     TokenAmount = 100
 };
-var transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
+var transactionReceipt2 = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
 ```
 
 ## Decoding the Event from the TransactionReceipt
@@ -185,7 +190,7 @@ Event logs are part of the TransactionReceipts, so using the Transaction receipt
 Note that this method returns an array of Decoded Transfer Events as opposed to a single value, because the receipt can include more than one event of the same signature.
 
 ```csharp
-var transferEventOutput = transactionReceipt.DecodeAllEvents<TransferEventDTO>();
+var transferEventOutput = transactionReceipt2.DecodeAllEvents<TransferEventDTO>();
 ```
 
 ## Contract Filters and Event Logs
@@ -221,7 +226,7 @@ var transfer2 = new TransferFunction()
     To = receiverAddress2,
     TokenAmount = 1000
 };
-var transactionReceipt2 = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer2);
+var transactionReceipt3 = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer2);
 ```
 
 Using the same filter input message and making another GetAllChanges call, we will now get the two Transfer Event logs.
@@ -278,13 +283,13 @@ await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfe
 and execute get filter changes using the same filter id, we will get the event for the previous transfer.
 
 ```csharp
-var result = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
+var result2 = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
 ```
 
 Executing the same again will return no results because no new transfers have occurred since the last execution of GetFilterChanges.
 
 ```csharp
-var result = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
+var result3 = await transferEventHandler.GetFilterChanges(filterIdTransferEventsForContractAllReceiverAddress2);
 ```
 
 ## Events for all Contracts
@@ -314,7 +319,7 @@ Creating a default filter input, and getting all changes, will retrieve all the 
 
 ```csharp
 var filterAllTransferEventsForAllContracts = transferEventHandlerAnyContract.CreateFilterInput();
-var allTransferEventsForContract = await transferEventHandlerAnyContract.GetAllChanges(filterAllTransferEventsForAllContracts);
+var allTransferEventsForContract3 = await transferEventHandlerAnyContract.GetAllChanges(filterAllTransferEventsForAllContracts);
 ```
 
 If we want to retrieve only all the transfers to the “receiverAddress”,  we can create the same filter as before ,including only the second indexed parameter (“to”). This will return the Transfers only to this address for both contracts.

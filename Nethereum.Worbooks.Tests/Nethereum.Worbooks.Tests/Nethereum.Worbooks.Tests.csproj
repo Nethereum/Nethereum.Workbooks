@@ -3,6 +3,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.4.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="2.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="Nethereum.Web3" Version="3.0.0" />
@@ -16,20 +17,40 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\docs\Nethereum-ChainID-Management.workbook" Link="Nethereum-ChainID-Management.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\docs\nethereum-converting-units.workbook" Link="nethereum-converting-units.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+    <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\docs\nethereum-events-gettingstarted.workbook" Link="nethereum-events-gettingstarted.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
        <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
-       <None Include="..\..\docs\nethereum-sending-transactions.workbook" Link="nethereum-sending-transactions.workbook">
+       <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+       <None Include="..\..\docs\nethereum-using-account-objects.workbook" Link="nethereum-using-account-objects.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="NethereumEventDtosGetAllChangesTest.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 </Project>
