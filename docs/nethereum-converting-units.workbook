@@ -23,7 +23,7 @@ Crypto currencies offer several units of value in order to manipulate big and sm
 
 Below is the breakdown of units for **Ether**:
 
-![](./screenshots/EtherUnitConversionTable.jpg)
+![](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/EtherUnitConversionTable.jpg)
 
 Now that we've covered the basics of crypto currency units in Ethereum, let’s prepare our environment to interact with a chain and learn with live code:
 
