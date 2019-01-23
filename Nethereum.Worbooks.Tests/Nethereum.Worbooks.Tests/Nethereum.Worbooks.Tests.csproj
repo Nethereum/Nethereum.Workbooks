@@ -41,10 +41,10 @@
        <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
-       <None Include="..\..\docs\nethereum-sending-transactions.workbook" Link="nethereum-sending-transactions.workbook">
+       <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
-       <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
+       <None Include="..\..\docs\nethereum-using-account-objects.workbook" Link="nethereum-using-account-objects.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
   </ItemGroup>

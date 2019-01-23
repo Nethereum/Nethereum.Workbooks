@@ -39,7 +39,7 @@ using Nethereum.Web3;using Nethereum.Web3.Accounts;using System.Numerics; using 
 
 Here is the Smart Contract we are going to log using events:
 
-![](./screenshots/testEventContract.jpg)
+![](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/testEventContract.jpg)
 
 In order to deploy your Smart Contract, you will need first to compile it  (using the VS Code’s “Solidity” extension, for instance), and declare your ABI and ByteCode in your CSharp class from the compilation output.
 
@@ -55,7 +55,7 @@ ps: VS Code’s “Solidity” extension allows you to code generate those class
 
 ```csharp
 [Event("BidAddedEventDTO")]
-public class BidAddedEventDTO
+public class BidAddedEventDTO : IEventDTO
     {
         [Parameter("address", "sender", 1, true)]
         public string Sender { get; set; }
@@ -72,7 +72,7 @@ public class BidAddedEventDTO
     }
 
 [Event("StateChangedEventDTO")]
-    public class StateChangedEventDTO
+    public class StateChangedEventDTO : IEventDTO
     {
         [Parameter("uint256", "currentState", 1, false)]
         public BigInteger CurrentState { get; set; }
