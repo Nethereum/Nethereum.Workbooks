@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_3)]
     public class NethereumEventDtosGetAllChangesWorkbookTest : WorbookTest
     {
         public NethereumEventDtosGetAllChangesWorkbookTest() : base(WORKBOOK_PATH)

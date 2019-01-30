@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_8)]
     public class NethereumManagingNoncesTest : WorbookTest
     {
         public NethereumManagingNoncesTest() : base(WORKBOOK_PATH)

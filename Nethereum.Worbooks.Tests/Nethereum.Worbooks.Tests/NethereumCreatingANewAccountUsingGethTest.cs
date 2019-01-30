@@ -6,7 +6,7 @@ using Nethereum.XUnitEthereumClients;
 namespace Nethereum.Worbooks.Tests
 {
 
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_2)]
     public class NethereumCreatingANewAccountUsingGethTest : WorbookTest
     {
         public NethereumCreatingANewAccountUsingGethTest() : base(WORKBOOK_PATH)
