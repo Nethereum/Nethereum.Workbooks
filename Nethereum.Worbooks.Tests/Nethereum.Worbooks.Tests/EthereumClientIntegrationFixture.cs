@@ -31,42 +31,56 @@ namespace Nethereum.Worbooks.Tests
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_4)]
     public class EthereumClientFixtureCollection4 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_5)]
     public class EthereumClientFixtureCollection5 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_6)]
     public class EthereumClientFixtureCollection6 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_7)]
     public class EthereumClientFixtureCollection7 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_8)]
     public class EthereumClientFixtureCollection8 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_9)]
     public class EthereumClientFixtureCollection9 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_10)]
     public class EthereumClientFixtureCollection10 : ICollectionFixture<EthereumClientIntegrationFixture>
     {
         // This class has no code, and is never created. Its purpose is simply
