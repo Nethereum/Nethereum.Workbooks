@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_8)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_11)]
     public class NethereumSigningTransactionsOfflineTest : WorbookTest
     {
         public NethereumSigningTransactionsOfflineTest() : base(WORKBOOK_PATH)
