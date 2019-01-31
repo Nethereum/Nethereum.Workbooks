@@ -15,7 +15,7 @@ packages:
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-Nethereum allows you to sign any type of data using Ethereum signature format. The following is a quick guide to signing with Nethereum.
+Nethereum allows you to sign any type of data using Ethereum signature format. The following is a quick guide to signing  a string with Nethereum.
 
 First, we need to set our environment:
 
@@ -30,17 +30,8 @@ Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-ma
 ```
 
 ```csharp
-#r "Nethereum.Accounts"
-```
-
-```csharp
 using Nethereum.Web3;
-using Nethereum.Web3.Accounts;
-using Nethereum.Web3.Accounts.Managed;
 using Nethereum.Signer;
-using Nethereum.KeyStore;
-using System.Threading;
-using System.Threading.Tasks;
 ```
 
 ## Signing a message offline
