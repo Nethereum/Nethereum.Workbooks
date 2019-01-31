@@ -1,0 +1,102 @@
+---
+uti: com.xamarin.workbook
+id: 78b886b5-d5f6-48ba-932a-cc4606f50b01
+title: nethereum-signing-transactions-offline
+platforms:
+- Console
+packages:
+- id: Nethereum.Web3
+  version: 3.0.0
+- id: xunit
+  version: 2.4.1
+- id: xunit.assert
+  version: 2.4.1
+---
+
+# Offline transaction signing
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
+Nethereum allows you to sign transactions both offline (without using an Ethereum client) and online (using a client). The following is a quick guide to signing  offline transactions using Nethereum.
+
+First, we need to set our environment:
+
+## Prerequisites:
+
+First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
+
+Start a Geth chain (geth-clique-linux\\ geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+```csharp
+#r "Nethereum.Accounts"
+```
+
+```csharp
+#r "Xunit.Assert"
+```
+
+```csharp
+using Nethereum.Web3; 
+using Nethereum.Web3.Accounts;
+using Nethereum.Web3.Accounts.Managed;
+using Xunit;
+```
+
+`OfflineTransactionSigning` enables the signing of transactions, get the sender address or verify already signed transactions without interacting directly with the client. This is very convenient as light clients may not be able to store the whole chain, but would prefer to use their private keys to sign transactions and broadcast the signed raw transaction to the network.
+
+`web3.OfflineTransactionSigning.SignTransaction`
+
+`web3.OfflineTransactionSigning.GetSenderAddress`
+
+`web3.OfflineTransactionSigning.VerifyTransaction`
+
+To provide offline transaction signing in Nethereum you can do the following:
+
+First, you will need your private key, and sender address. You can retrieve the sender address from your private key using `Nethereum.Core.Signing.Crypto.EthECKey.GetPublicAddress(privateKey);` if you only have the private key.
+
+```csharp
+var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
+```
+
+Now using web3 first you will need to retrieve the total number of transactions of your sender address.
+
+```csharp
+var web3 = new Web3(); 
+var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(senderAddress);
+```
+
+The txCount will be used as the nonce to sign the transaction.
+
+Now using web3 again, you can build an encoded transaction as following:
+
+```csharp
+var receiveAddress = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
+var encoded = Web3.OfflineTransactionSigner.SignTransaction(privateKey, receiveAddress, 10, txCount.Value);
+```
+
+If you need to include data and gas there are overloads for it.
+
+You can verify an encoded transaction:
+
+```csharp
+Assert.True(Web3.OfflineTransactionSigner.VerifyTransaction(encoded));
+```
+
+Or get the sender address from an encoded transaction:
+
+```csharp
+Web3.OfflineTransactionSigner.GetSenderAddress(encoded);
+```
+
+To send the encoded transaction you will use the RPC method "SendRawTransaction"
+
+```csharp
+var txId = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync("0x" + encoded);
+```
+
+The complete example can be found on the [Transactions signing unit tests](https://github.com/Nethereum/Nethereum/blob/7897b8b247a3a97fa3eef5684ab31fb8cf7f4879/src/Nethereum.Signer.IntegrationTests/TransactionSigningTests.cs) or you can see a complete use case on the Game sample and its service Source code.

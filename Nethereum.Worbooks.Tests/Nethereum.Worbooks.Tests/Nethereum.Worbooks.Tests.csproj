@@ -45,6 +45,9 @@
          <Link>nethereum-signing-messages.workbook</Link>
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+       <None Include="..\..\docs\nethereum-signing-transactions-offline.workbook" Link="nethereum-signing-transactions-offline.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
        <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
