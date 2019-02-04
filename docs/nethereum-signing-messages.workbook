@@ -75,3 +75,9 @@ var signature = signer.EncodeUTF8AndSign(msg, new EthECKey(privateKey));
 ```csharp
 var addressRec = signer.EncodeUTF8AndEcRecover(msg, signature);
 ```
+`CalculateHash`
+`EcRecover`
+`HashAndSign`
+`HashAndEcRecover`
+`EncodeUTF8AndSign`
+`EncodeUTF8AndEcRecover`
