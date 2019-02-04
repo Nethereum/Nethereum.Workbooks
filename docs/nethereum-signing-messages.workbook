@@ -17,8 +17,6 @@ This document is a Workbook, find more about workbooks' installation requirement
 
 Nethereum allows you to sign any type of data using Ethereum signature format. The following is a quick guide to signing  a string with Nethereum.
 
-First, we need to set our environment:
-
 ## Prerequisites:
 
 First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
@@ -52,7 +50,7 @@ var address = "0x12890d2cce102216644c59dae5baed380d84830c";
 var msg = "wee test message 18/09/2017 02:55PM";
 ```
 
-`privatekey` declares the sender's address
+`privatekey` declares `address` privateKey.
 
 ```csharp
 var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
@@ -64,17 +62,19 @@ var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf15
 var signer = new EthereumMessageSigner();
 ```
 
-`signature` evaluates to the signature itself: a string.
+`signature` the signer `EncodeUTF8AndSign` method  processes the msg and the sender's private key and evaluates to the signature itself: a string.
 
 ```csharp
 var signature = signer.EncodeUTF8AndSign(msg, new EthECKey(privateKey));
 ```
 
-`addressRec` evaluates to the signer's address, thus proving the validity of the message
+`addressRec` evaluates to the signer's address, thus proving the validity of the message. In this case the `EncodeUTF8AndEcRecover` method is used.
 
 ```csharp
 var addressRec = signer.EncodeUTF8AndEcRecover(msg, signature);
 ```
+### Other signing methods
+
 `CalculateHash`
 `EcRecover`
 `HashAndSign`
