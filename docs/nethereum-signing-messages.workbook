@@ -54,7 +54,7 @@ var signer1 = new EthereumMessageSigner();
 ```
 #### Encoding and signing a message using EncodeUTF8AndSign:
 
-* Using **EncodeUTF8AndSign** we can encode the sender's msg (`msg1`) with their private key (`privateKey`) which will return a string. That string (`signature1`) represents the signature.
+* **EncodeUTF8AndSign** will encode the sender's msg (`msg1`) with their private key (`privateKey`) and return a string that represents the signature.
 
 ```csharp
 var signature1 = signer1.EncodeUTF8AndSign(msg1, new EthECKey(privateKey));
