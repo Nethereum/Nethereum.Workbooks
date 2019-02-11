@@ -1,16 +1,28 @@
 ---
-packages:
-- id: Nethereum.Web3
-  version: 2.4.0
 uti: com.xamarin.workbook
 id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
 title: Nethereum-ChainID-Management
 platforms:
 - Console
+packages:
+- id: Nethereum.Web3
+  version: 3.0.0
 ---
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
+## Pre-requisites:
+
+Download the test chain matching your environment from https://github.com/Nethereum/Testchains
+
+Start a Geth chain ( **geth-clique-linux\_** **_geth-clique-windows_** **_geth-clique-mac_**) using startgeth.bat (Windows) or startgeth.sh (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
 ```csharp
 #r "Nethereum.Web3"
+```
+
+```csharp
+#r "Nethereum.Accounts"
 ```
 
 ```csharp
@@ -30,11 +42,11 @@ To counteract this issue, an Ethereum fix was implemented (the improvement name 
 
 The preconfigured chainIds can be found in Nethereum.Signer.Chain:
 
-![](screenshots/Nethereum-ChainID-Management-1.jpg)
+![](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/NethereumChainIDManagement1.jpg)
 
 To configure the chainId in geth, edit the genesis as follows (example configuration):
 
-![](screenshots/Nethereum-ChainID-Management-2.jpg)
+![](https://github.com/Nethereum/Nethereum.Workbooks/raw/master/docs/screenshots/NethereumChainIDManagement2.jpg)
 
 To sign a transaction using the ChainID attribute, we need to create an instance of the "Account" object using our private key and ChainID as arguments.
 
@@ -56,7 +68,7 @@ or just using our custom chainId as such:
 account =  new Account(privatekey, 444444444500);
 ```
 
-For this sample we will use our custom chainId already set in our testnet 444444444500.
+For this sample we will use our custom chainId already set in our testnet **444444444500**.
 
 We now can create a new instance of Web3 using the account configured with the chainId. Internally the TransactionManager will use this chainId to sign all transactions.
 
@@ -64,7 +76,7 @@ We now can create a new instance of Web3 using the account configured with the c
 var web3 = new Web3(account);
 ```
 
-Let's use it in a simple example, for example the transfer of Ether. 
+Let's use it in a simple example, for example the transfer of Ether.
 
 ```csharp
 var toAddress = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
@@ -76,14 +88,14 @@ First let's convert 1 Ether to Wei.
 var wei = Web3.Convert.ToWei(1);
 ```
 
-And then use the TransactionManager to make the transfer and wait for the receipt.
+And then use the TransactionManager to execute the transfer and wait for the receipt.
 
 ```csharp
  var transactionReceipt = await web3.TransactionManager.TransactionReceiptService.SendRequestAndWaitForReceiptAsync(
                new TransactionInput() {From = account.Address, To = toAddress, Value = new HexBigInteger(wei)}, null);
 ```
 
-Finally, we can see that the receivers address balance has incresed by 1 Ether
+Finally, we can see that the receiver’s address balance has increased by 1 Ether
 
 ```csharp
  var balance = await web3.Eth.GetBalance.SendRequestAsync("0x13f022d72158410433cbd66f5dd8bf6d2d129924");
