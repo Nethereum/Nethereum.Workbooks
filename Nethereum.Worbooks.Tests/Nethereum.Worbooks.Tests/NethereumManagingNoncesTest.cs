@@ -4,11 +4,7 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-<<<<<<< HEAD
     [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_8)]
-=======
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
->>>>>>> master
     public class NethereumManagingNoncesTest : WorbookTest
     {
         public NethereumManagingNoncesTest() : base(WORKBOOK_PATH)
@@ -23,7 +19,6 @@ namespace Nethereum.Worbooks.Tests
             var code = GetCodeSectionsFromWorkbook();
             //When
             var state = await CSharpScript.RunAsync(code);
-<<<<<<< HEAD
             state = await state.ContinueWithAsync("return (transaction, txId);");
             dynamic returnValue = (dynamic)state.ReturnValue;
             //Then
@@ -33,13 +28,3 @@ namespace Nethereum.Worbooks.Tests
         }
     }
 }
-=======
-            state = await state.ContinueWithAsync("return transaction;");
-            dynamic returnValue = (dynamic)state.ReturnValue;
-            //Then
-            Assert.NotNull(returnValue);
-            Assert.Matches("^0x[0-9a-fA-F]{64}$", returnValue);
-        }
-    }
-}
->>>>>>> master
