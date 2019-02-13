@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_4)]
     public class NethereumEventsGettingStartedTest : WorbookTest
     {
         public NethereumEventsGettingStartedTest() : base(WORKBOOK_PATH)

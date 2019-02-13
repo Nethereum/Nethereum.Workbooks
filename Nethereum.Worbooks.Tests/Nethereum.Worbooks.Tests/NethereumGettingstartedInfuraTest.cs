@@ -6,7 +6,7 @@ using Nethereum.XUnitEthereumClients;
 namespace Nethereum.Worbooks.Tests
 {
 
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_5)]
     public class NethereumGettingStartedInfuraTest : WorbookTest
     {
         public NethereumGettingStartedInfuraTest() : base(WORKBOOK_PATH)
