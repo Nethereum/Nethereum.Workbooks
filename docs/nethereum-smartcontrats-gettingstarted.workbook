@@ -188,12 +188,13 @@ var contractAddress = transactionReceipt.ContractAddress;
 
 ### Interacting with the Contract
 
-Once we have deployed the contract, we can start interaction with the contract.
+Once we have deployed the contract, we can start interacting with the contract.
 
 #### Querying
 
 To retrieve the balance of an address we can create an instance of the BalanceFunction message and set the parameter as our account "Address", since we are the "owner" of the Token, the full balance has been assigned to us.
 
+To retrieve the balance, we will create a QueryHandler and finally using our contract address and message retrieve the balance amount.
 ```csharp
 var balanceOfFunctionMessage = new BalanceOfFunction()
 {
@@ -203,9 +204,6 @@ var balanceOfFunctionMessage = new BalanceOfFunction()
 var balanceHandler = web3.Eth.GetContractQueryHandler<BalanceOfFunction>();
 var balance = await balanceHandler.QueryAsync<BigInteger>(contractAddress, balanceOfFunctionMessage);
 ```
-
-To retrieve the balance, we will create a QueryHandler and finally using our contract address and message retrieve the balance amount.
-
 ### Multiple return types or complex objects
 
 Functions of smart contracts can return one or multiple values in a single call. To decode the returned values, we use a FunctionOutputDTO.
