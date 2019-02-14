@@ -38,6 +38,12 @@
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+       <None Include="..\..\docs\nethereum-managed-accounts.workbook\index.workbook" Link="index.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-managed-accounts.workbook\smartContractData.csx" Link="smartContractData.csx">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
        <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
