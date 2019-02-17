@@ -93,7 +93,6 @@ Let's now examine what happens to the `nonce` value before and after we send a t
 
 ```csharp
 var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(account.Address);
-var nonce = txCount.Value;
 ```
 
 Now, let's send a simple transaction:
@@ -111,3 +110,36 @@ var nonce2 = txCount2.Value;
 ```
 
 As the above code demonstrates, the `nonce` was automatically incremented, thanks to the use of `TransactionManager`.
+
+Nevertheless are scenarios where we might want to supply a Nonce manually, for example if we want to sign a transaction completely offline.
+
+## Sending a transaction with an arbitrary nonce
+
+The below shows how to verify the number of transactions performed from an account and
+
+Let's first create an object instance of `TransactionSigner`
+
+```csharp
+var OfflineTransactionSigner = new TransactionSigner();
+```
+Before executing the below, make sure you restart your devchain by exiting the running instance and launching using `startgeth` (for geth client) or `launch` (for parity). 
+
+First, let's check again what the current nonce is (if you duly restarted your chain, this should return `0`).
+```csharp
+var txValue = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(account.Address);
+var currentNonce = txValue.Value;
+```
+We can now decide to assign an arbitrary nonce (any bigger than the current nonce)
+```csharp
+var manualNonce = 1;
+```
+
+We can now sign our transaction offline:
+```csharp
+var encoded = OfflineTransactionSigner.SignTransaction(privateKey, recipientAddress, 10,
+                manualNonce);
+```
+We can now send our transaction.
+```csharp
+var txId = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync("0x" + encoded);
+```

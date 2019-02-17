@@ -58,6 +58,18 @@ namespace Nethereum.XUnitEthereumClients
     public class EthereumClientIntegrationFixture : IDisposable
     {
         public const string ETHEREUM_CLIENT_COLLECTION_DEFAULT = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_1 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_2 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_3 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_4 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_5 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_6 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_7 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_8 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_9 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_10 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_11 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_12 = "Ethereum client Test";
         private readonly Process _process;
         private readonly string _exePath;
 
@@ -117,7 +129,6 @@ namespace Nethereum.XUnitEthereumClients
                 var location = typeof(EthereumClientIntegrationFixture).GetTypeInfo().Assembly.Location;
                 var dirPath = Path.GetDirectoryName(location);
                 _exePath = Path.GetFullPath(Path.Combine(dirPath, @"..\..\..\..\..\testchain\clique"));
-
                 DeleteData();
 
                 var psiSetup = new ProcessStartInfo(Path.Combine(_exePath, "geth.exe"),

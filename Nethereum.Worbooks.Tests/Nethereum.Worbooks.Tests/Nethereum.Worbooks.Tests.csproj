@@ -38,7 +38,17 @@
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+       <None Include="..\..\docs\nethereum-managed-accounts.workbook\index.workbook" Link="index.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-managed-accounts.workbook\smartContractData.csx" Link="smartContractData.csx">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
        <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-signing-messages.workbook">
+         <Link>nethereum-signing-messages.workbook</Link>
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
@@ -51,6 +61,9 @@
   <ItemGroup>
     <Compile Update="NethereumEventDtosGetAllChangesTest.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="NethereumManagingNoncesTest.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 </Project>

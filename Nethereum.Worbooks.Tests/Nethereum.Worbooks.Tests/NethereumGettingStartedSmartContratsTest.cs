@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_DEFAULT)]
-    public class NethereumGettingStartedSmartContractsWorkbookTest : WorbookTest
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_6)]
+    public class NethereumGettingStartedSmartContratsTest : WorbookTest
     {
-        public NethereumGettingStartedSmartContractsWorkbookTest() : base(WORKBOOK_PATH)
+        public NethereumGettingStartedSmartContratsTest() : base(WORKBOOK_PATH)
         {
         }
 
