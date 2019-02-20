@@ -17,6 +17,12 @@ This document is a Workbook, find more about workbooks' installation requirement
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
+## What is INFURA?
+
+Since running a local Ethereum/IPFS node is becoming more and more challenging, [Infura](http://www.infura.io) provides a scalable infrastructure of nodes that can be accessed via standard libraries and API (JSON-RPC API, web3 libraries).Infura provides a set of public nodes removing the need to have a local or maintained client fully synchronised with the main Ethereum network.
+
+The following shows how to connect to [Infura](http://www.infura.io) and send Ether from an account the mainnet (live Ethereum).
+
 ```csharp
 #r "Nethereum.Web3"
 ```
@@ -29,7 +35,7 @@ Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.KeyStore; using Nethereum.Util; using Nethereum.Hex.HexConvertors.Extensions;
 ```
 
-## 1st Step Retrieve the Private Key
+## 1st Step Retrieving the Private Key
 
 First of all we need the accounts private key to sign the transaction, if known already it can just be pasted here.
 
@@ -39,7 +45,7 @@ var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf15
 
 ## Opening the account from the keyStore
 
-Or, if your private key is stored in the standard key store file (geth / parity), you can retrieve it as follows, just change your password and file path.
+If your private key is stored in an Ethereum client's key store file (geth / parity), you can retrieve it as follows.
 
 ```csharp
 //do we want to retrieve the account from the key store? 
@@ -47,10 +53,10 @@ var openfromKeyStore = true;
 //key store file password
 var keyStorePassword = "password";
 //the file location
-var keyStorePath = @".\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
+var keyStorePath = @"..\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c";
 ```
 
-We just need to open the file, read its contents and decrypt them using our password
+Now, still assuming we are using the Ethereum client's key files, we just need to open the file, read its contents and decrypt them using our password:
 
 ```csharp
 if(openfromKeyStore)
@@ -68,10 +74,14 @@ var showPrivateKey = privateKey;
 
 ## The account object
 
-Now we have our private key, we can just simply create our account object.
+Now that we have our private key, we can just simply create our account object.
 
 ```csharp
 var account = new Account(privateKey);
+```
+
+```csharp
+var accountAddress = account.Address;
 ```
 
 ## Infura networks
@@ -90,29 +100,46 @@ Kovan [https://kovan.infura.io](https://kovan.infura.io/)
 
 Rinkeby [https://rinkeby.infura.io](https://rinkeby.infura.io/)
 
-Please note that it is recommended that you should register to infura and append your access token.
+Please note that you need to register on [INFURA's website](https://infura.io/register) and append your access token.
 
 ## Web3
 
-If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io> , and together with our Account we can create a new instance of Web3.
+If we want to connect to the Ethereum mainnet (public Ethereum network) we will use the mainnet url <https://mainnet.infura.io>, and together with our Account we can create a new instance of Web3.
+In the context of this article, we will use Ropsten testnet, in order to not use "real" Ether.
 
 ```csharp
 var web3 = new Web3(account, "https://ropsten.infura.io");
+```
+
+## Checking an Account's balance
+
+Using the Eth API we can execute the GetBalance request asynchronously.
+
+```csharp
+var balance = await web3.Eth.GetBalance.SendRequestAsync(accountAddress);
+```
+
+The amount returned is in Wei, the lowest unit of value. We can convert this to Ether using the Convertion utility:
+
+```csharp
+var etherAmount = Web3.Convert.FromWei(balance.Value);
 ```
 
 ## Converting Ether to Wei
 
 Ether needs to be converted to Wei before sending it, for this we will use the Conversion Utility.
 
-So if we were going to send 1 Ether we will use:
+So if we were going to send 0.1 Ether we will use:
 
 ```csharp
-var wei = Web3.Convert.ToWei(1);
+var wei = Web3.Convert.ToWei(0.1);
 ```
+
+*Please note: make sure the account has enough balance to send the expected amount and re-adjust the above variable if need be.*
 
 Finally we will just set the address to which we want to send some Ether, and using the Transaction manager this will be signed and and sent using our private key.
 
 ```csharp
-var toAddress = "0x12890D2cce102216644c59daE5baed380d84830c";
+var toAddress = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, toAddress,  new Nethereum.Hex.HexTypes.HexBigInteger(wei));
 ```
