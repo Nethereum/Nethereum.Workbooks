@@ -1,7 +1,7 @@
 ---
 uti: com.xamarin.workbook
 id: 578c6875-84b7-4d50-9013-86ecb08880d5
-title: nethereum-infura-transfer
+title: nethereum-gettingstarted-infura
 platforms:
 - Console
 packages:
