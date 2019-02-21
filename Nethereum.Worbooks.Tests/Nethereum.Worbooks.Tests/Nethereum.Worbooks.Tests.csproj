@@ -3,6 +3,11 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="keystore\**" />
+    <EmbeddedResource Remove="keystore\**" />
+    <None Remove="keystore\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.4.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="2.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
@@ -55,6 +60,9 @@
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-using-account-objects.workbook" Link="nethereum-using-account-objects.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\testchain\clique\devChain\keystore\UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c" Link="UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
   </ItemGroup>
