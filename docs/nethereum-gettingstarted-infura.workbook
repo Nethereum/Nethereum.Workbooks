@@ -100,7 +100,7 @@ Kovan [https://kovan.infura.io](https://kovan.infura.io/)
 
 Rinkeby [https://rinkeby.infura.io](https://rinkeby.infura.io/)
 
-Please note that you need to register on [INFURA's website](https://infura.io/register) and append your access token.
+Please note that you might need to register on [INFURA's website](https://infura.io/register) and append your access token.
 
 ## Web3
 
@@ -108,7 +108,7 @@ If we want to connect to the Ethereum mainnet (public Ethereum network) we will 
 In the context of this article, we will use Ropsten testnet, in order to not use "real" Ether.
 
 ```csharp
-var web3 = new Web3(account, "https://ropsten.infura.io");
+var web3 = new Web3(account, "https://rinkeby.infura.io");
 ```
 
 ## Checking an Account's balance
@@ -121,6 +121,8 @@ var balance = await web3.Eth.GetBalance.SendRequestAsync(accountAddress);
 
 The amount returned is in Wei, the lowest unit of value. We can convert this to Ether using the Convertion utility:
 
+Please note: if the balance of your testnet account goes to zero, you can consider using a faucet. In the case of this workbook you can for instance use http://rinkeby-faucet.com as we are using the Rinkeby testnet. 
+
 ```csharp
 var etherAmount = Web3.Convert.FromWei(balance.Value);
 ```
@@ -132,7 +134,7 @@ Ether needs to be converted to Wei before sending it, for this we will use the C
 So if we were going to send 0.1 Ether we will use:
 
 ```csharp
-var wei = Web3.Convert.ToWei(0.1);
+var wei = Web3.Convert.ToWei(0.000001);
 ```
 
 *Please note: make sure the account has enough balance to send the expected amount and re-adjust the above variable if need be.*
