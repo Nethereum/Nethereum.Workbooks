@@ -66,4 +66,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="UTC--2015-11-25T05-05-03.116905600Z--12890d2cce102216644c59dae5baed380d84830c">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

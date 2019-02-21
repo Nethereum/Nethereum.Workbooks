@@ -19,13 +19,14 @@ namespace Nethereum.Worbooks.Tests
         public async void Test()
         {
             var code = GetCodeSectionsFromWorkbook();
+            code = CorrectKeystorePath(code);
             //When
             var state = await CSharpScript.RunAsync(code);
             state = await state.ContinueWithAsync("return (etherAmount, transaction);");
             dynamic returnValue = (dynamic)state.ReturnValue;
             //Then
             Assert.NotNull(returnValue.Item1);
-            Assert.Matches("^0x[0-9a-fA-F]{40}$", returnValue.Item2);
+            Assert.Matches("^0x[0-9a-fA-F]{64}$", returnValue.Item2);
         }
     }
 }

@@ -71,5 +71,18 @@ namespace Nethereum.Worbooks.Tests
             }
             return sb.ToString();
         }
+        public string CorrectKeystorePath(string code)
+        {
+            //var lines = code.Split('\n');
+            //var sb = new StringBuilder();
+            //foreach (var line in lines)
+            //{
+            //    if (line.Trim().StartsWith("./testchain/clique/devChain/keystore"))                {
+            //        sb.AppendLine(line);
+            //    }
+            //}
+            //return sb.ToString();
+            code = code.Replace(".\\testchain\\clique\\devChain\\keystore", "");
+        }
     }
 }
