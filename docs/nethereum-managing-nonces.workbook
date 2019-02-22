@@ -131,7 +131,7 @@ var currentNonce = txValue.Value;
 ```
 We can now decide to assign an arbitrary nonce (any bigger than the current nonce)
 ```csharp
-var manualNonce = 1;
+var manualNonce = 12;
 ```
 
 We can now sign our transaction offline:
