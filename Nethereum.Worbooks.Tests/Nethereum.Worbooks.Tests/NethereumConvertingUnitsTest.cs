@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_1)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_11)]
     public class NethereumConvertingUnitsTest : WorbookTest
     {
         public NethereumConvertingUnitsTest() : base(WORKBOOK_PATH)
