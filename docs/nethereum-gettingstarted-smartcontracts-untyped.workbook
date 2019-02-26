@@ -35,7 +35,6 @@ First, let's download the test chain matching your environment from <https://git
 
 Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
-
 ```csharp
 #r "Nethereum.Web3"
 ```
@@ -49,7 +48,7 @@ Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-ma
 First off we will add the using statement to Nethereum.Web3. All other namespaces will be included directly in the sample.
 
 ```csharp
-using Nethereum.Web3; using Nethereum.Web3.Accounts
+using Nethereum.Web3; using Nethereum.Web3.Accounts;
 ```
 
 ### Byte code and ABI
@@ -172,6 +171,9 @@ Repeating the exercise and sending the same amount.
 var receiptSecondAmountSend = await transferFunction.SendTransactionAndWaitForReceiptAsync(senderAddress, gas, null, null, newAddress, amountToSend);
 ```
 
+```csharp
+var transactionHashSecondAmountSend = receiptSecondAmountSend.TransactionHash;
+```
 When the transaction has been included in the next block, if we check the balance again, we will see how it has doubled.
 
 ```csharp
