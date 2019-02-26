@@ -239,7 +239,7 @@ If we were going to return multiple values we could have something like:
  }
 ```
 
-When querying the chain we will use the following method instead:
+When Querying The chain we will use the following method instead:
 
 ```csharp
 var balanceOutput = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress);
