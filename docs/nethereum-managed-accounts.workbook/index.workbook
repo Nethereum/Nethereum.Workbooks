@@ -1,4 +1,4 @@
----
+---
 packages:
 - id: Nethereum.Web3
   version: 3.0.0
