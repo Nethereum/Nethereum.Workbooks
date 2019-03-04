@@ -13,8 +13,8 @@ namespace Nethereum.Worbooks.Tests
         {
         }
 
-        private const string WORKBOOK_PATH = "index.workbook";
-        private const string  PREFIXCODESECTION = "smartContractData.csx";
+        private const string WORKBOOK_PATH = ".\\nethereum-managed-accounts.workbook\\index.workbook";
+        private const string  PREFIXCODESECTION = ".\\nethereum-managed-accounts.workbook\\smartContractData.csx";
         [Fact]
         public async void Test()
         {

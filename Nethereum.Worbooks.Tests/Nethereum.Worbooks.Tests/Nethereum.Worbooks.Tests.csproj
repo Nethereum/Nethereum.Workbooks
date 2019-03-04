@@ -26,9 +26,8 @@
     <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-    <None Include="..\..\docs\nethereum-estimating-gas.workbook\index.workbook">
-      <Link>index.workbook</Link>
-    </None>
+    <None Include="..\..\docs\nethereum-estimating-gas.workbook\index.workbook" Link="nethereum-estimating-gas.workbook\index.workbook" />
+    <None Include="..\..\docs\nethereum-estimating-gas.workbook\smartContractData.csx" Link="nethereum-estimating-gas.workbook\smartContractData.csx" />
     <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -45,12 +44,6 @@
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
-         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-       </None>
-       <None Include="..\..\docs\nethereum-managed-accounts.workbook\index.workbook" Link="index.workbook">
-         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-       </None>
-       <None Include="..\..\docs\nethereum-managed-accounts.workbook\smartContractData.csx" Link="smartContractData.csx">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
@@ -71,5 +64,22 @@
     <Compile Update="NethereumManagingNoncesTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+  <Compile Include="\nethereum-estimating-gas.workbook\**\*.*">
+    <Link>%(nethereum-estimating-gas.workbook)%(index)%(workbook)</Link>
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </Compile>
+</ItemGroup>
+  <ItemGroup>
+    <Folder Include="nethereum-estimating-gas.workbook\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="nethereum-managed-accounts.workbook\index.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="nethereum-managed-accounts.workbook\smartContractData.csx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
