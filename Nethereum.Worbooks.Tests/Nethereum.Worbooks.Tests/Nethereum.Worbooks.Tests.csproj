@@ -38,6 +38,12 @@
        <None Include="..\..\docs\nethereum-gettingstarted-infura.workbook" Link="nethereum-gettingstarted-infura.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+       <None Include="..\..\docs\nethereum-gettingstarted-smartcontracts-untyped.workbook" Link="nethereum-gettingstarted-smartcontracts-untyped.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-gettingstarted-smartcontracts.workbook" Link="nethereum-gettingstarted-smartcontracts.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
@@ -52,9 +58,6 @@
        </None>
        <None Include="..\..\docs\nethereum-signing-messages.workbook">
          <Link>nethereum-signing-messages.workbook</Link>
-         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-       </None>
-       <None Include="..\..\docs\nethereum-smartcontrats-gettingstarted.workbook" Link="nethereum-smartcontrats-gettingstarted.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-using-account-objects.workbook" Link="nethereum-using-account-objects.workbook">

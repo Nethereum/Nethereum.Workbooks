@@ -1,7 +1,8 @@
+
 ---
 uti: com.xamarin.workbook
 id: 701d2cce-38a5-43b6-a682-e7684c44d480
-title: nethereum-gettingstard-smartcontrats.workbook
+Title: nethereum-gettingstarted-smartcontracts.workbook
 platforms:
 - Console
 packages:
@@ -238,7 +239,7 @@ If we were going to return multiple values we could have something like:
  }
 ```
 
-When querying the chain we will use the following method instead:
+When Querying The chain we will use the following method instead:
 
 ```csharp
 var balanceOutput = await balanceHandler.QueryDeserializingToObjectAsync<BalanceOfOutputDTO>( balanceOfFunctionMessage, contractAddress);
@@ -327,7 +328,7 @@ transfer.Nonce = 2;
 The TransactionHandler also provides a mechanism to sign the Function and Deployments messages, provided we use an Account and/or an ExternalAccount
 
 ```csharp
-var signedTransaction = await transferHandler.SignTransactionAsync(contractAddress, transfer);
+var signedTransaction1 = await transferHandler.SignTransactionAsync(contractAddress, transfer);
 ```
 
 Nethereum internally calls the Ethereum client to set the GasPrice, Nonce and estimate the Gas, so if we want to sign the transaction for the contract completely offline we will need to set those values before hand.
@@ -336,7 +337,7 @@ Nethereum internally calls the Ethereum client to set the GasPrice, Nonce and es
 transfer.Nonce = 2;
 transfer.Gas = 21000;
 transfer.GasPrice =  Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUnit.Gwei);
-signedTransaction = await transferHandler.SignTransactionAsync(contractAddress, transfer);
+var signedTransaction2 = await transferHandler.SignTransactionAsync(contractAddress, transfer);
 ```
 
 ### Extension methods for Functions and Deployment Messages
