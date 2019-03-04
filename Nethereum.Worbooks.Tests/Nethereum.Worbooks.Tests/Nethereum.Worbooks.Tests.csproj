@@ -26,6 +26,9 @@
     <None Include="..\..\docs\nethereum-creating-a-new-account-using-geth.workbook" Link="nethereum-creating-a-new-account-using-geth.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+    <None Include="..\..\docs\nethereum-estimating-gas.workbook\index.workbook">
+      <Link>index.workbook</Link>
+    </None>
     <None Include="..\..\docs\nethereum-eventdtos-getallchanges.workbook" Link="nethereum-eventdtos-getallchanges.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
