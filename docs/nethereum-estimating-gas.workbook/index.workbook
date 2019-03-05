@@ -41,18 +41,15 @@ Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-ma
 ```csharp
 #r "Nethereum.Web3"
 ```
-
 ```csharp
 #r "Nethereum.Accounts"
 ```
-
 ```csharp
 #r "Nethereum.Util"
 ```
 ```csharp
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util;
 ```
-
 ```csharp
 #load "smartContractData.csx"
 ```
@@ -82,8 +79,6 @@ In the transfer message, we will include the receiver address `To`, and the `Tok
 
 The final step is to Send the request, wait for the receipt to be “mined” and included in the blockchain.
 
-Another option will be to not wait (poll) for the transaction to be mined and just retrieve the transaction hash.
-
 ```csharp
 var receiverAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
 var transferHandler = web3.Eth.GetContractTransactionHandler<TransferFunction>();
@@ -103,7 +98,7 @@ transfer.AmountToSend = Nethereum.Web3.Web3.Convert.ToWei(1);
 
 Nethereum automatically sets the GasPrice if not provided by using the clients "GasPrice" call, which provides the average gas price from previous blocks.
 
-If you want to have more control over the GasPrice these can be set in both FunctionMessages and DeploymentMessages.
+If you want to have more control over the GasPrice these can be set in both `FunctionMessages` and `DeploymentMessages`.
 
 The GasPrice is set in "Wei" which is the lowest unit in Ethereum, so if we are used to the usual "Gwei" units, this will need to be converted using the Nethereum Convertion utilities.
 ```csharp
