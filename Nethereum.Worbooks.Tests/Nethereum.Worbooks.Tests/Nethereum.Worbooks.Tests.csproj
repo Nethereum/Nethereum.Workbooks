@@ -63,18 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Update="NethereumEventDtosGetAllChangesTest.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Update="NethereumManagingNoncesTest.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-  <Compile Include="\nethereum-estimating-gas.workbook\**\*.*">
-    <Link>%(nethereum-estimating-gas.workbook)%(index)%(workbook)</Link>
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </Compile>
-</ItemGroup>
   <ItemGroup>
     <Folder Include="nethereum-estimating-gas.workbook\" />
   </ItemGroup>

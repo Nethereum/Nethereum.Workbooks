@@ -23,7 +23,7 @@ namespace Nethereum.Worbooks.Tests
             var usingsCode = ExtractUsingStatements(code);
             var Rs = ExtractRStatements(code);
             var usingsPrefix = ExtractUsingStatements(prefixCode);
-            prefixCode = RemoveLoadSections(prefixCode); 
+            prefixCode = RemoveLoadSections(prefixCode);
             code = RemoveLoadSections(code);
             var state = await CSharpScript.RunAsync(Rs + usingsCode+usingsPrefix +prefixCode+code);
             state = await state.ContinueWithAsync("return (contractAddress1, transactionHash);");
