@@ -23,19 +23,17 @@ Reusing nonce: if we send a new transaction for the same account with a nonce of
 “Gaps”: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
 
 ## How Nethereum helps managing nonces
+The nonce for the next transaction, can be simply defined as the total number of transactions for that account. The transaction count can be retrieved using "web3.Eth.GetTransactionCount.SendRequestAsync(account, BlockParameter.CreatePending())". This includes the total number of transactions including the pending transactions, which have been submitted but are yet to be included in the blockchain.
 
-Each time a transaction is sent via clients like Geth or Parity, the clients confirm the transaction with a delay, this can generate duplicate nonces when several transactions are sent in a short timeframe.
+There is a small delay when transactions are included on the pending queue by clients like Geth or Parity. If we rely on the the transaction count, this can be an issue, if we are batching transactions at a faster rate that are included on the pending transaction queue.
 
-To keep nonce count in sync between a Nethereum Dapp and the client it communicates with, Nethereum provides with `NonceServices`.
-`NonceServices` is assigned to Nethereum's `TransactionManager` and keeps track of the nonce assigned to every transaction sent to your Ethereum client.
+To keep nonce count in sync between a Nethereum Dapp and the client it communicates with, Nethereum provides a `NonceService`, which can be assigned to the transaction manager, the default NonceService provides an in memory counter of the number of transactions / nonces.
 
-This workbook shows how to leverage `NonceServices`
+## Prerequisites:
 
-## prerequisites:
+First, let's download the test chain matching your environment from <https://github.com/nethereum/testchains>
 
-first, let's download the test chain matching your environment from <https://github.com/nethereum/testchains>
-
-start a geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (windows) or **startgeth.sh** (mac/linux). the chain is setup with the proof of authority consensus and will start the mining process immediately.
+Start a geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (windows) or **startgeth.sh** (mac/linux). the chain is setup with the proof of authority consensus and will start the mining process immediately.
 
 ```csharp
 #r "nethereum.web3"
@@ -91,6 +89,7 @@ Let's now examine what happens to the `nonce` value before and after we send a t
 
 `txCount` represents the `nonce` object:
 
+NOTE: THIS IS WRONG, THIS IS RETRIEVING THE NONCE FROM THE CLIENT USING THE TRANSACTION COUNT
 ```csharp
 var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(account.Address);
 ```
@@ -131,7 +130,7 @@ var currentNonce = txValue.Value;
 ```
 We can now decide to assign an arbitrary nonce (any bigger than the current nonce)
 ```csharp
-var manualNonce = 1;
+var manualNonce = 12;
 ```
 
 We can now sign our transaction offline:

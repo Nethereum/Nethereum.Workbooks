@@ -101,4 +101,18 @@ namespace Nethereum.Worbooks.Tests
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_13)]
+    public class EthereumClientFixtureCollection13 : ICollectionFixture<EthereumClientIntegrationFixture>
+    {
+        // This class has no code, and is never created. Its purpose is simply
+        // to be the place to apply [CollectionDefinition] and all the
+        // ICollectionFixture<> interfaces.
+    }
+    [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_14)]
+    public class EthereumClientFixtureCollection14 : ICollectionFixture<EthereumClientIntegrationFixture>
+    {
+        // This class has no code, and is never created. Its purpose is simply
+        // to be the place to apply [CollectionDefinition] and all the
+        // ICollectionFixture<> interfaces.
+    }
 }
