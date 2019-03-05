@@ -1,5 +1,4 @@
 #r "Nethereum.Web3"
-
 #r "Nethereum.Accounts"
 
 using Nethereum.Web3;
@@ -12,6 +11,10 @@ using Nethereum.Contracts;
 using Nethereum.Contracts.Extensions;
 using System.Numerics;
 
+var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
+var account = new Nethereum.Web3.Accounts.Account(privateKey);
+var web3 = new Web3(account);
 public class StandardTokenDeployment : ContractDeploymentMessage
 {
 
@@ -39,3 +42,12 @@ public class TransferFunction : FunctionMessage
     [Parameter("uint256", "_value", 2)]
     public BigInteger TokenAmount { get; set; }
 }
+
+var deploymentMessage = new StandardTokenDeployment
+{
+    TotalSupply = 100000
+};
+
+var deploymentHandler = web3.Eth.GetContractDeploymentHandler<StandardTokenDeployment>();
+var transactionReceipt = await deploymentHandler.SendRequestAndWaitForReceiptAsync(deploymentMessage);
+var contractAddress = transactionReceipt.ContractAddress;
