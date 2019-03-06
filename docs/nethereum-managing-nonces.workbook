@@ -19,11 +19,13 @@ When making a transaction in Ethereum, a consecutive number should be attached t
 
 Therefore, failing to increment this value correctly can result in different kinds of errors. For instance, let’s say the latest transaction nonce was 121:
 
-Reusing nonce: if we send a new transaction for the same account with a nonce of either 121 or below, the node will reject it.
-“Gaps”: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
+#### Reusing nonce: if we send a new transaction for the same account with a nonce of either 121 or below, the node will reject it.
+
+#### Gaps: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
 
 ## How Nethereum helps managing nonces
-The nonce for the next transaction, can be simply defined as the total number of transactions for that account. The transaction count can be retrieved using "web3.Eth.GetTransactionCount.SendRequestAsync(account, BlockParameter.CreatePending())". This includes the total number of transactions including the pending transactions, which have been submitted but are yet to be included in the blockchain.
+
+The nonce for the next transaction, can be simply defined as the total number of transactions for that account. The transaction count can be retrieved using `web3.Eth.GetTransactionCount.SendRequestAsync(account, BlockParameter.CreatePending())`. This includes the total number of transactions including the pending transactions, which have been submitted but are yet to be included in the blockchain.
 
 There is a small delay when transactions are included on the pending queue by clients like Geth or Parity. If we rely on the the transaction count, this can be an issue, if we are batching transactions at a faster rate that are included on the pending transaction queue.
 
@@ -43,7 +45,11 @@ Start a geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-ma
 #r "nethereum.Accounts"
 ```
 
-after that, we will need to add `using` statements:
+```csharp
+using Nethereum.RPC.Eth.Transactions;
+```
+
+Then we will need to add `using` statements:
 
 ```csharp
 using Nethereum.Web3;
@@ -54,12 +60,11 @@ using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.KeyStore;
 using Nethereum.Hex.HexConvertors;
 using Nethereum.Hex.HexTypes;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Nethereum.RPC.NonceServices;
 using Nethereum.RPC.TransactionReceipts;
+using System.Threading.Tasks;
+using Nethereum.RPC.Eth.Transactions;
+using Nethereum.RPC.Eth.DTOs;
 ```
 
 ## Nonce management with Nethereum `accounts` objects
@@ -75,37 +80,52 @@ This example shows what happens to the `nonce` value when we send a transaction 
 We first need to create an instance of an account, then use it to
 instantiate a `web3` object.
 
-* `web3` is the Web3 instance using the new `account` as constructor
+Let's first declare our new `Account`:
 
 ```csharp
 var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
 var account = new Nethereum.Web3.Accounts.Account(privateKey);
+```
+
+* `web3` is the Web3 instance using the new `account` as constructor
+
+```csharp
 var web3 = new Web3(account);
 ```
 
 Let's now examine what happens to the `nonce` value before and after we send a transaction:
 
-#### Before a transaction is sent:
+### Before a transaction is sent:
 
-`txCount` represents the `nonce` object:
+Nethereum `Account` objects also provide with a `NonceService` that  keeps track of all transactions, including the ones still pending, making it easy to assign the right nonce to a transaction about to be sent.
 
-NOTE: THIS IS WRONG, THIS IS RETRIEVING THE NONCE FROM THE CLIENT USING THE TRANSACTION COUNT
+Here is how to return the current number of transaction for the `account` we declared earlier:
+
 ```csharp
-var txCount = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(account.Address);
+var nonceProvider = account.NonceService;
 ```
 
-Now, let's send a simple transaction:
+It is also possible to return the next nonce that needs to be assigned to a future transaction, this nonce will be defined using the current nonce plus the pending transactions sent by our account:
+
+```csharp
+var futureNonce = await account.NonceService.GetNextNonceAsync();
+```
+
+Now, let's send a simple transaction, the right nonce will be automatically assigned to it by the `TransactionManager`:
 
 ```csharp
 var recipientAddress = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae";
 var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, recipientAddress, new HexBigInteger(1));
 ```
 
-#### After a transaction has been sent
+Nethereum's `TransactionManager` uses `NonceService` to retrieve the relevant nonce for the
+
+\####After a transaction has been sent
+
+Finally, using the NonceService, we can check if our transaction count has changed:
 
 ```csharp
-var txCount2 = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(account.Address);
-var nonce2 = txCount2.Value;
+var currentNonce1 = account.NonceService;
 ```
 
 As the above code demonstrates, the `nonce` was automatically incremented, thanks to the use of `TransactionManager`.
@@ -121,24 +141,30 @@ Let's first create an object instance of `TransactionSigner`
 ```csharp
 var OfflineTransactionSigner = new TransactionSigner();
 ```
-Before executing the below, make sure you restart your devchain by exiting the running instance and launching using `startgeth` (for geth client) or `launch` (for parity). 
+
+Before executing the below, make sure you restart your devchain by exiting the running instance and launching using `startgeth` (for geth client) or `launch` (for parity).
 
 First, let's check again what the current nonce is (if you duly restarted your chain, this should return `0`).
+
 ```csharp
-var txValue = await web3.Eth.Transactions.GetTransactionCount.SendRequestAsync(account.Address);
-var currentNonce = txValue.Value;
+var currentNonce2 = account.NonceService;
 ```
-We can now decide to assign an arbitrary nonce (any bigger than the current nonce)
+
+We can now determine what should be the next nonce for our upcoming transaction:
+
 ```csharp
-var manualNonce = 12;
+var manualNonce = await nonceProvider.GetNextNonceAsync();
 ```
 
 We can now sign our transaction offline:
+
 ```csharp
 var encoded = OfflineTransactionSigner.SignTransaction(privateKey, recipientAddress, 10,
                 manualNonce);
 ```
-We can now send our transaction.
+
+And finally, send our transaction:
+
 ```csharp
 var txId = await web3.Eth.Transactions.SendRawTransaction.SendRequestAsync("0x" + encoded);
 ```
