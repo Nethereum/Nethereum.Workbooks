@@ -1,7 +1,7 @@
 ---
 uti: com.xamarin.workbook
-id: 7c6a7c28-9e2c-4536-8cb3-841b6173cacb
-title: nethereum-managing-nonces
+id: 92040ff5-c871-4144-af7c-be7db00abbd7
+title: nethereum-receipt-status
 platforms:
 - Console
 packages:
@@ -9,27 +9,13 @@ packages:
   version: 3.0.0
 ---
 
-# Managing nonces with Nethereum
+# Using Receipt Status
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-To prevent replay attacks (submitting the same transaction several times) Ethereum provides a transaction counter: the `nonce` parameter. Nonce keeps track of the number of times a transaction has been run by an account.
-
-When making a transaction in Ethereum, a consecutive number should be attached to each transaction on the same account. Each node will process transactions from a specific account in a strict order according to the value of its nonce.
-
-Therefore, failing to increment this value correctly can result in different kinds of errors. For instance, let’s say the latest transaction nonce was 121:
-
-#### Reusing nonce: if we send a new transaction for the same account with a nonce of either 121 or below, the node will reject it.
-
-#### Gaps: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
+Since the Bizantium fork, Ethereum provides with a way to know if a transaction succeeded by checking its receipt `status`. A receipt status can have a value of `0` or `1`, `0` meaning that the transaction has failed (whatever the reason may be) `1` meaning the transaction was succesful.
 
 ## How Nethereum helps managing nonces
-
-The nonce for the next transaction, can be simply defined as the total number of transactions for that account. The transaction count can be retrieved using `web3.Eth.GetTransactionCount.SendRequestAsync(account, BlockParameter.CreatePending())`. This includes the total number of transactions including the pending transactions, which have been submitted but are yet to be included in the blockchain.
-
-There is a small delay when transactions are included on the pending queue by clients like Geth or Parity. If we rely on the the transaction count, this can be an issue, if we are batching transactions at a faster rate that are included on the pending transaction queue.
-
-To keep nonce count in sync between a Nethereum Dapp and the client it communicates with, Nethereum provides a `NonceService`, which can be assigned to the transaction manager, the default NonceService provides an in memory counter of the number of transactions / nonces.
 
 ## Prerequisites:
 
