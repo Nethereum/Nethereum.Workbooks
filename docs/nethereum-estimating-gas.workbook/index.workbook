@@ -58,9 +58,9 @@ using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util;
 Let's declare our private key and address as variables (we'll use the address to send the transaction) and use them to create a new account:
 
 ```csharp
-//var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
-//var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
-//var account = new Nethereum.Web3.Accounts.Account(privateKey);
+var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
+var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
+var account = new Nethereum.Web3.Accounts.Account(privateKey);
 ```
 
 ### Web3
@@ -68,7 +68,7 @@ Let's declare our private key and address as variables (we'll use the address to
 Web3 provides a simple interaction wrapper with Ethereum clients. To create an instance of Web3, we need to supply our Account and the RPC uri of the Ethereum client. In this scenario we will only use the Account, as we will be interacting with our private test chain on the default RPC uri “http://localhost:8545”
 
 ```csharp
-//var web3 = new Web3(account);
+var web3 = new Web3(account);
 ```
 
 ## Transfering token
