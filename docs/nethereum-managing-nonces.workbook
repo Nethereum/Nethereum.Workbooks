@@ -19,12 +19,21 @@ When making a transaction in Ethereum, a consecutive number should be attached t
 
 Therefore, failing to increment this value correctly can result in different kinds of errors. For instance, let’s say the latest transaction nonce was 121:
 
-#### Reusing nonce: if we send a new transaction for the same account with a nonce of either 121 or below, the node will reject it.
+## What are nonces?
+The nonce is an important component of a transaction, it is an attribute of a an address that represents the number of transactions that have been sent by that address.
+Nonces have two functions:
+1- Allowing to choose the order in which order transactions will be executed.
+2- Avoiding duplicate attacks.
 
-#### Gaps: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
+In case 1, nonces enable to choose the order in which transactions will be executed by simply assigning nonces reflecting the order in which we want them processed (`0`for the first `1` for the second, etc...). 
+In case 2, nonces prevent an attacker from copying one of our transactions and resending, a nonce makes a transaction unique, there can only be one single transaction with a specific nonce, once it's written in a block, it cannot be "replayed". 
+
+For more details on transactions and nonces, we recommend [this article](https://github.com/ethereumbook/ethereumbook) (and the [Ethereum Book](https://github.com/ethereumbook/ethereumbook)more generally)
 
 ## How Nethereum helps managing nonces
 
+#### Reusing nonce: if we send a new transaction for the same account with a nonce of either 121 or below, the node will reject it.
+#### Gaps: if we send a new transaction with a nonce of either 123 or higher, the transaction will not be processed until this gap is closed, i.e. until a transaction with nonce 122 has been processed.
 The nonce for the next transaction, can be simply defined as the total number of transactions for that account. The transaction count can be retrieved using `web3.Eth.GetTransactionCount.SendRequestAsync(account, BlockParameter.CreatePending())`. This includes the total number of transactions including the pending transactions, which have been submitted but are yet to be included in the blockchain.
 
 There is a small delay when transactions are included on the pending queue by clients like Geth or Parity. If we rely on the the transaction count, this can be an issue, if we are batching transactions at a faster rate that are included on the pending transaction queue.
