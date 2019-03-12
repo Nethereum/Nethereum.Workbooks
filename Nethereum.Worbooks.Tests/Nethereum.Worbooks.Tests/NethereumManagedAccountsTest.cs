@@ -13,8 +13,8 @@ namespace Nethereum.Worbooks.Tests
         {
         }
 
-        private const string WORKBOOK_PATH = "index.workbook";
-        private const string  PREFIXCODESECTION = "smartContractData.csx";
+        private const string WORKBOOK_PATH = ".\\nethereum-managed-accounts.workbook\\index.workbook";
+        private const string  PREFIXCODESECTION = ".\\nethereum-managed-accounts.workbook\\smartContractData.csx";
         [Fact]
         public async void Test()
         {
@@ -23,7 +23,7 @@ namespace Nethereum.Worbooks.Tests
             var usingsCode = ExtractUsingStatements(code);
             var Rs = ExtractRStatements(code);
             var usingsPrefix = ExtractUsingStatements(prefixCode);
-            prefixCode = RemoveLoadSections(prefixCode); 
+            prefixCode = RemoveLoadSections(prefixCode);
             code = RemoveLoadSections(code);
             var state = await CSharpScript.RunAsync(Rs + usingsCode+usingsPrefix +prefixCode+code);
             state = await state.ContinueWithAsync("return (contractAddress1, transactionHash);");
