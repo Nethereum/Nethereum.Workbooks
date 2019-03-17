@@ -19,10 +19,10 @@ The purpose of this sample is to estimate the gas cost of a simple transaction a
 
 ## Ethereum and Gas: a primer
 
-Gas is the pricing system for running a transaction or contract in Ethereum.
-The gas system is not very different from the use of Kw for measuring electricity home use. One difference from actual energy market is that the originator of the transaction sets the price of gas, to which the miner can or not accept, this causes an emergence of a market around gas. You can see the evolution of the price of gas here: https://etherscan.io/charts/gasprice
+Gas is the pricing system used for running a transaction or contract in Ethereum.
+The gas system is not very different from the use of kW-h for measuring electricity home use. One difference from actual energy market is that the originator of the transaction sets the price of gas, which the miner can accept or not, this causes an emergence of a market around gas. You can see the evolution of the price of gas at: <https://etherscan.io/chart/gasprice>.
 
-The gas price per transaction or contract is set up to deal with the Turing Complete nature of Ethereum and its EVM (Ethereum Virtual Machine Code) – the idea being to limit infinite loops. If there is not enough Ether in the account to perform the transaction or message then it is considered invalid. The idea is to stop denial of service attacks from infinite loops, encourage efficiency in the code – and to make an attacker pay for the resources they use, from bandwidth through to CPU calculations through to storage.
+The gas price per transaction or per contract is set up to deal with the Turing Complete nature of Ethereum and its EVM (Ethereum Virtual Machine Code) – the idea is to prevent infinite loops. If there is not enough Ether in the account to perform the transaction or message then it is considered invalid. The idea is to stop denial of service attacks from infinite loops, encourage efficiency in the code – and to make an attacker pay for the resources they use, from bandwidth through to CPU calculations through to storage.
 
 Here are the terms needed to define the **gas** cost of a transaction:
 
@@ -30,29 +30,42 @@ Here are the terms needed to define the **gas** cost of a transaction:
 
 * **Gas price** refers to the amount of Ether you’re willing to pay for every unit of gas, and is usually measured in “Gwei”.
 
+It would be difficult to send transaction without an idea of their cost in gas, fortunately  Ethereum provides ways to obtain a gas estimate prior to sending a transaction.
+
+The following article explains how to anticipate the cost of an unsent transaction by returning an estimation.
+
+##### A word of caution
+
+Because of the Turing completeness of the EVM, it is easy to write functions that will take different code paths with wildly different gas costs. For example, a function could choose to take different code paths according to the value of some global state variable. The real code path taken in the function is not known until transaction execution time. Therefore the gas estimate can only give an approximation of the actual cost of a transaction.
+
 ## Quick environment setup
 
 First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
 
 Start a Geth chain (geth-clique-linux\\, geth-clique-windows\\ or geth-clique-mac\\) using **startgeth.bat** (Windows) or **startgeth.sh** (Mac/Linux). The chain is setup with the Proof of Authority consensus and will start the mining process immediately.
 
-**Note:** the following code relies on messages (in the context of this article, they are embedded in [smartContractData](./smartContractData.csx)). If you are not familiar with the use of messages in Nethereum, they are explained in ["Getting started with Smart Contracts"](Nethereum.Workbooks/docs/nethereum-smartcontrats-gettingstarted.workbook)
+**Note:** the following code relies on messages (in the context of this article, they are embedded in [smartContractData](./smartContractData.csx)). If you are not familiar with messages in Nethereum, they are used in ["Getting started with Smart Contracts"](Nethereum.Workbooks/docs/nethereum-gettingstarted-smartcontrats.workbook)
 
 ```csharp
 #r "Nethereum.Web3"
 ```
+
 ```csharp
 #r "Nethereum.Accounts"
 ```
+
 ```csharp
 #r "Nethereum.Util"
 ```
+
 ```csharp
 using Nethereum.Web3; using Nethereum.Web3.Accounts; using Nethereum.Util;
 ```
+
 ```csharp
 #load "smartContractData.csx"
 ```
+
 ### Setting up sender address
 
 Let's declare our private key and address as variables (we'll use the address to send the transaction) and use them to create a new account:
@@ -90,17 +103,14 @@ var transfer = new TransferFunction()
 var transactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
 ```
 
-The GasPrice is set in "Wei" which is the lowest unit in Ethereum, so in the scenario above we have converted 1 Ether to Wei.
-```csharp
-transfer.AmountToSend = Nethereum.Web3.Web3.Convert.ToWei(1);
-```
 ### Gas Price
 
 Nethereum automatically sets the GasPrice if not provided by using the clients "GasPrice" call, which provides the average gas price from previous blocks.
 
 If you want to have more control over the GasPrice these can be set in both `FunctionMessages` and `DeploymentMessages`.
 
-The GasPrice is set in "Wei" which is the lowest unit in Ethereum, so if we are used to the usual "Gwei" units, this will need to be converted using the Nethereum Convertion utilities.
+The GasPrice is set in "Wei" which is the lowest unit in Ethereum, so if we are used to the usual "Gwei" units, this will need to be converted using the Nethereum Conversion utilities.
+
 ```csharp
   transfer.GasPrice =  Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUnit.Gwei);
 ```
@@ -117,6 +127,7 @@ If needed, this can be done manually, using the TransactionHandler and the "tran
 ```
 
 Now the transaction will have the correct amount of `gas` at the right `gasprice`:
+
 ```csharp
 var secondTransactionReceipt = await transferHandler.SendRequestAndWaitForReceiptAsync(contractAddress, transfer);
 var receiptHash = secondTransactionReceipt.TransactionHash;
