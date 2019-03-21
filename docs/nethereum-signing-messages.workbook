@@ -33,7 +33,8 @@ Nethereum provides with two objects that can be used to sign or verify messages:
 
 ```csharp
 using Nethereum.Web3;
-using Nethereum.Ute;
+using Nethereum.Util;
+using System.Collections.Generic;
 using System.Text;
 using Nethereum.Signer;
 using Nethereum.Hex.HexConvertors.Extensions;
@@ -42,7 +43,7 @@ using Nethereum.ABI.Encoders;
 
 The below shows how to sign an arbitrary string:
 
-* **address** declares the sender's address:
+* **address** declares the signer's account address:
 
 ```csharp
 var address = "0x12890d2cce102216644c59dae5baed380d84830c";
@@ -68,7 +69,7 @@ var signer1 = new EthereumMessageSigner();
 
 #### Encoding and signing a message using EncodeUTF8AndSign:
 
-* **EncodeUTF8AndSign** will encode the sender's message (`msg1`) with their private key (`privateKey`) and return a string that represents the signature.
+* **EncodeUTF8AndSign** will encode the signer's message (`msg1`) with their private key (`privateKey`) and return a string that represents the signature.
 
 ```csharp
 var signature1 = signer1.EncodeUTF8AndSign(msg1, new EthECKey(privateKey));

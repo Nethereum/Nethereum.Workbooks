@@ -19,7 +19,7 @@ namespace Nethereum.Worbooks.Tests
             var code = GetCodeSectionsFromWorkbook();
             //When
             var state = await CSharpScript.RunAsync(code);
-             state = await state.ContinueWithAsync("return (signature2, addressRec3);");
+             state = await state.ContinueWithAsync("return (signature2, account);");
             var returnValue = (dynamic)state.ReturnValue;
             Assert.Matches("^0x[0-9a-fA-F]{130}$", returnValue.Item1);
             Assert.Matches("^0x[0-9a-fA-F]{40}$", returnValue.Item2);
