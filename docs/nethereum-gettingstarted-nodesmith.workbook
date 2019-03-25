@@ -29,7 +29,7 @@ Let’s first define which network we want to connect to and create our url. The
 ```csharp
 var networkName = "kovan"; // This can be mainnet, kovan, goerli, rinkeby, or ropsten
 var apiKey = "NETHEREUM_SAMPLE"; // For a real application, create your own API key
-var url = String.Format("https://ethereum.api.nodesmith.io/v1/{0}/jsonrpc?apiKey={1}", networkName, apiKey);
+var url = string.Format("https://ethereum.api.nodesmith.io/v1/{0}/jsonrpc?apiKey={1}", networkName, apiKey);
 var web3 = new Web3(url);
 ```
 
