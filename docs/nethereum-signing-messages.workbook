@@ -90,39 +90,34 @@ In this case the **EncodeUTF8AndEcRecover** method is used to verify the signer'
 var addressRec1 = signer1.EncodeUTF8AndEcRecover(msg1, signature1);
 ```
 
-### 3-Hashing and signing a message using **HashAndSign**:
-
-```csharp
-var msg2 = "test";
-var signer2 = new EthereumMessageSigner();
-var signature2 = signer2.HashAndSign(msg2,
-                "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7");
-```
-
-### 4-Verifying a hashed message using **HashAndEcRecover**:
-
-```csharp
-var addressRec2 = signer2.HashAndEcRecover(msg2, signature2);
-```
-
-### 5-Verifying a signature that has a signature prefix
+### 3-Verifying a signature that has a signature prefix
 
 Most Ethereum clients will automatically add a prefix to the message they sign. That method ([eth\_sign](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign)) is enforced to enable the receiver of a signed message to know what they are signing.
 
-Nethereum enables to verify messages with a prefix in a signed message by using `MessageSigner`. 
+Nethereum allows to verify messages with a prefix in a signed message using `MessageSigner`. 
 
-In this example, we will use a signature made using geth 1.5:
+In this example, we will use a signature made using geth 1.5 and that therefore includes a prefix: 
 
 ```csharp
 var signature = "0x0976a177078198a261faf206287b8bb93ebb233347ab09a57c8691733f5772f67f398084b30fc6379ffee2cc72d510fd0f8a7ac2ee0162b95dc5d61146b40ffa1c";
 ```
 
-The method that we will use requires two arguments: the signature to verify and a signed version of the message in Byte Array format. We’ll create the Byte Array signature using the text that was signed:
+The method we will use requires two arguments: the signature we want to verify and the hash prefix of the signed message in Byte Array format. 
 
+We already have the signature, let's now determine the hashed prefix of the signature in Byte Array format.
+The hased prefix of an Ethereum signed message always contains the same elements: 
+- 0x19
+- the prefix enforced by Ethereum clients ("Ethereum Signed Message:\\n" + hash.HexToByteArray().Length));
+- the hashed version of the original message (hashing messages ensures the 'message' part of the prefix has always the same length )
+
+We can start by hashing our message:
 ```csharp
             var text = "test";
             var hasher = new Sha3Keccack();
             var hash = hasher.CalculateHash(text);
+```
+We then need to obtain a Byte Array version of each prefixes in the signature and build a list with them: 
+```csharp
             var byteList = new List<byte>();
 
             var bytePrefix = "0x19".HexToByteArray();
@@ -134,8 +129,7 @@ The method that we will use requires two arguments: the signature to verify and 
             byteList.AddRange(bytesMessage);
 ```
 
-`hashPrefix2` represents the hashed version of the message with its byte prefix plus the prefix enforced by Ethereum clients ("Ethereum Signed Message:\\n" + hash.HexToByteArray().Length));
-
+`hashPrefix2` represents the Hex version of the byte prefix: 
 ```csharp
             var hashPrefix2 = hasher.CalculateHash(byteList.ToArray()).ToHex();
 ```
