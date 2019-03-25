@@ -13,17 +13,17 @@ packages:
 
 This document is a Workbook, find more about workbooks installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-Nethereum provides with methods to sign messages in an Ethereum compatible format. The following is a quick guide to signing a string with Nethereum and verifying a signature using various methods.
+Nethereum provides methods to sign messages in an Ethereum compatible format. The following is a quick guide to signing a string with Nethereum and verifying a signature using various methods.
 
 ## Ethereum signing basics
 
-In the Ethereum context, signing a message allows to certify that a piece of data was signed by a specific account, it's a way to prove to a smart contract/human that an account approved a message.
+In the Ethereum context, signing a message allows us to certify that a piece of data was signed by a specific account, it's a way to prove to a smart contract/human that an account approved a message.
 
 Signing a message with a private key does not require interacting with the Ethereum network. It can be done completely offline, hence the following code can be run without a testchain running.
 
-Nethereum provides with two objects that can be used to sign or verify messages: `EthereumMessageSigner` that allows to sign and verify in various formats, and `EthereumSigner` which enables the management of prefixes (more about prefixes later in this article).
+Nethereum provides two objects that can be used to sign or verify messages: `EthereumMessageSigner` that allows you to sign and verify in various formats, and `EthereumSigner` which enables the management of prefixes (more about prefixes later in this article).
 
-## Signing messages and verifying signatures with Nethereum 
+## Signing messages and verifying signatures with Nethereum
 
 ```csharp
 #r "Nethereum.Web3"
@@ -49,13 +49,13 @@ using Nethereum.ABI.Encoders;
 var address = "0x12890d2cce102216644c59dae5baed380d84830c";
 ```
 
-**msg1** declares the content of the message itself, here a simple string:
+**msg1** declares the content of the message itself, here is a simple string:
 
 ```csharp
 var msg1 = "wee test message 18/09/2017 02:55PM";
 ```
 
-**privatekey** declares the private key of the sending **account**:
+**privatekey** declares the private key of the signer’s **account**:
 
 ```csharp
 var privateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
@@ -109,7 +109,7 @@ var addressRec2 = signer2.HashAndEcRecover(msg2, signature2);
 
 Most Ethereum clients will automatically add a prefix to the message they sign. That method ([eth\_sign](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign)) is enforced to enable the receiver of a signed message to know what they are signing.
 
-Nethereum enables to verify messages with a prefix in a signed message by using `MessageSigner`. 
+Nethereum enables you to verify messages with a prefix in a signed message by using `MessageSigner`.
 
 In this example, we will use a signature made using geth 1.5:
 
