@@ -21,7 +21,8 @@ In the Ethereum context, signing a message allows us to certify that a piece of 
 
 Signing a message with a private key does not require interacting with the Ethereum network. It can be done completely offline, hence the following code can be run without a testchain running.
 
-Nethereum provides two objects that can be used to sign or verify messages: `EthereumMessageSigner` that allows you to sign and verify in various formats, and `EthereumSigner` which enables the management of prefixes (more about prefixes later in this article).
+Nethereum provides an object that can be used to sign or verify messages: `EthereumMessageSigner`. 
+Let's now explore how to use `EthereumMessageSigner` with the two most common scenarios in the Ethereum context.
 
 ## Signing messages and verifying signatures with Nethereum
 
@@ -69,28 +70,55 @@ var signer1 = new EthereumMessageSigner();
 
 ### 1-Encoding and signing a message using EncodeUTF8AndSign:
 
-* **EncodeUTF8AndSign** will encode the UTF8 signer's message (`msg1`) with their private key (`privateKey`) and return a string representing the signature.
+The most common scenario when signing a message goes as follows:
+
+A message needs to be signed, it's most likely a string and hence can be encoded in UTF8 and then signed, therefore we will use `EncodeUTF8AndSign`
+
+`EncodeUTF8AndSign` requires two arguments:
+- The message itself
+- The signing account's private key
 
 ```csharp
 var signature1 = signer1.EncodeUTF8AndSign(msg1, new EthECKey(privateKey));
 ```
 
-**Note about signature verification in Ethereum:**
+### 2-Encoding and recovering the address of the signer's UTF8 message and signature using EncodeUTF8AndEcRecover:
 
-Ethereum signature process is a bit different from classical digital signatures, here the output of a signature verification is not the message (or the message hash) but the signer's address, since the address is a part of the public key hash.
+The Ethereum signature verification process is a bit different from classical digital signatures, here the output of a signature verification is not the message (or the message hash) but the signer's address, since the address is a part of the public key hash.
 Verification is successful if the recovered address is equal to the provided address, which can only happen if the signer is the owner of the account's private key.
 
-### 2-Encoding and recovering the address of the signer's UTF8 message and signature using EncodeUTF8AndEcRecover:
+
 
 **addressRec1** evaluates to the signer's address, thus proving the validity of the message.
 
 In this case the **EncodeUTF8AndEcRecover** method is used to verify the signer's address of a message encoded in UTF8:
 
+
 ```csharp
 var addressRec1 = signer1.EncodeUTF8AndEcRecover(msg1, signature1);
 ```
 
-### 3-Verifying a signature that has a signature prefix
+### 3-Hashing and signing a message using **HashAndSign**:
+ 
+In some cases, hashing a file and then signing it might be more relevant, i.e. when dealing with an extremely large file.
+
+**HashAndSign** enables you to do this in one go:
+```csharp
+var msg2 = "test";
+var signer2 = new EthereumMessageSigner();
+var signature2 = signer2.HashAndSign(msg2,
+                "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7");
+```
+
+### 4-Verifying a hashed message using **HashAndEcRecover**:
+
+When receiving a signature that has been made using a file's hash it's necessary to hash the file in order to verify its signature. 
+
+**HashAndEcRecover** enables you to do this in one single step:
+```csharp
+var addressRec2 = signer2.HashAndEcRecover(msg2, signature2);
+```
+### 5-Verifying a signature that has a signature prefix
 
 Most Ethereum clients will automatically add a prefix to the message they sign. That method ([eth\_sign](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign)) is enforced to enable the receiver of a signed message to know what they are signing.
 
@@ -142,5 +170,3 @@ Finally, we will convert `hashPrefix2` to a Byte Array and use `EcRecover` to ve
             var account = signer.EcRecover(hashPrefix2.HexToByteArray(), signature);
 ```
 
-* Please note: you can also verify the validity of your signature at the following link:
-  <https://etherscan.io/verifySig>
