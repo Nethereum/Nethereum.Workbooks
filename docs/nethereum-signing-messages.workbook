@@ -17,15 +17,16 @@ Nethereum provides methods to sign messages in an Ethereum compatible format. Th
 
 ## Ethereum signing basics
 
-In the Ethereum context, signing a message allows us to certify that a piece of data was signed by a specific account, it's a way to prove to a smart contract/human that an account approved a message.
+In the Ethereum context, signing a message allows us to verify that a piece of data was signed by a specific account, in other terms, it's a way to prove to a smart contract/human that an account approved a message.
 
-Signing a message with a private key does not require interacting with the Ethereum network. It can be done completely offline, hence the following code can be run without a testchain running.
+Signing a message with a private key does not require interacting with the Ethereum network. It can be done completely offline, hence the following code can be run without a testchain.
 
-Nethereum provides an object that can be used to sign or verify messages: `EthereumMessageSigner`. 
-Let's now explore how to use `EthereumMessageSigner` with the two most common scenarios in the Ethereum context.
+Nethereum provides with a class that can be used to sign or verify messages: `EthereumMessageSigner`. 
+Let's now explore how to use `EthereumMessageSigner` with two very common scenarios in the Ethereum context.
 
 ## Signing messages and verifying signatures with Nethereum
 
+Let's first reference our assemblies and namespaces:
 ```csharp
 #r "Nethereum.Web3"
 ```
@@ -43,6 +44,7 @@ using Nethereum.Signer;
 using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.ABI.Encoders;
 ```
+Now let's declare elements that we will in every of our examples:
 
 **address** declares the signer's account address:
 
@@ -79,28 +81,24 @@ A message needs to be signed, it's most likely a string and hence can be encoded
 - The signing account's private key
 
 ```csharp
-var signature1 = signer1.EncodeUTF8AndSign(msg1, new EthECKey(privateKey));
+var signature1 = signer1.EncodeUTF8AndSign(msg1, privateKey);
 ```
 
-### 2-Encoding and recovering the address of the signer's UTF8 message and signature using EncodeUTF8AndEcRecover:
+### 2- Verifying a signed message encoded in UTF8 using EncodeUTF8AndEcRecover:
 
 The Ethereum signature verification process is a bit different from classical digital signatures, here the output of a signature verification is not the message (or the message hash) but the signer's address, since the address is a part of the public key hash.
 Verification is successful if the recovered address is equal to the provided address, which can only happen if the signer is the owner of the account's private key.
 
-
-
-**addressRec1** evaluates to the signer's address, thus proving the validity of the message.
-
 In this case the **EncodeUTF8AndEcRecover** method is used to verify the signer's address of a message encoded in UTF8:
 
-
+**addressRec1** evaluates to the signer's address, thus proving the validity of the message.
 ```csharp
 var addressRec1 = signer1.EncodeUTF8AndEcRecover(msg1, signature1);
 ```
 
 ### 3-Hashing and signing a message using **HashAndSign**:
  
-In some cases, hashing a file and then signing it might be more relevant, i.e. when dealing with an extremely large file.
+In some cases, hashing data and then signing it might be more relevant, i.e. when dealing with a large file.
 
 **HashAndSign** enables you to do this in one go:
 ```csharp
@@ -112,61 +110,10 @@ var signature2 = signer2.HashAndSign(msg2,
 
 ### 4-Verifying a hashed message using **HashAndEcRecover**:
 
-When receiving a signature that has been made using a file's hash it's necessary to hash the file in order to verify its signature. 
+When receiving a signature that has been made with a hashed file it's necessary to start by hashing the file we want to verify and then recover the address that signed it. 
 
 **HashAndEcRecover** enables you to do this in one single step:
+
 ```csharp
 var addressRec2 = signer2.HashAndEcRecover(msg2, signature2);
 ```
-### 5-Verifying a signature that has a signature prefix
-
-Most Ethereum clients will automatically add a prefix to the message they sign. That method ([eth\_sign](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign)) is enforced to enable the receiver of a signed message to know what they are signing.
-
-The hashed prefix of an ethereum signed message always contains the same elements: 
-- 0x19
-- the prefix enforced by Ethereum clients ("Ethereum Signed Message:\\n" + hash.HexToByteArray().Length));
-
-- the hashed version of the original message (hashing messages ensures the 'message' part of the prefix has always the same length )
-Nethereum allows to verify messages with a prefix in a signed message using `EthereumMessageSigner` which inherits from `MessageSigner`. 
-
-In this example, we will use a signature made using geth 1.5 and that therefore includes a prefix: 
-
-```csharp
-var signature = "0x0976a177078198a261faf206287b8bb93ebb233347ab09a57c8691733f5772f67f398084b30fc6379ffee2cc72d510fd0f8a7ac2ee0162b95dc5d61146b40ffa1c";
-```
-
-The method we will use requires two arguments: the signature we want to verify and the hash prefix of the signed message in Byte Array format. 
-
-we already have the signature, let's now determine the hashed prefix of the signature in byte array format.
-
-We can start by hashing our message:
-```csharp
-            var text = "test";
-            var hasher = new Sha3Keccack();
-            var hash = hasher.CalculateHash(text);
-```
-We then need to obtain a Byte Array version of each prefixes in the signature and build a list with them: 
-```csharp
-            var byteList = new List<byte>();
-
-            var bytePrefix = "0x19".HexToByteArray();
-            var textBytePrefix = Encoding.UTF8.GetBytes("Ethereum Signed Message:\n" + hash.HexToByteArray().Length);
-            var bytesMessage = hash.HexToByteArray();
-
-            byteList.AddRange(bytePrefix);
-            byteList.AddRange(textBytePrefix);
-            byteList.AddRange(bytesMessage);
-```
-
-`hashPrefix2` represents the Hex version of the byte prefix: 
-```csharp
-            var hashPrefix2 = hasher.CalculateHash(byteList.ToArray()).ToHex();
-```
-
-Finally, we will convert `hashPrefix2` to a Byte Array and use `EcRecover` to verify the signature:
-
-```csharp
-            var signer = new MessageSigner();
-            var account = signer.EcRecover(hashPrefix2.HexToByteArray(), signature);
-```
-
