@@ -18,7 +18,7 @@ The table below provides Download links to Nethereum workbooks:
 [Message signing](nethereum-signing-messages.workbook)|Learn how to cryptographically sign messages and verify signatures|[Workbook](nethereum-signing-messages.workbook)|
 [Creating A New Account Using Geth](nethereum-creating-a-new-account-using-geth.workbook)|Create a new account with Geth|[Workbook](nethereum-creating-a-new-account-using-geth.workbook)
 |[Using Nethereum managed accounts](nethereum-managed-accounts.workbook/index.workbook)| Learn how to simplify private key management with `ManagedAccount`|[Zip package](nethereum-managed-accounts.workbook.zip)
-|[Chain Id Management](nethereum-ChainID-Management.workbook) |Learn how to protect your code against replay attacks|[Workbook](nethereum-ChainID-Management.workbook)|
+|[Chain Id Management](nethereum-chainID-management.workbook) |Learn how to protect your code against replay attacks|[Workbook](nethereum-chainID-management.workbook)|
 [Estimating gas](nethereum-estimating-gas.workbook/index.workbook) |Learn how to Estimate the gas cost of a contract transaction|[Zip package](nethereum-estimating-gas.workbook.zip)|
 [Managing Nonces](nethereum-managing-nonces.workbook) |Automate nonce management with Nethereum|[Workbook](nethereum-managing-nonces.workbook)|
 [Unit conversion](nethereum-converting-units.workbook)|Convert Ethereum currency units \(Eth\Gwei\Wei\) using Nethereum methods|[Workbook](nethereum-converting-units.workbook)|
