@@ -15,10 +15,12 @@ This document is a Workbook, find more about workbooks' installation requirement
 
 Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
 
-This sample will take you through the steps of connecting to [Infura](https://www.infura.io) and retrieve the balance of an account from the mainnet (live Ethereum).
+This sample will take you through the steps of connecting to [Infura](https://www.infura.io) retrieve the balance of an account from the mainnet (live Ethereum) as well as check on the chain ID and latest block number.
+
+
 INFURA runs ethereum nodes and provides access to them via api to eliminate the need to run and update your own infrastructure.
 
-The first step to use INFURA is to [sign up](https://infura.io/register) and get an API key. The next step is to choose which Ethereum network to connect to — either the mainnet, or the Kovan, Goerli, Rinkeby, or Ropsten test networks. Both of these will be used in the url we use to initial Nethereum with the format:`https://ethereum.api.nodesmith.io/v1/{network_name}/jsonrpc?apiKey={api_key}`.
+The first step to use INFURA is to [sign up](https://infura.io/register) and get an API key. The next step is to choose which Ethereum network to connect to — either the mainnet, or the Kovan, Goerli, Rinkeby, or Ropsten test networks. Both of these will be used in the url we use to initial Nethereum with the format:`https://<network>.infura.io/v3/YOUR-PROJECT-ID`.
 
 For this sample, we’ll use a special API key `7238211010344719ad14a89db874158c`, but for your own project you’ll need your own key.
 
