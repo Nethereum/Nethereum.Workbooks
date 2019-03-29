@@ -1,7 +1,7 @@
 ---
 uti: com.xamarin.workbook
-id: 701d2cce-38a5-43b6-a682-e7684c44d480
-title: nethereum-gettingstarted-infura
+id: 2044ee9c-3ed4-4510-ad07-4cd2632763a1
+title: nethereum-gettingstarted-nodesmith
 platforms:
 - Console
 packages:
@@ -13,7 +13,7 @@ packages:
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-This sample walks through the process of getting connected to Ethereum’s mainnet or test network using [Nodesmith](https://nodesmith.io). Nodesmith runs Ethereum nodes and provides access to them via API to eliminate the need to run and update you’re own infrastructure.
+This sample walks through the process of getting connected to Ethereum’s mainnet or test network using [Nodesmith](https://nodesmith.io). Nodesmith runs Ethereum nodes and provides access to them via API to eliminate the need to run and update your own infrastructure.
 
 The first step to use Nodesmith is to [sign up](https://nodesmith.io) and get an API key. The next step is to choose which Ethereum network to connect to — either the mainnet, or the Kovan, Goerli, Rinkeby, or Ropsten test networks. Both of these will be used in the url we use to initial Nethereum with the format:`https://ethereum.api.nodesmith.io/v1/{network_name}/jsonrpc?apiKey={api_key}`.
 
