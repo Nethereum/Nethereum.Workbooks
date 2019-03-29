@@ -20,7 +20,7 @@ INFURA runs ethereum nodes and provides access to them via api to eliminate the 
 
 The first step to use INFURA is to [sign up](https://infura.io/register) and get an API key. The next step is to choose which Ethereum network to connect to — either the mainnet, or the Kovan, Goerli, Rinkeby, or Ropsten test networks. Both of these will be used in the url we use to initial Nethereum with the format:`https://ethereum.api.nodesmith.io/v1/{network_name}/jsonrpc?apiKey={api_key}`.
 
-For this sample, we’ll use a special API key `NETHEREUM_SAMPLE`, but for your own project you’ll need your own key.
+For this sample, we’ll use a special API key `7238211010344719ad14a89db874158c`, but for your own project you’ll need your own key.
 
 ```csharp
 #r "Nethereum.Web3"
@@ -33,7 +33,7 @@ using Nethereum.Web3;
 Let’s create an instance of Web3, with the infura url for mainnet.
 
 ```csharp
-var web3 = new Web3("https://mainnet.infura.io");
+var web3 = new Web3("https://mainnet.infura.io/v3/7238211010344719ad14a89db874158c");
 ```
 
 Using the Eth API we can execute the GetBalance request asynchronously, for our selected account. In this scenario the chosen account belongs to the Ethereum Foundation. “0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae”
