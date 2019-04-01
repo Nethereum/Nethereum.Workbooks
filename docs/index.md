@@ -13,6 +13,7 @@ The table below provides Download links to Nethereum workbooks:
 | ------------- |:-------------| -----:|
 |[Nethereum Getting Started Test Chain](nethereum-gettingstarted-testchain.workbook)|Learn a few simple interactions with a local Test Blockchain|[Workbook](nethereum-gettingstarted-testchain.workbook)
 |[Nethereum Getting Started Infura](nethereum-gettingstarted-infura.workbook)|How to connect to the Infura blockchian and retrieve the balance of an account|[Workbook](nethereum-gettingstarted-infura.workbook)|
+|[Nethereum Getting Started Nodesmith](nethereum-gettingstarted-nodesmith.workbook)|How to connect to Ethereum using Nodesmith and get the latest block|[Workbook](nethereum-gettingstarted-nodesmith.workbook)|
 [Smart Contracts integration](nethereum-gettingstarted-smartcontracts.workbook)|Learn how to create an account using a private key. Deploy a smart contract using handlers, Send a transaction to the smart contract. Make a query call to the a smart contract. This workbook uses typed contract definitions|[Workbook](nethereum-gettingstarted-smartcontracts.workbook)|
 [Events, Logs and Filters](nethereum-events-gettingstarted.workbook)|Learn how to decode events from transaction|[Workbook](nethereum-events-gettingstarted.workbook)|
 [Message signing](nethereum-signing-messages.workbook)|Learn how to cryptographically sign messages and verify signatures|[Workbook](nethereum-signing-messages.workbook)|
