@@ -21,8 +21,11 @@ namespace Nethereum.Worbooks.Tests
             var code = GetCodeSectionsFromWorkbook();
             //When
             var state = await CSharpScript.RunAsync(code);
-            state = await state.ContinueWithAsync("return etherAmount;");
-            Assert.NotNull(state.ReturnValue);
+            state = await state.ContinueWithAsync("return (etherAmount,networkId);");
+            dynamic returnValue = (dynamic)state.ReturnValue;
+            Assert.NotNull(returnValue.Item1);
+            Assert.Equal("1", returnValue.Item2);
+
         }
     }
 }
