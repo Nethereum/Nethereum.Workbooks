@@ -4,7 +4,7 @@ using Nethereum.XUnitEthereumClients;
 
 namespace Nethereum.Worbooks.Tests
 {
-    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_5)]
+    [Collection(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_16)]
     public class NethereumGettingStartedNodesmithTest : WorbookTest
     {
         public NethereumGettingStartedNodesmithTest() : base(WORKBOOK_PATH)
