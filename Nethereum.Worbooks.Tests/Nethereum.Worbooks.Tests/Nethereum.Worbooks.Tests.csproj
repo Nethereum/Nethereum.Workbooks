@@ -60,6 +60,10 @@
        <None Include="..\..\docs\nethereum-using-account-objects.workbook" Link="nethereum-using-account-objects.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
+       <None Include="..\..\docs\nethereum-gettingstarted-nodesmith.workbook">
+         <Link>nethereum-gettingstarted-nodesmith.workbook</Link>
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="NethereumEventDtosGetAllChangesTest.cs">
