@@ -29,6 +29,12 @@
     <None Include="..\..\docs\nethereum-estimating-gas.workbook\index.workbook" Link="nethereum-estimating-gas.workbook\index.workbook">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\..\docs\nethereum-receipt-status.workbook\index.workbook" Link="nethereum-receipt-status.workbook\index.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\docs\nethereum-receipt-status.workbook\receiptStatusData.csx" Link="nethereum-receipt-status.workbook\receiptStatusData.csx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\..\docs\nethereum-estimating-gas.workbook\smartContractData.csx" Link="nethereum-estimating-gas.workbook\smartContractData.csx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -81,6 +87,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="nethereum-managed-accounts.workbook\smartContractData.csx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>  
+  <ItemGroup>
+    <None Update="nethereum-receipt-status.workbook\index.workbook">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="nethereum-receipt-status.workbook\receiptStatusData.csx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

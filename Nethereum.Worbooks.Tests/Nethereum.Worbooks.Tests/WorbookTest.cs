@@ -36,7 +36,7 @@ namespace Nethereum.Worbooks.Tests
             var sb = new StringBuilder();
             foreach (var line in lines)
             {
-                if (!line.StartsWith("#load")&&(!line.StartsWith("#r"))&&(!line.StartsWith("using")))
+                if ((!line.StartsWith("#load"))&&(!line.StartsWith("#r"))&&(!line.StartsWith("using")))
                 {
                     sb.AppendLine(line);
                 }
