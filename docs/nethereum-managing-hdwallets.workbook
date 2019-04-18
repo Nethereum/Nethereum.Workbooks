@@ -55,6 +55,7 @@ using Nethereum.Web3.Accounts;
 using Nethereum.Util; 
 using Nethereum.Hex.HexConvertors.Extensions; 
 using Nethereum.HdWallet;
+using System;
 ```
 
 ## Creating a HD Wallet
@@ -63,12 +64,12 @@ Initiating a HD Wallet requires a list of words and a password as arguments, in 
 
 ```csharp
 string Words = "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal";
-string Password1 = "password1";
+string Password1 = "password";
 var wallet1 = new Wallet(Words, Password1);
 for (int i = 0; i < 10; i++)
 {
-    var account1 = wallet1.GetAccount(i); 
-    Console.WriteLine("Account " + i + " : " + account1.Address);
+    var account = wallet1.GetAccount(i); 
+    Console.WriteLine("Account " + i + " : " + account.Address);
 }
 ```
 
@@ -76,9 +77,12 @@ An Hd Wallet is deterministic, it will derive the same unlimited number of addre
 All the created accounts can be loaded in a Web3 instance and used as any other account, we can for instance check the balance of one of them:
 
 ```csharp
-var account2 = wallet1.GetAccount(0);
-var web3 = new Web3(account2);
-var balance = await web3.Eth.GetBalance.SendRequestAsync(account2.Address);
+var account1 = new Wallet(Words, Password1).GetAccount(0);
+```
+
+```csharp
+var web3 = new Web3(account1);
+var balance = await web3.Eth.GetBalance.SendRequestAsync(account1.Address);
 ```
 
 ## Transfering ether using an HD Wallet
@@ -100,16 +104,14 @@ Mnemonic mnemo = new Mnemonic(Wordlist.English, WordCount.Twelve);
 
 ```csharp
 string Password2 = "password2";
-var wallet1 = new Wallet(mnemo.ToString(), Password2);
-var account = wallet1.GetAccount(0);
+var wallet2 = new Wallet(mnemo.ToString(), Password2);
+var account2 = wallet2.GetAccount(0);
 ```
 
 ## Retrieving the account using the mnemonic backup seed words
 
 A backup seed sentence is a human friendly way to recover all the generated addresses, since Hd Wallets generate addresses deterministically, we can now regenerate them at anytime using our seed sentence and retrieve them using an index number.\
 In the below example, we will use our backup seed words to retrieve an account. The first step will be to declare our word list:
-
-
 
 ```csharp
 var backupSeed = mnemo.ToString();
@@ -118,6 +120,6 @@ var backupSeed = mnemo.ToString();
 Now using the backup seed, the password and the address index (\`0\`) we can create the HD wallet and retrieve our account. The account contains the private key to sign our transactions. We can generate and re-generate addresses based on an index number from the same seed.
 
 ```csharp
-var wallet2 = new Wallet(backupSeed, Password2);
-var recoveredAccount = wallet2.GetAccount(0);
+var wallet3 = new Wallet(backupSeed, Password2);
+var recoveredAccount = wallet3.GetAccount(0);
 ```

@@ -74,6 +74,7 @@ namespace Nethereum.XUnitEthereumClients
         public const string ETHEREUM_CLIENT_COLLECTION_14 = "Ethereum client Test";
         public const string ETHEREUM_CLIENT_COLLECTION_15 = "Ethereum client Test";
         public const string ETHEREUM_CLIENT_COLLECTION_16 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_17 = "Ethereum client Test";
         private readonly Process _process;
         private readonly string _exePath;
 
