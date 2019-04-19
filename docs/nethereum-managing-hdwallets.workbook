@@ -69,7 +69,7 @@ var wallet1 = new Wallet(Words, Password1);
 for (int i = 0; i < 10; i++)
 {
     var account = wallet1.GetAccount(i); 
-    Console.WriteLine("Account " + i + " : " + account.Address);
+    Console.WriteLine("Account " + i + " : " + account.Address +" "+ account.PrivateKey);
 }
 ```
 
