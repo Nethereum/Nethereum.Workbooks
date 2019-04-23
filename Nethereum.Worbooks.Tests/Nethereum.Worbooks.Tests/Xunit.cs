@@ -41,7 +41,7 @@ namespace Nethereum.XUnitEthereumClients
     {
         public static string PrivateKey = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
         public static string Address = "0x12890d2cce102216644c59daE5baed380d84830c";
-        public static string Password = "password";
+       public static string Password = "password";
 
         public static Account GetAccount()
         {
@@ -74,6 +74,7 @@ namespace Nethereum.XUnitEthereumClients
         public const string ETHEREUM_CLIENT_COLLECTION_14 = "Ethereum client Test";
         public const string ETHEREUM_CLIENT_COLLECTION_15 = "Ethereum client Test";
         public const string ETHEREUM_CLIENT_COLLECTION_16 = "Ethereum client Test";
+        public const string ETHEREUM_CLIENT_COLLECTION_17 = "Ethereum client Test";
         private readonly Process _process;
         private readonly string _exePath;
 

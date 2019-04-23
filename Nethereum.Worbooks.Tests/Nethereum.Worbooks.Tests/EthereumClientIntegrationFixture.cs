@@ -129,4 +129,14 @@ namespace Nethereum.Worbooks.Tests
         // to be the place to apply [CollectionDefinition] and all the
         // ICollectionFixture<> interfaces.
     }
+ [CollectionDefinition(EthereumClientIntegrationFixture.ETHEREUM_CLIENT_COLLECTION_17)]
+    public class EthereumClientFixtureCollection17 : ICollectionFixture<EthereumClientIntegrationFixture>
+    {
+        // This class has no code, and is never created. Its purpose is simply
+        // to be the place to apply [CollectionDefinition] and all the
+        // ICollectionFixture<> interfaces.
+        //public static string PrivateKey = "0x79ddc360dcc7aac255340d3e1d0f3793a57a373fb533adf4b1fc1b007f8aea38";
+//public static string Address = "0x7b380660b3e857971Ffc04a7adA5ce563aCf9f31";
+//public static string Password = "Password";
+    }
 }

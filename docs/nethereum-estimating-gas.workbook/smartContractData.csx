@@ -14,7 +14,7 @@ using System.Numerics;
 var privateKey1 = "0xb5b1870957d373ef0eeffecc6e4812c0fd08f554b37b233526acc331bf1544f7";
 var senderAddress1 = "0x12890d2cce102216644c59daE5baed380d84830c";
 var account1 = new Nethereum.Web3.Accounts.Account(privateKey1);
-var web3 = new Web3(account1);
+var web31 = new Web3(account1);
 public class StandardTokenDeployment : ContractDeploymentMessage
 {
 
@@ -48,6 +48,6 @@ var deploymentMessage = new StandardTokenDeployment
     TotalSupply = 100000
 };
 
-var deploymentHandler = web3.Eth.GetContractDeploymentHandler<StandardTokenDeployment>();
+var deploymentHandler = web31.Eth.GetContractDeploymentHandler<StandardTokenDeployment>();
 var transactionReceipt1 = await deploymentHandler.SendRequestAndWaitForReceiptAsync(deploymentMessage);
 string contractAddress = transactionReceipt1.ContractAddress;

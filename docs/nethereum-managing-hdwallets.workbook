@@ -1,0 +1,125 @@
+---
+uti: com.xamarin.workbook
+id: 7df7c2fb-f200-4427-87e8-c91bc2fb676a
+title: nethereum-managing-hdwallets
+platforms:
+- Console
+packages:
+- id: NBitcoin
+  version: 4.1.1.97
+- id: Nethereum.HdWallet
+  version: 3.1.2
+- id: Nethereum.Web3
+  version: 3.0.0
+---
+
+# Managing HD wallets
+
+This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+
+Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+
+### Hd wallet: definition
+
+Hd Wallet stands for Hierarchical Deterministic Wallet, a type of wallet that derive an unlimited number of addresses from a single master seed. Hd Wallet solve the problem of the user having to generate several accounts as well as having to backup each private key.
+If you would like to dive deeper into Hd Wallets, we recommend [NBitcoin documentation](https://programmingblockchain.gitbook.io/programmingblockchain/key_generation/is_it_random_enough) most of Nethereum Hd Wallet implementation has been inspired from their hard work.
+
+This short sample explains how to:
+
+* generate a HD wallet
+
+* generate mnemonics (random sequences of words)
+
+* transfer Ether using a HD Wallet
+
+* retrieve an account using the mnemonic backup seed words
+
+First of all we need to add a nuget package reference to `Nethereum.HdWallet`, `NBitcoin` and `Nethereum.Web3`.
+
+```csharp
+#r "Nethereum.HdWallet"
+```
+
+```csharp
+#r "NBitcoin"
+```
+
+```csharp
+#r "Nethereum.Web3"
+```
+
+```csharp
+using NBitcoin;
+using Nethereum.Web3;
+using Nethereum.Web3.Accounts; 
+using Nethereum.Util; 
+using Nethereum.Hex.HexConvertors.Extensions; 
+using Nethereum.HdWallet;
+using System;
+```
+
+## Creating a HD Wallet
+
+Initiating a HD Wallet requires a list of words and a password as arguments, in this first case, we will use an arbitrary sequence of words.
+
+```csharp
+string Words = "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal";
+string Password1 = "password";
+var wallet1 = new Wallet(Words, Password1);
+for (int i = 0; i < 10; i++)
+{
+    var account = wallet1.GetAccount(i); 
+    Console.WriteLine("Account index : "+ i +" - Address : "+ account.Address +" - Private key : "+ account.PrivateKey);
+}
+```
+
+An Hd Wallet is deterministic, it will derive the same unlimited number of addresses given the same seed (password+wordlist).
+All the created accounts can be loaded in a Web3 instance and used as any other account, we can for instance check the balance of one of them:
+
+```csharp
+var account1 = new Wallet(Words, Password1).GetAccount(0);
+```
+
+```csharp
+var web3 = new Web3(account1);
+var balance = await web3.Eth.GetBalance.SendRequestAsync(account1.Address);
+```
+
+## Transfering ether using an HD Wallet
+
+The process of transferring Ether using a HD Wallet is the same as using a standalone account
+
+```csharp
+var toAddress = "0x13f022d72158410433cbd66f5dd8bf6d2d129924";
+var transaction = await web3.Eth.GetEtherTransferService().TransferEtherAndWaitForReceiptAsync(toAddress, 2.11m, 2);
+```
+
+## Generating mnemonics
+
+Our friends at NBitcoin offer a very convenient way to generate a backup seed sentence:
+
+```csharp
+Mnemonic mnemo = new Mnemonic(Wordlist.English, WordCount.Twelve);
+```
+
+```csharp
+string Password2 = "password2";
+var wallet2 = new Wallet(mnemo.ToString(), Password2);
+var account2 = wallet2.GetAccount(0);
+```
+
+## Retrieving the account using the mnemonic backup seed words
+
+A backup seed sentence is a human friendly way to recover all the generated addresses, since Hd Wallets generate addresses deterministically, we can now regenerate them at anytime using our seed sentence and retrieve them using an index number.\
+In the below example, we will use our backup seed words to retrieve an account. The first step will be to declare our word list:
+
+```csharp
+var backupSeed = mnemo.ToString();
+```
+
+Now using the backup seed, the password and the address index (\`0\`) we can create the HD wallet and retrieve our account. The account contains the private key to sign our transactions. We can generate and re-generate addresses based on an index number from the same seed.
+
+```csharp
+var wallet3 = new Wallet(backupSeed, Password2);
+var recoveredAccount = wallet3.GetAccount(0);
+```
