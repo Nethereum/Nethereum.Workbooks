@@ -3,17 +3,21 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="5.4.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="2.4.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
-    <PackageReference Include="Nethereum.Web3" Version="3.0.0" />
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="Nethereum.HdWallet" Version="3.2.0" />
+    <PackageReference Include="Nethereum.Web3" Version="3.2.0" />
     <PackageReference Include="NuGet.Client" Version="4.3.0-beta1-2418" />
-    <PackageReference Include="NuGet.CommandLine" Version="4.7.1">
+    <PackageReference Include="NuGet.CommandLine" Version="4.9.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +58,9 @@
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-gettingstarted-testchain.workbook" Link="nethereum-gettingstarted-testchain.workbook">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </None>
+       <None Include="..\..\docs\nethereum-managing-hdwallets.workbook" Link="nethereum-managing-hdwallets.workbook">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
        </None>
        <None Include="..\..\docs\nethereum-managing-nonces.workbook" Link="nethereum-managing-nonces.workbook">
