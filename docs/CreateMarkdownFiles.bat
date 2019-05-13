@@ -1,3 +1,3 @@
 setlocal
 set DIR=%~dp0
-for /R %DIR% %%a in (*.workbook) do type "%%a" > "%%a.md"
+for /R %DIR% %%f in (*.workbook) do (type "%%f" > "%%~dpnf.md")
