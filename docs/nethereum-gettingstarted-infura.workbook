@@ -13,7 +13,7 @@ packages:
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 
 This sample will take you through the steps of connecting to [Infura](https://www.infura.io) retrieve the balance of an account from the mainnet (live Ethereum) as well as check on the chain ID and latest block number.
 
@@ -63,7 +63,7 @@ var latestBlockNumber = await web3.Eth.Blocks.GetBlockNumber.SendRequestAsync();
 var latestBlock = await web3.Eth.Blocks.GetBlockWithTransactionsHashesByNumber.SendRequestAsync(latestBlockNumber);
 ```
 
-That’s a quick demo of using Nethereum with INFURA. One important thing to know when using hosted infrastructure like Infura is it doesn’t store any private keys, so any signing must be done locally and then the raw transaction passed on to the service. Nethereum makes this easy with the `Account` object. See the [Using account objects](https://nethereum.readthedocs.io/en/latest/Nethereum.Workbooks/docs/nethereum-using-account-objects/#sending-a-transaction) for more details.
+That’s a quick demo of using Nethereum with INFURA. One important thing to know when using hosted infrastructure like Infura is it doesn’t store any private keys, so any signing must be done locally and then the raw transaction passed on to the service. Nethereum makes this easy with the `Account` object. See the [Using account objects](https://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-using-account-objects/#sending-a-transaction) for more details.
 
 Note: some communication errors can occur with INFURA if INFURA's API and your app can't agree on what version of TLS to use. .Net 4.5 and earlier will default to TLS v1, with TLS v1.2 deactivated if it's included in the framework. (In .Net 4.6.*, v1.2 is the default.)
 To enable v1.2 in 4.5.2 you can use:

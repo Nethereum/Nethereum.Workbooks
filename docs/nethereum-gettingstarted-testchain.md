@@ -13,7 +13,7 @@ packages:
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 
 Blockchain developing often requires to run a local Blockchain client (AKA: TestChain). This is to make sure your work remains private and that any sent transaction gets a fast response.
 

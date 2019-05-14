@@ -6,7 +6,7 @@ Nethereum tutorials using Xamarin workbooks.
 ![Workbook sample](docs/screenshots/deploymentSample.gif)
 
 # Workbooks
-You can find a list of all the workbooks on the [Nethereum documentation](http://nethereum.readthedocs.io/en/latest/Nethereum.Workbooks/docs/) or just browse through them in the [repository](docs)
+You can find a list of all the workbooks on the [Nethereum documentation](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/) or just browse through them in the [repository](docs)
 
 ## Workbooks contribution
 1. Any modifications should be pushed on the Nethereum.Workbooks repository

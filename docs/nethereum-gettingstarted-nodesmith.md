@@ -46,4 +46,4 @@ var latestBlockNumber = await web3.Eth.Blocks.GetBlockNumber.SendRequestAsync();
 var latestBlock = await web3.Eth.Blocks.GetBlockWithTransactionsHashesByNumber.SendRequestAsync(latestBlockNumber);
 ```
 
-That’s a quick demo of using Nethereum with Nodesmith. One important thing to know when using hosted infrastructure like Nodesmith is it doesn’t store any private keys, so any signing must be done locally and then the raw transaction passed on to the service. Nethereum makes this easy with the `Account` object. See the [Using account objects](https://nethereum.readthedocs.io/en/latest/Nethereum.Workbooks/docs/nethereum-using-account-objects/#sending-a-transaction) for more details.
+That’s a quick demo of using Nethereum with Nodesmith. One important thing to know when using hosted infrastructure like Nodesmith is it doesn’t store any private keys, so any signing must be done locally and then the raw transaction passed on to the service. Nethereum makes this easy with the `Account` object. See the [Using account objects](https://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-using-account-objects/#sending-a-transaction) for more details.

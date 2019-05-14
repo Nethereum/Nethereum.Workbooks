@@ -13,7 +13,7 @@ platforms:
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 
 First, let's download the test chain matching your environment from <https://github.com/Nethereum/Testchains>
 
