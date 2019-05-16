@@ -15,7 +15,7 @@ packages:
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 
 ## What happens when you send a transaction with Ethereum?
 

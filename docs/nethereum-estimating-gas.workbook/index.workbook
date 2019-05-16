@@ -13,7 +13,7 @@ This document is a Workbook, find more about workbooks' installation requirement
 
 # Estimating the cost of a transaction with Nethereum
 
-Documentation about Nethereum can be found at: <https://nethereum.readthedocs.io>
+Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 
 The purpose of this sample is to estimate the gas cost of a simple transaction and modify the assigned values of `gas` and `gasprice`.
 
