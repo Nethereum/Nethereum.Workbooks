@@ -16,7 +16,7 @@ This document is a Workbook, find more about workbooks' installation requirement
 This document is a Workbook, an interactive document where you can run code.
 To run workbooks natively, you can:
 - [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
-- [Download the native file for this document](https://raw.githubusercontent.com/Nethereum/Nethereum.Workbooks/blob/master/docs/nethereum-converting-units.workbook).
+- [Download the native file for this document](https://raw.github.com/Nethereum/Nethereum.Workbooks/blob/master/docs/nethereum-converting-units.workbook).
 
 The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 
