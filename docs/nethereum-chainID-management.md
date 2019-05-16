@@ -9,8 +9,12 @@ packages:
   version: 3.0.0
 ---
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+This document is a Workbook, an interactive document where you can run code.
+To run workbooks natively, you can:
+- [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+- [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-chainID-management.workbook) 
 
+The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 ## Pre-requisites:
 
 Download the test chain matching your environment from https://github.com/Nethereum/Testchains
