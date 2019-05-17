@@ -1,21 +1,11 @@
----
-uti: com.xamarin.workbook
-id: 7df7c2fb-f200-4427-87e8-c91bc2fb676a
-title: nethereum-managing-hdwallets
-platforms:
-- Console
-packages:
-- id: NBitcoin
-  version: 4.1.1.97
-- id: Nethereum.HdWallet
-  version: 3.1.2
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Managing HD wallets
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+This document is a Workbook, an interactive document where you can run code.
+To run workbooks natively, you can:
+- [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+- [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-managing-hdwallets.workbook)
+
+The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 
 Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 

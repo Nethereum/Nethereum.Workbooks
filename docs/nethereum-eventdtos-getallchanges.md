@@ -1,17 +1,11 @@
----
-uti: com.xamarin.workbook
-id: 5808030e-e736-41a5-b749-8556e0b08727
-title: nethereum-eventdtos-getallchanges
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Setting Up Events Polling Services Using Nethereum
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+This document is a Workbook, an interactive document where you can run code.
+To run workbooks natively, you can:
+- [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+- [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-eventdtos-getallchanges.workbook) 
+
+The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 
 This workbook explains how to set up a polling service tracking events occurring on a Smart Contract.
 

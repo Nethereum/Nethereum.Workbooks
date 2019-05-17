@@ -1,17 +1,11 @@
----
-id: f06eb0cb-0694-4277-b7e0-212e28997dc3
-title: nethereum-gettingstarted
-uti: com.xamarin.workbook
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # TestChain Getting Started Guide
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+This document is a Workbook, an interactive document where you can run code.
+To run workbooks natively, you can:
+- [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+- [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-gettingstarted-testchain.workbook)
+
+The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 
 Documentation about Nethereum can be found at: <https://docs.nethereum.com>
 

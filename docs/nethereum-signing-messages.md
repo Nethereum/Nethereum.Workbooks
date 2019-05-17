@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: e5cc8ec1-5a9d-4ff2-b229-a7c1d489a8ca
-title: nethereum-signing-messages
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Signing messages with Nethereum
 
 This document is a Workbook, find more about workbooks installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
