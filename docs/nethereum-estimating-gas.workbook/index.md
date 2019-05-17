@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 0230a546-0dba-4f2c-8cc9-d26049912d20
-title: nethereum-estimating-gas
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
 
 # Estimating the cost of a transaction with Nethereum

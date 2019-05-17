@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 7c6a7c28-9e2c-4536-8cb3-841b6173cacb
-title: nethereum-managing-nonces
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Managing nonces with Nethereum
 
 This document is a Workbook, an interactive document where you can run code.

@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 2044ee9c-3ed4-4510-ad07-4cd2632763a1
-title: nethereum-gettingstarted-nodesmith
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Using Nodesmith with Nethereum
 
 This document is a Workbook, an interactive document where you can run code.

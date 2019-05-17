@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 5ae81721-2480-4fb0-baa6-62e1f79aa238
-title: nethereum-creating-a-new-account-using-geth
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 ## Creating a new Account using Geth Personal Api
 
 This document is a Workbook, an interactive document where you can run code.

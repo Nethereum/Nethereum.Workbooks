@@ -1,13 +1,3 @@
----
-uti: com.xamarin.workbook
-id: d0548e89-9a34-48a1-91c9-45f5bb32a816
-title: nethereum-events-gettingstarted
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
 # Getting started with events
 
 ## Pre-requisites:

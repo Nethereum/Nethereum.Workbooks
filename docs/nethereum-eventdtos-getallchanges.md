@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 5808030e-e736-41a5-b749-8556e0b08727
-title: nethereum-eventdtos-getallchanges
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Setting Up Events Polling Services Using Nethereum
 
 This document is a Workbook, an interactive document where you can run code.

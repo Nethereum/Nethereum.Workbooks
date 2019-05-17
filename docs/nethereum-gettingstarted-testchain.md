@@ -1,14 +1,3 @@
----
-id: f06eb0cb-0694-4277-b7e0-212e28997dc3
-title: nethereum-gettingstarted-testchain
-uti: com.xamarin.workbook
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # TestChain Getting Started Guide
 
 This document is a Workbook, an interactive document where you can run code.

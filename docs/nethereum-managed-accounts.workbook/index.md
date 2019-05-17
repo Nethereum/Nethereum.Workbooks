@@ -1,14 +1,3 @@
----
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
-uti: com.xamarin.workbook
-id: d89bf107-43a9-4333-b74a-848da59c6b70
-title: nethereum-managed-accounts
-platforms:
-- Console
----
-
 # Using Nethereum managed accounts
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).

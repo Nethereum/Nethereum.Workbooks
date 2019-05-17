@@ -1,16 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 701d2cce-38a5-43b6-a682-e7684c44d480
-title: nethereum-gettingstarted-smartcontracts.workbook
-platforms:
-- Console
-packages:
-- id: Nethereum.Accounts
-  version: 3.0.0
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Quick introduction to smart contracts integration with Nethereum
 
 This document is a Workbook, an interactive document where you can run code.

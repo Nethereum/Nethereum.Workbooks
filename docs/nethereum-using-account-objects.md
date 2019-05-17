@@ -1,16 +1,3 @@
----
-uti: com.xamarin.workbook
-id: e3e2ea3c-6b52-4d2b-aa11-cacac7199593
-title: nethereum-using-account-objects
-platforms:
-- Console
-packages:
-- id: Nethereum.Accounts
-  version: 3.0.0
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Using Account Objects with Nethereum
 
 This document is a Workbook, an interactive document where you can run code.

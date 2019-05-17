@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 4e0b3afb-0940-4d51-9f9b-e4baeb5714d4
-title: Nethereum-ChainID-Management
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 This document is a Workbook, an interactive document where you can run code.
 To run workbooks natively, you can:
 - [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)

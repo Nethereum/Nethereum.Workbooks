@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: d143510d-16fd-4d8a-9035-8188ff4401be
-title: nethereum-converting-units
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Converting crypto currency units with Nethereum
 
 This document is a Workbook, an interactive document where you can run code.
