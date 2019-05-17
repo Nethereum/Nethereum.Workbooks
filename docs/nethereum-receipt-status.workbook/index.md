@@ -1,14 +1,3 @@
----
-uti: com.xamarin.workbook
-id: 92040ff5-c871-4144-af7c-be7db00abbd7
-title: nethereum-receipt-status
-platforms:
-- Console
-packages:
-- id: Nethereum.Web3
-  version: 3.0.0
----
-
 # Using Receipt Status
 
 This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
