@@ -1,7 +1,8 @@
 This document is a Workbook, an interactive document where you can run code.
 To run workbooks natively, you can:
-- [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
-- [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-chainID-management.workbook) 
+* [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+
+* [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-chainID-management.workbook) 
 
 The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 ## Pre-requisites:

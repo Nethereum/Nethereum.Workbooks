@@ -1,10 +1,17 @@
 # Signing messages with Nethereum
 
-This document is a Workbook, find more about workbooks installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+This document is a Workbook, an interactive document where you can run code.
+To run workbooks natively, you can:
 
-Nethereum provides methods to sign messages in an Ethereum compatible format. The following is a quick guide to signing a string with Nethereum and verifying a signature using various methods.
+* [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+
+* [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-managing-nonces.workbook)
+
+The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
 
 ## Ethereum signing basics
+
+Nethereum provides methods to sign messages in an Ethereum compatible format. The following is a quick guide to signing a string with Nethereum and verifying a signature using various methods.
 
 In the Ethereum context, signing a message allows us to verify that a piece of data was signed by a specific account, in other terms, it's a way to prove to a smart contract/human that an account approved a message.
 

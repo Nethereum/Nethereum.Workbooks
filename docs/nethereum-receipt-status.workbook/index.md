@@ -1,6 +1,14 @@
 # Using Receipt Status
 
-This document is a Workbook, find more about workbooks' installation requirements  [here](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install).
+This document is a Workbook, an interactive document where you can run code.
+To run workbooks natively, you can:
+
+* [Install the runtime](https://docs.microsoft.com/en-us/xamarin/tools/workbooks/install)
+
+* [Download the native file for this document](http://docs.nethereum.com/en/latest/Nethereum.Workbooks/docs/nethereum-receipt-status.workbook/index.md)
+
+The entirety of Nethereum workbooks can be found [here](https://github.com/Nethereum/Nethereum.Workbooks)
+
 
 Since the Byzantium fork, Ethereum provides with a way to know if a transaction succeeded by checking its receipt `status`. A receipt status can have a value of `0` or `1` which translate into:
 
