@@ -50,10 +50,6 @@ After that, we need to create a web3 instance based on this new account:
 var web3 = new Web3();
 ```
 
-```csharp
-var account = await web3.Personal.NewAccount.SendRequestAsync("password");
-```
-
 Now that our environment is set, let's start creating transactions in various units:
 
 ## Handling units
