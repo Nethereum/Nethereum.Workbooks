@@ -53,6 +53,7 @@ This is the contract bytecode (compile executable) and Abi
  ##### DEPLOYING THE SMART CONTRACT
  
 The solidity smart contract constructor for this standard ERC20 smart contract is as follows:
+
 ```js
 function Standard_Token(uint256 _initialAmount) 
 {         balances[msg.sender] = _initialAmount;         
