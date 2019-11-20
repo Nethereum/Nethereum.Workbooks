@@ -67,7 +67,7 @@ This means we need to supply a parameter to a constructor on deployment
         var senderAddress = account.Address;
 ```
 
-        When working with untyped smart contract defintions the parameters are passed as part of a params object array, and recognised and mapped using the abi:
+When working with untyped smart contract defintions the parameters are passed as part of a params object array, and recognised and mapped using the abi:
 
 ```csharp
         var receipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(abi,
