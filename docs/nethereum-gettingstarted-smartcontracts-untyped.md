@@ -55,6 +55,7 @@ This is the contract bytecode (compile executable) and Abi
 The solidity smart contract constructor for this standard ERC20 smart contract is as follows:
 
 ```js
+//SOLIDITY: Constructor
 function Standard_Token(uint256 _initialAmount) 
 {         balances[msg.sender] = _initialAmount;         
          _totalSupply = _initialAmount;     
@@ -103,6 +104,15 @@ A function, has different methods, the main ones are:
 
 Using a CallAsyc we can query the smart contract for values:
 
+This is the solidity function to get balance:
+```js
+//SOLIDITY: balanceOf address
+ function balanceOf(address _owner) public view returns (uint256 balance) {
+        return balances[_owner];
+    }
+
+```
+This is the csharp call: 
 ```csharp
         var balance = await balanceFunction.CallAsync<int>(newAddress);
         Console.WriteLine($"Account {newAddress} balance: {balance}");
@@ -112,6 +122,18 @@ Using a CallAsyc we can query the smart contract for values:
 
 Sending transactions will commit the information to the chain, before submission we need to estimate the gas (cost of the transaction)
 In a similar way, any parameters required by the function are included at the end of the method in the same order as per the solidity function.
+
+This is a simplified solidity smart contract transfer
+```js
+function transfer(address _to, uint256 _value) public returns (bool success) {
+        require(balances[msg.sender] >= _value);
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+        return true;
+    }
+```
+
+Csharp transaction call and estimation
 
 ```csharp
         var gas = await transferFunction.EstimateGasAsync(senderAddress, null, null, newAddress, amountToSend);
