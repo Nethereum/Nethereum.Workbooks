@@ -67,15 +67,21 @@ This means we need to supply a parameter to a constructor on deployment
         var senderAddress = account.Address;
 ```
 
-When working with untyped smart contract defintions the parameters are passed as part of a params object array, and recognised and mapped using the abi:
+When working with untyped smart contract definitions the parameters are passed as part of a params object array, and recognised and mapped using the full json abi:
+
+We first estimate the cost of the deployment transaction, so we can provide the right amount of gas to the deployment transaction. Providing the abi, bytecode and constructor parameters (totalSuppy).
+
+And finally we send the deployment transaction in a similar way, included the estimated gas amount.
 
 ```csharp
+        var estimateGas = await web3.Eth.DeployContract.EstimateGasAsync(abi, contractByteCode, senderAddress, totalSupply);
+        
         var receipt = await web3.Eth.DeployContract.SendRequestAndWaitForReceiptAsync(abi,
-            contractByteCode, senderAddress, new Nethereum.Hex.HexTypes.HexBigInteger(900000), null, totalSupply);
+            contractByteCode, senderAddress, estimateGas, null, totalSupply);
         Console.WriteLine("Contract deployed at address: " + receipt.ContractAddress);
 ```
 
-Using our contract address we can interact with the contract as follows:
+Using our contract address we can interact with the contract by providing the json abi and contract address.
 
 ```csharp
         var contract = web3.Eth.GetContract(abi, receipt.ContractAddress);
@@ -88,6 +94,12 @@ Now the contract object enables us to retrieve functions using their name:
         var balanceFunction = contract.GetFunction("balanceOf");
         var newAddress = "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe";
 ```
+A function, has different methods, the main ones are:
+
+* CallAsync:  where you query the values of a smart contract, but you don't change the blockchain state. For example, GetBalance of an adddress.
+* SendTransactionAsync and SendTransactionAndWaitForReceiptAsync : where you commit some changes to the change and creates a transaction on included in the next block. For example Transfer Amount.
+* EstimateGasAsync: where the transaction is simulated on chain to calculate the gas amount necessary to send the transaction.
+
 
 Using a CallAsyc we can query the smart contract for values:
 
