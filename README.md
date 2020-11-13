@@ -1,6 +1,9 @@
 # Nethereum.Workbooks
 Nethereum tutorials using Xamarin workbooks.
 
+Sadly Xamarin workbooks is not having any progress, now a better way to learn Nethereum is the Nethereum Playground at http://playground.nethereum.com.
+This repository is archived now.
+
 "Xamarin Workbooks provide a blend of documentation and code that is perfect for experimentation, learning, and creating guides and teaching aids." For more information on installation requirements go to: https://developer.xamarin.com/guides/cross-platform/workbooks/
 
 ![Workbook sample](docs/screenshots/deploymentSample.gif)
